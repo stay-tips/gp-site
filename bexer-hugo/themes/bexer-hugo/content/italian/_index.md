@@ -32,7 +32,7 @@ hero_slider:
         
     # slider item
     - subtitle : "We are here to"
-      title : "Planning Business"
+      title : "Responsible Hospitality"
       content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       bg_image_webp : "images/slider/banner-3.webp"
       bg_image : "images/slider/banner-3.jpg"
@@ -62,24 +62,24 @@ banner_feature:
   # Max use 4 item
   feature_item:
     # banner feature item loop
-    - name : "Business Solution"
-      icon : "far fa-gem" # font-awesome 5 : https://fontawesome.com/icons/
+    # - name : "Business Solution"
+    #   icon : "far fa-gem" # font-awesome 5 : https://fontawesome.com/icons/
+    #   content : "Lorem ipsum dolor sit amet constur adipelit sed."
+      
+    # banner feature item loop
+    - name : "Experiences"
+      icon : "fas fa-horse" # font-awesome 5 : https://fontawesome.com/icons/
       content : "Lorem ipsum dolor sit amet constur adipelit sed."
       
     # banner feature item loop
-    - name : "Market Research"
-      icon : "far fa-chart-bar" # font-awesome 5 : https://fontawesome.com/icons/
+    - name : "Hospitality"
+      icon : "fas fa-house-user" # font-awesome 5 : https://fontawesome.com/icons/
       content : "Lorem ipsum dolor sit amet constur adipelit sed."
       
     # banner feature item loop
-    - name : "Business Strategy"
-      icon : "far fa-lightbulb" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Lorem ipsum dolor sit amet constur adipelit sed."
-      
-    # banner feature item loop
-    - name : "Speed Optimization"
-      icon : "fas fa-tachometer-alt" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Lorem ipsum dolor sit amet constur adipelit sed."
+    - name : "Services"
+      icon : "fas fa-shuttle-van" # font-awesome 5 : https://fontawesome.com/icons/
+      content : "More services for guests and hosts what they need when they need it"
 
 
 ################################## about ####################################
