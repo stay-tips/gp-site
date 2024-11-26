@@ -5,54 +5,54 @@ hero_slider:
   enable : true
   slider_item:
     # slider item
-    - subtitle : "We are here to"
-      title : "Planning Business"
-      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    - subtitle : "I nostri valori"
+      title : "Ospitalità"
+      content : "Valorizzando le unicità dell'immobile e dei suoi dintorni, assicurando agli ospiti un soggiorno sereno e memorabile."
       bg_image_webp : "images/slider/banner-1.webp"
       bg_image : "images/slider/banner-1.jpg"
       animation : "fadeInUp" # animation select from : https://daneden.github.io/animate.css/
       button:
         enable : true
-        label : "more details"
+        label : "approfondisci"
         link : "about/"
         animation : "zoomIn" # animation select from : https://daneden.github.io/animate.css/
         
     # slider item
-    - subtitle : "We are here to"
-      title : "Planning Business"
-      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    - subtitle : "Il nostro metodo"
+      title : "Professionalità"
+      content : "Abbiamo ingegnierizzato processi unici per garantire il massimo del confort e del rendimento dell'immobile."
       bg_image_webp : "images/slider/banner-2.webp"
       bg_image : "images/slider/banner-2.jpg"
       animation : "fadeInDown" # animation select from : https://daneden.github.io/animate.css/
       button:
         enable : true
-        label : "more details"
+        label : "approfondisci"
         link : "about/"
         animation : "zoomIn" # animation select from : https://daneden.github.io/animate.css/
         
     # slider item
-    - subtitle : "We are here to"
-      title : "Responsible Hospitality"
-      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    - subtitle : "Il nostro approcio"
+      title : "Sostenibilità"
+      content : "Crediamo nel turismo etico e responsabile, che rispetti l'ambiente circostante e promuova prodotti e abitudini del territorio, negli affitti brevi"
       bg_image_webp : "images/slider/banner-3.webp"
       bg_image : "images/slider/banner-3.jpg"
       animation : "fadeInLeft" # animation select from : https://daneden.github.io/animate.css/
       button:
         enable : true
-        label : "more details"
+        label : "approfondisci"
         link : "about/"
         animation : "zoomIn" # animation select from : https://daneden.github.io/animate.css/
         
     # slider item
-    - subtitle : "We are here to"
-      title : "Planning Business"
-      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    - subtitle : "Garantiamo"
+      title : "Massimo rendimento"
+      content : "Solo raggiungendo il massimo rendimento dell'immobile possiamo promuovere i nostri valori e condividere con gli ospiti la nostra felicità"
       bg_image_webp : "images/slider/banner-4.webp"
       bg_image : "images/slider/banner-4.jpg"
       animation : "fadeInRight" # animation select from : https://daneden.github.io/animate.css/
       button:
         enable : true
-        label : "more details"
+        label : "approfondisci"
         link : "about/"
         animation : "zoomIn" # animation select from : https://daneden.github.io/animate.css/
 
@@ -70,32 +70,32 @@ banner_feature:
     # banner feature item loop
     - name : "Epserienze"
       icon : "fas fa-horse" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Vivi l'Italia da Italiano"
+      content : "vi facciamo vivere il territorio come se ci foste nati"
       
     # banner feature item loop
     - name : "Ospitalità"
       icon : "fas fa-house-user" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "a misura di vacanza e lavoro"
+      content : "accoglienti dimore ove sentirsi a casa"
       
     # banner feature item loop
     - name : "Servizi"
       icon : "fas fa-shuttle-van" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "a corredo di un soggiorno "
+      content : "copriamo le necessità particolari dei nostri ospiti"
 
 
 ################################## about ####################################
 about:
   enable : true
   subtitle : "Chi siamo"
-  title : "Siamo una squadra dedicata agli affitti brevi "
-  content : "Excepteur sint occaecat cupidatat non proident sunt iculpa qui officia deserunt mollit anim est. laborum sed perspiciatis unde omnis natus error sit voluptatem accusantium."
+  title : "Siamo una squadra dedicata agli affitti brevi"
+  content : "Siamo esperti nel trasformare ogni immobile in un'esperienza unica e redditizia. La nostra squadra si dedica con passione e professionalità a massimizzare il valore dell'immobile. Affidati a noi per una gestione senza pensieri e risultati garantiti."
   bg_image : "images/backgrounds/about-us-bg.png"
   bg_image_webp : "images/backgrounds/about-us-bg.webp"
   image_webp : "images/about/about-us.webp"
   image : "images/about/about-us.png"
   button:
     enable : true;
-    label : "more service"
+    label : "contattaci"
     link : "service/"
 
 ################################## funfacts ###############################
@@ -104,45 +104,65 @@ funfacts :
   funfacts_item :      
 
     # fanfacts item loop
-    - name : "Years Experience"
-      count : "25"
+    - name : "Anni d'esperienza"
+      count : "5"
       icon : "far fa-calendar-alt" # font-awesome 5 : https://fontawesome.com/icons/
       
     # fanfacts item loop
-    - name : "Awards Win"
-      count : "250"
-      icon : "fas fa-award" # font-awesome 5 : https://fontawesome.com/icons/
+    - name : "Immobili gestiti"
+      count : "36"
+      icon : "fas fa-house-user" # font-awesome 5 : https://fontawesome.com/icons/
       
     # fanfacts item loop
-    - name : "Happy Coustomers"
-      count : "500"
+    - name : "Ospiti Soddisfatti"
+      count : "5300"
       icon : "far fa-smile" # font-awesome 5 : https://fontawesome.com/icons/
 
 
 ################################# feature ############################################
 feature:
   enable : true
-  subtitle : "Why Choose Us"
-  title : "Why They Choose Bexar"
-  image_webp : "images/feature/feature.webp"
-  image : "images/feature/feature.jpg"
-  content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius tempor incididunt ut labore."
+  subtitle : "Cosa facciamo noi"
+  title : "Le nostre attività"
+  image_webp : "images/feature/home-2.webp"
+  image : "images/feature/home-2.jpg"
+  content : "Il nostro impegno costante permette di affittare il tuo immobile meglio e con meno rischi"
   feature_item:
-    # feature item loop
-    - name : "Creative Design"
-      icon : "far fa-snowflake" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia."
-      
-    # feature item loop
-    - name : "Pixel Perfect Coding"
-      icon : "fas fa-code" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia."
+    # Business plan
+    - name : "Business Plan"
+      icon : "fas fa-ruler-combined" # font-awesome 5 : https://fontawesome.com/icons/
+      content : "Redigiamo un business plan personalizzato con previsione di occupazione e ricavi."
+    
+    # Allestimento
+    - name : "Allestimento e shooting fotografico"
+      icon : "fas fa-camera" # font-awesome 5 : https://fontawesome.com/icons/
+      content : "Professionisti della fotografia e dell' home staging faranno del tuo immobile la miglior vetrina possibile."
 
+    # Burocrazia
+    - name : "Burocrazia"
+      icon : "fas fa-landmark" # font-awesome 5 : https://fontawesome.com/icons/
+      content : "Facciamo noi le pratiche burocratiche necessarie, ci manteniamo aggiornati e garantiamo che l'attività sia sempre in regola."
+ 
+    # Pulizia
+    - name : "Pulizia e manutenzione"
+      icon : "fas fa-broom" # font-awesome 5 : https://fontawesome.com/icons/
+      content : "Garantiamo igiene e pulizia ad ogni check-out avvalendoci solo di partner certificati e controlliamo che l'immobile sia perfettamente mantenuto; l'immobile è la nostra attività e vetrina."
+
+    # Accoglienza
+    - name : "Accoglienza e assistenza ospiti"
+      icon : "fas fa-door-open" # font-awesome 5 : https://fontawesome.com/icons/
+      content : "Accogliamo noi gli ospiti in viaggio gestendo con cura adempimenti e pagamenti."
+
+    # Gestione Prezzi
+    - name : "Gestione prezzi"
+      icon : "fas fa-money-bill-wave" # font-awesome 5 : https://fontawesome.com/icons/
+      content : "Usiamo le migliori tecniche di gestione dei ricavi per affittare l'immobile al miglior prezzo possibile; garantito."
+ 
 ################################# service ############################################
 service:
   enable : true
   section: "service"
-  show_item : 3
+  show_item : 7
   # service item comes from "content/*/service" folder
 
 ################################# team ##############################################
