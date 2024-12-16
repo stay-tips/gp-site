@@ -1,5 +1,5 @@
 ---
-title: "vantaggi per te"
+title: "vantaggi del proprietario"
 subtitle: "rendita garantita senza pensieri"
 # meta description
 description: "fai rendere veramente il tuo immobile con gli affitti brevi, migliore rendita nessun rischio"

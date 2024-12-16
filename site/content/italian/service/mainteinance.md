@@ -13,7 +13,7 @@ icon: "fas fa-tools" # font-awesome 5 : https://fontawesome.com/icons/
 
 ---
 
-Solo con una manutenzione costante il tuo immobile può rendere al massimo
+Una manutenzione costante è la chiave per un immobile a 5 stelle, ci prendiamo cura dell' immobile che è la nostra vetrina
 
 ### Pensiamo noi a tutto 
 

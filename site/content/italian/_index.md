@@ -162,7 +162,7 @@ feature:
 service:
   enable : true
   section: "service"
-  show_item : 7
+  show_item : 8
   # service item comes from "content/*/service" folder
 
 ################################# team ##############################################
@@ -179,21 +179,21 @@ project:
   show_item : 4
   button:
     enable : true
-    label : "more projects"
+    label : "altri casi studio"
     link : "project/"
   # project item comes from "content/*/project" folder
 
 ################################# testimonial #########################################
 testimonial:
   enable : true
-  subtitle : "Testimonials"
-  title : "What Clients Are Say?"
+  subtitle : "Testimonianze"
+  title : "Cosa dicono i clienti?"
   testimonial_item:
     # testimonial item loop
     - client_image : "images/testimonial/client-1.jpg"
-      name : "Dominic Allen"
-      designation : "Designer"
-      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit sed eiusmod tempor incididunt ut labore dolore magna aliqua.enim ad minim veniam.quis nostrud exercitation ullamco laboris nis aliquip ex ea commodo consequat. duis aute irure dolor in reprehen."
+      name : "Marco"
+      designation : "Proprietario"
+      content : "Enrico si è dimostrato preparato attento e ha trovato la struttura fiscale giusta per far rendere il mio immobile al massimo, avanti così"
       
     # testimonial item loop
     - client_image : "images/testimonial/client-2.jpg"

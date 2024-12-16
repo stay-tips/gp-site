@@ -1,6 +1,6 @@
 ---
-subtitle : "Bexar Case Studies"
-title : "Case Study"
+subtitle : "Casi Studio"
+title : "storie di successo di Green Property"
 # meta description
 description: "this is meta description"
 # page title background image

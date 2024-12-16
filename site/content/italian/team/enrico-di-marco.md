@@ -28,20 +28,20 @@ social:
 skill_title: Skills
 skill:
 - label : Cordinamento
-  percentage : 85%
+  percentage : 75%
   
 - label : Sviluppo
-  percentage : 79%
+  percentage : 45%
   
 - label : Communicazione
-  percentage : 95%
+  percentage : 85%
 ---
 
-#### Storia lavorativa e feedback
+#### Storia lavorativa e successi
 Dopo la laurea in ingegneria informatica ho perseguito una carriera prevalentemente tecnica ma sempre orientata al valore del cliente. Anche per questo mi sono appassionato alle metodologie Agile e ne sono diventato un ambasciatore in tutte le realtà che ho incontrato lungo il mio percorso.
 Ho fondato 3 startup: Gempliss, 
 
-#### Profilo
+#### Profilo Personale
 Sono da sempre attento ai temi della sostenibilità e del rispetto per l'ambiente, mi appassionano i viaggi lenti e a basso impatto e ho trovato negli sport a vela un connubio perfetto di questi due interessi.
 Trovo nell'ospitalità extra alberghiera una fonte di ispirazione e felicità continue, mi appassaiona accogliere ospiti da tutto il mondo, sentire le loro storie e donare loro un pezzettino della nostra bella Italia, anche solo come ricordo.
 Ho sempre cercato di coniugare la passione per la tecnologia con l'efficientamento del mio lavoro, pratico Aikido e nuoto nel tempo libero. 
