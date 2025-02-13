@@ -124,8 +124,8 @@ feature:
   enable : true
   subtitle : "Cosa facciamo noi"
   title : "Le nostre attività"
-  image_webp : "images/feature/home-2.webp"
-  image : "images/feature/home-2.jpg"
+  image_webp : "images/feature/activities.webp"
+  image : "images/feature/activities.png"
   content : "Il nostro impegno costante permette di affittare il tuo immobile meglio e con meno rischi"
   feature_item:
     # Business plan
@@ -191,21 +191,21 @@ testimonial:
   testimonial_item:
     # testimonial item loop
     - client_image : "images/testimonial/client-1.jpg"
-      name : "Marco"
+      name : "Elisa"
       designation : "Proprietario"
       content : "Enrico si è dimostrato preparato attento e ha trovato la struttura fiscale giusta per far rendere il mio immobile al massimo, avanti così"
       
     # testimonial item loop
     - client_image : "images/testimonial/client-2.jpg"
-      name : "Alex Pitt"
-      designation : "Designer"
-      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit sed eiusmod tempor incididunt ut labore dolore magna aliqua.enim ad minim veniam.quis nostrud exercitation ullamco laboris nis aliquip ex ea commodo consequat. duis aute irure dolor in reprehen."
+      name : "Renato"
+      designation : "Proprietario"
+      content : "Enrico e i suoi collaboratori gestiscono gli affitti brevi con metodo e concretezza. Sanno organizzare gli spazi, coordinare le pulizie e incontrare le esigenze dei clienti senza troppi fronzoli. Il lavoro richiede capacità pratiche, disciplina e una buona dose di flessibilità, riuscendo a far girare l'attività in modo professionale e amichevole."
 
     # testimonial item loop
     - client_image : "images/testimonial/client-3.jpg"
-      name : "John Doe"
-      designation : "Designer"
-      content : "Lorem ipsum dolor sit amet, consectetur adipisicing elit sed eiusmod tempor incididunt ut labore dolore magna aliqua.enim ad minim veniam.quis nostrud exercitation ullamco laboris nis aliquip ex ea commodo consequat. duis aute irure dolor in reprehen."
+      name : "Alessandra"
+      designation : "Proprietario"
+      content : "Nella gestione degli affitti brevi, Green Property ha portato competenza. Sanno come preparare gli appartamenti, districarsi con la burocrazia, coordinare pulizie e manutenzioni e soprattutto gestire le aspettative dei clienti professionalmente. Sempre reperibili, hanno risolto imprevisti e mantenuto standard di qualità costanti."
 
 
 ################################# blog ################################################
@@ -216,7 +216,7 @@ cta:
   bg_image : "images/backgrounds/cta-lg.jpg"
   button:
     enable : true
-    label : "get a quote"
+    label : "chiedi valutazione gatuita"
     link : "contact/"
 
 ################################# blog ################################################

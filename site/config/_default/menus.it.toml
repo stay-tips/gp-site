@@ -34,7 +34,7 @@ hasChildren = true
 [[main]]
 parent = "Ospitalità"
 name = "Tutti gli appartamenti"
-url = "apartments/"
+url = "apartment/"
 weight = 1
 
 [[main]]
