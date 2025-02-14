@@ -1,5 +1,5 @@
 ---
-title: "Laura Bernini"
+title: "Barbara Bernini"
 # meta description
 description: "marketing is my home"
 # page title background image
@@ -9,7 +9,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 image_webp: "images/team/team-1.webp"
 image: "images/team/team-1.jpg"
 # designation
-designation: "Marketer"
+designation: "Marketing"
 social:
   - icon : "fab fa-facebook" # font-awesome 5 : https://fontawesome.com/icons/
     link : "#"
@@ -36,7 +36,7 @@ skill:
   percentage : 75%
 ---
 
-# LAURA BERNINI
+# Barbara BERNINI
 Marketing Strategist | Brand Communication Expert
 
 ## Storia Lavorativa e Successi

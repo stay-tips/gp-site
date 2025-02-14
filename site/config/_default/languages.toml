@@ -10,7 +10,7 @@ weight = 2
 [it.params]
 home = "Home"
 # footer content
-footer_content = "Fai rendere il tuo immobile veramente con i professionisti qualificati degli affitti brevi."
+footer_content = "Fai rendere il tuo immobile veramente con professionisti degli affitti brevi qualificati"
 # copyright
 copyright = "Designed & Developed By [Stay Tips](https://stay.tips/)"
 
