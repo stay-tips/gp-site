@@ -27,33 +27,34 @@ url = "contact/"
 weight = 7
 
 [[main]]
-weight = 8
 name = "Ospitalità"
-hasChildren = true
+url = "booking/"
+weight = 8
+# hasChildren = false
 
-[[main]]
-parent = "Ospitalità"
-name = "Tutti gli appartamenti"
-url = "apartment/"
-weight = 1
+# [[main]]
+# parent = "Ospitalità"
+# name = "Tutti gli appartamenti"
+# url = "apartment/"
+# weight = 1
 
-[[main]]
-parent = "Ospitalità"
-name = "Terms of Service"
-url = "terms/"
-weight = 2
+# [[main]]
+# parent = "Ospitalità"
+# name = "Terms of Service"
+# url = "terms/"
+# weight = 2
 
-[[main]]
-parent = "Ospitalità"
-name = "Privacy Policy"
-url = "privacy-policy/"
-weight = 3
+# [[main]]
+# parent = "Ospitalità"
+# name = "Privacy Policy"
+# url = "privacy-policy/"
+# weight = 3
 
-[[main]]
-parent = "Ospitalità"
-name = "Elements"
-url = "blog/elements/"
-weight = 4
+# [[main]]
+# parent = "Ospitalità"
+# name = "Elements"
+# url = "blog/elements/"
+# weight = 4
 
 # footer menu
 [[footer]]

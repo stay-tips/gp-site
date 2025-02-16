@@ -66,3 +66,53 @@
 
 - id: our_services
   translation: Nostri Serivizi
+# Booking
+# i18n/it.yaml
+
+- id: booking_details
+  translation: Dettagli Prenotazione
+
+- id: personal_info
+  translation: Informazioni Personali
+
+- id: confirmation
+  translation: Conferma
+
+- id: book_your_stay
+  translation: Prenota il tuo soggiorno
+
+- id: stay_dates
+  translation: Date del soggiorno
+
+- id: check_in
+  translation: Check-in
+
+- id: check_out
+  translation: Check-out
+
+- id: guests_number
+  translation: Numero di ospiti
+
+- id: adults
+  translation: Adulti
+
+- id: children
+  translation: Bambini
+
+- id: additional_services
+  translation: Servizi aggiuntivi
+
+- id: booking_summary
+  translation: Riepilogo prenotazione
+
+- id: nightly_rate
+  translation: Tariffa per notte
+
+- id: total
+  translation: Totale
+
+- id: continue
+  translation: Continua
+
+- id: guests
+  translation: Ospiti

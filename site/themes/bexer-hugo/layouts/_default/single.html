@@ -12,7 +12,7 @@
       <div class="col-lg-8">
         {{ "<!-- post thumb -->" | safeHTML }}
         <div class="position-relative mb-5">
-          <img loading="lazy" src="{{ .Params.Image_webp | absURL }}" onerror="this.onerror=null;this.src='{{.Params.Image | absURL }}'" alt="post thumb" class="img-fluid w-100">
+          <img loading="lazy" src="{{ .Params.Image_webp | absURL }}"  onerror="this.onerror=null;this.src='{{.Params.Image | absURL }}'" alt="post thumb" class="img-fluid w-100">
           {{ with .Params.Categories }}{{range first 1 .}} <div class="card-type">{{ . | title }}</div>{{ end }}{{ end }}
         </div>
         <div class="card-meta text-uppercase mb-2">by <strong class="text-dark">{{ .Params.Author }}</strong>/ on <strong class="text-dark">{{ .PublishDate.Format "02 Jan 2006" }}</strong></div>
@@ -30,8 +30,7 @@
           </ul>
         </div>
         <!-- comments -->
-        {{/* {{/* {{ if site.DisqusShortname }} */}}
-        {{ if .Site.Config.Services.Disqus.Shortname }}
+        {{ if site.Config.Services.Disqus.Shortname }}
         <div class="mt-5">
           {{ template "_internal/disqus.html" . }}
         </div>

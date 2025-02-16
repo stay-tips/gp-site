@@ -1,0 +1,48 @@
+# data/services.yml
+- name: "Pulizia finale"
+  description: "Servizio di pulizia professionale dell'appartamento alla fine del soggiorno"
+  price: 50
+  required: true
+  icon: "fas fa-broom"
+
+- name: "Transfer aeroporto andata e ritorno"
+  description: "Servizio di transfer privato da e per l'aeroporto con autista professionale"
+  price: 120
+  required: false
+  icon: "fas fa-shuttle-van"
+
+- name: "Late check-out"
+  description: "Possibilità di lasciare l'appartamento entro le ore 16:00 invece delle 10:00"
+  price: 35
+  required: false
+  icon: "fas fa-clock"
+
+- name: "Kit di benvenuto deluxe"
+  description: "Cesto di benvenuto con prodotti locali, prosecco, snack e prima colazione per il primo giorno"
+  price: 45
+  required: false
+  icon: "fas fa-gift"
+
+- name: "Noleggio biciclette"
+  description: "Noleggio biciclette per l'intero soggiorno, include caschi e lucchetti"
+  price: 15
+  required: false
+  icon: "fas fa-bicycle"
+
+- name: "Servizio colazione"
+  description: "Colazione continentale servita in appartamento ogni mattina"
+  price: 12
+  required: false
+  icon: "fas fa-coffee"
+
+- name: "Parcheggio privato"
+  description: "Posto auto riservato nel garage coperto della struttura"
+  price: 10
+  required: false
+  icon: "fas fa-parking"
+
+- name: "Tour guidato della città"
+  description: "Tour privato di 3 ore con guida professionale in italiano o inglese"
+  price: 80
+  required: false
+  icon: "fas fa-map-marked-alt"

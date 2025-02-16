@@ -1,5 +1,5 @@
 ---
-title: "Milano casa sui navigli"
+title: "Milano navigli"
 date: 2021-02-07T10:47:55+06:00
 # meta description
 description: "piena occupazione, massima rendita garantita, divertimento accoglienza"

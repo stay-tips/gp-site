@@ -208,15 +208,15 @@ testimonial:
       content : "Nella gestione degli affitti brevi, Green Property ha portato competenza. Sanno come preparare gli appartamenti, districarsi con la burocrazia, coordinare pulizie e manutenzioni e soprattutto gestire le aspettative dei clienti professionalmente. Sempre reperibili, hanno risolto imprevisti e mantenuto standard di qualità costanti."
 
 
-################################# blog ################################################
+################################# cta ################################################
 cta:
   enable : true
-  title : "Bexar give the smart solution for your business"
+  title : "costruiamo soluzioni intelligenti per valorizzare l'immobile nell'ospitalità extra-alberghiera"
   bg_image_webp : "images/backgrounds/cta-lg.webp"
   bg_image : "images/backgrounds/cta-lg.jpg"
   button:
     enable : true
-    label : "chiedi valutazione gatuita"
+    label : "chiedi una valutazione gatuita"
     link : "contact/"
 
 ################################# blog ################################################
