@@ -1,0 +1,150 @@
+{{ define "main" }}
+
+{{ partial "page-title.html" . }}
+
+<section class="section p-0">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Mappa a sinistra -->
+      <div class="col-lg-6 p-0" style="height: calc(100vh - 100px);">
+        <div id="map" style="height: 100%;"></div>
+      </div>
+
+      <!-- Lista appartamenti a destra -->
+      <div class="col-lg-6 p-4" style="height: calc(100vh - 100px); overflow-y: auto;">
+        <div class="row">
+          {{ range .Pages }}
+          <div class="col-md-6 mb-4">
+            <div class="card border-0 rounded-0 box-shadow h-100 apartment-card" data-lat="{{ .Params.latitude }}" data-lng="{{ .Params.longitude }}" data-price="{{ .Params.price_per_night }}" data-id="{{ .File.UniqueID }}">
+              <!-- Immagine con fallback come nel tema -->
+              <div class="position-relative">
+                {{ if .Params.image_webp }}
+                <img loading="lazy" class="card-img-top rounded-0" src="{{ .Params.image_webp | absURL }}" onerror="this.onerror=null;this.src='{{ .Params.image | absURL }}'" alt="{{ .Title }}">
+                {{ else if .Params.image }}
+                <img loading="lazy" class="card-img-top rounded-0" src="{{ .Params.image | absURL }}" alt="{{ .Title }}">
+                {{ else }}
+                <img loading="lazy" class="card-img-top rounded-0" src="{{ `images/property/thumbnail.jpg` | absURL }}" alt="{{ .Title }}">
+                {{ end }}
+                <div class="price-badge">
+                  €{{ .Params.price_per_night }}<span class="text-sm">/notte</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">{{ .Title }}</h4>
+                <p class="text-color">{{ .Params.address }}</p>
+                <div class="section-title-border"></div>
+                <div class="row mt-3">
+                  <div class="col-6">
+                    <div class="d-flex align-items-center mb-2">
+                      <i class="fas fa-users text-primary mr-2"></i>
+                      <span>{{ .Params.max_guests }} ospiti</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                      <i class="fas fa-bed text-primary mr-2"></i>
+                      <span>{{ .Params.bedrooms }} camere</span>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="d-flex align-items-center mb-2">
+                      <i class="fas fa-bath text-primary mr-2"></i>
+                      <span>{{ .Params.bathrooms }} bagni</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-vector-square text-primary mr-2"></i>
+                      <span>{{ .Params.square_meters }} m²</span>
+                    </div>
+                  </div>
+                </div>
+                <a href="{{ .RelPermalink }}" class="btn btn-primary hover-ripple mt-3">Vedi dettagli</a>
+              </div>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+  .price-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  .apartment-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .apartment-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .custom-marker {
+    background: var(--primary);
+    color: rgb(12, 168, 33);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  .leaflet-container {
+    height: 100%;
+    width: 100%;
+  }
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Inizializza la mappa
+    const map = L.map('map').setView([45.4642, 9.1900], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Crea marker per ogni appartamento
+    const apartments = document.querySelectorAll('.apartment-card');
+    apartments.forEach(apartment => {
+      const lat = apartment.dataset.lat;
+      const lng = apartment.dataset.lng;
+      const price = apartment.dataset.price;
+      const id = apartment.dataset.id;
+
+      // Crea marker personalizzato
+      const marker = L.divIcon({
+        className: 'custom-marker',
+        html: `€${price}`,
+        iconSize: [40, 40]
+      });
+
+      // Aggiungi marker alla mappa
+      const mapMarker = L.marker([lat, lng], { icon: marker }).addTo(map);
+
+      // Click evento sul marker
+      mapMarker.on('click', () => {
+        window.location.href = apartment.querySelector('a').href;
+      });
+
+      // Hover effetti
+      apartment.addEventListener('mouseenter', () => {
+        mapMarker.getElement().style.transform = 'scale(1.1)';
+      });
+      apartment.addEventListener('mouseleave', () => {
+        mapMarker.getElement().style.transform = 'scale(1)';
+      });
+    });
+  });
+</script>
+
+{{ end }}
