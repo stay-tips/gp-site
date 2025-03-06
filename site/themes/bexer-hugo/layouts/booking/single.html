@@ -1,186 +1,75 @@
 {{ define "main" }}
-
 {{ partial "page-title.html" . }}
 
-<section class="section">
+<section class="section booking-confirmation">
   <div class="container">
     <div class="row">
-      <!-- Galleria immagini -->
-      <div class="col-12 mb-5">
-        <div class="row">
-          <div class="col-md-8">
-            {{ if .Params.image_webp }}
-            <img src="{{ .Params.image_webp | absURL }}" onerror="this.onerror=null;this.src='{{ .Params.image | absURL }}'" class="img-fluid w-100 box-shadow" alt="{{ .Title }}">
-            {{ else }}
-            <img src="{{ .Params.image | absURL }}" class="img-fluid w-100 box-shadow" alt="{{ .Title }}">
-            {{ end }}
-          </div>
-          <div class="col-md-4">
-            <div class="row">
-              {{ range first 2 .Params.gallery }}
-              <div class="col-12 mb-4">
-                <img src="{{ . | absURL }}" class="img-fluid w-100 box-shadow" alt="{{ $.Title }}">
-              </div>
-              {{ end }}
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="col-lg-8 mx-auto">
+        <div class="card border-0 shadow-lg">
+          <div class="card-body p-5">
+            <h2 class="card-title text-center mb-4">Conferma Prenotazione</h2>
 
-      <!-- Contenuto principale -->
-      <div class="col-lg-8">
-        <div class="bg-white p-5 box-shadow mb-5">
-          <h2 class="mb-4">{{ .Title }}</h2>
-          <p class="text-color mb-4">
-            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-            {{ .Params.address }}
-          </p>
-
-          <div class="section-title-border mb-4"></div>
-
-          <!-- Caratteristiche principali -->
-          <div class="row mb-5">
-            <div class="col-md-3 col-6 text-center mb-4">
-              <div class="icon-bg water-wave mb-3">
-                <i class="fas fa-users icon text-primary"></i>
-              </div>
-              <h5>{{ .Params.max_guests }} ospiti</h5>
-            </div>
-            <div class="col-md-3 col-6 text-center mb-4">
-              <div class="icon-bg water-wave mb-3">
-                <i class="fas fa-bed icon text-primary"></i>
-              </div>
-              <h5>{{ .Params.bedrooms }} camere</h5>
-            </div>
-            <div class="col-md-3 col-6 text-center mb-4">
-              <div class="icon-bg water-wave mb-3">
-                <i class="fas fa-bath icon text-primary"></i>
-              </div>
-              <h5>{{ .Params.bathrooms }} bagni</h5>
-            </div>
-            <div class="col-md-3 col-6 text-center mb-4">
-              <div class="icon-bg water-wave mb-3">
-                <i class="fas fa-vector-square icon text-primary"></i>
-              </div>
-              <h5>{{ .Params.square_meters }} m²</h5>
-            </div>
-          </div>
-
-          <!-- Descrizione -->
-          <div class="mb-5">
-            <h4 class="mb-3">Descrizione</h4>
-            <div class="content">{{ .Content }}</div>
-          </div>
-
-          <!-- Servizi -->
-          <div class="mb-5">
-            <h4 class="mb-4">Servizi</h4>
-            <div class="row">
-              {{ range .Params.amenities }}
-              <div class="col-md-3 col-6 mb-3">
-                <div class="d-flex align-items-center">
-                  <div class="icon-bg water-wave d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; min-width: 40px;">
-                    <i class="{{ .icon }} icon text-primary" style="font-size: 0.9rem; position: static; transform: none;"></i>
-                  </div>
-                  <span class="ml-2" style="font-size: 0.9rem;">{{ .name }}</span>
-                </div>
-              </div>
-              {{ end }}
-            </div>
-          </div>
-
-          <!-- Mappa -->
-          <div>
-            <h4 class="mb-4">Posizione</h4>
-            <div id="map" style="height: 400px;" class="box-shadow"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sidebar prenotazione -->
-      <div class="col-lg-4">
-        <div class="bg-white p-4 box-shadow sticky-top" style="top: 100px;">
-          <!-- Prezzo -->
-          <div class="d-flex justify-content-center align-items-center mb-4">
-            <h3 class="mb-0 text-primary">€{{ .Params.price_per_night }}</h3>
-            <span class="text-sm ml-2">/notte</span>
-          </div>
-
-          <!-- Form di prenotazione -->
-          <form action="/booking/confirm" method="POST">
-            <div class="mb-4">
-              <label class="text-dark mb-2">Date del soggiorno</label>
+            <div class="booking-details mb-4">
+              <h4>Dettagli Prenotazione</h4>
               <div class="row">
-                <div class="col-6 pr-1">
-                  <input type="date" class="form-control form-control-sm border-0 rounded-0 box-shadow" name="check_in" required>
+                <div class="col-md-6">
+                  <p><strong>Appartamento:</strong> <span id="apartment-name"></span></p>
+                  <p><strong>Date:</strong> <span id="booking-dates"></span></p>
                 </div>
-                <div class="col-6 pl-1">
-                  <input type="date" class="form-control form-control-sm border-0 rounded-0 box-shadow" name="check_out" required>
+                <div class="col-md-6">
+                  <p><strong>Ospiti:</strong> <span id="guest-count"></span></p>
+                  <p><strong>Prezzo Totale:</strong> <span id="total-price"></span></p>
                 </div>
               </div>
             </div>
 
-            <!-- Slider Ospiti -->
-            <div class="mb-4">
-              <label class="text-dark mb-2">Ospiti</label>
+            <form id="payment-form" class="payment-form">
+              <h4 class="mb-3">Dettagli Pagamento</h4>
 
-              <!-- Slider Adulti -->
-              <div class="mb-3">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <div>
-                    <small>Adulti</small>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <button type="button" onclick="decrementAdults()" class="btn btn-sm btn-outline-primary px-2 py-0 mr-2">-</button>
-                    <span id="adultsValue" class="text-primary" style="min-width: 20px; text-align: center;">1</span>
-                    <button type="button" onclick="incrementAdults()" class="btn btn-sm btn-outline-primary px-2 py-0 ml-2">+</button>
-                  </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="card-name">Nome sul Carta</label>
+                  <input type="text" class="form-control" id="card-name" required>
                 </div>
-                <input type="range" class="form-range w-100" id="adultsRange" name="adults" min="1" max="{{ .Params.max_guests }}" value="1">
-              </div>
-
-              <!-- Slider Bambini -->
-              <div>
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <div>
-                    <small>Bambini (0-12 anni)</small>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <button type="button" onclick="decrementChildren()" class="btn btn-sm btn-outline-primary px-2 py-0 mr-2">-</button>
-                    <span id="childrenValue" class="text-primary" style="min-width: 20px; text-align: center;">0</span>
-                    <button type="button" onclick="incrementChildren()" class="btn btn-sm btn-outline-primary px-2 py-0 ml-2">+</button>
-                  </div>
+                <div class="form-group col-md-6">
+                  <label for="card-number">Numero Carta</label>
+                  <input type="text" class="form-control" id="card-number" required>
                 </div>
-                <input type="range" class="form-range w-100" id="childrenRange" name="children" min="0" max="4" value="0">
               </div>
 
-              <!-- Totale ospiti (nascosto) -->
-              <input type="hidden" name="total_guests" id="totalGuests" value="1">
-
-              <!-- Avviso numero massimo ospiti -->
-              <div id="guestsWarning" class="text-danger small mt-2" style="display: none;">
-                Numero massimo di ospiti raggiunto
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="card-expiry">Scadenza</label>
+                  <input type="text" class="form-control" id="card-expiry" placeholder="MM/AA" required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="card-cvv">CVV</label>
+                  <input type="text" class="form-control" id="card-cvv" required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="card-type">Tipo Carta</label>
+                  <select class="form-control" id="card-type" required>
+                    <option value="">Seleziona</option>
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">Mastercard</option>
+                    <option value="amex">American Express</option>
+                  </select>
+                </div>
               </div>
-            </div>
 
-            <button type="submit" class="btn btn-primary hover-ripple btn-block">Prenota ora</button>
-          </form>
-          <!-- Riepilogo costi -->
-          <div class="mt-4 pt-4 border-top">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="small">€{{ .Params.price_per_night }} x <span id="numberOfNights">0</span> notti</span>
-              <span id="totalNightsPrice">€0</span>
-            </div>
-            {{ if .Params.cleaning_fee }}
-            <div class="d-flex justify-content-between mb-2">
-              <span class="small">Spese di pulizia</span>
-              <span>€{{ .Params.cleaning_fee }}</span>
-            </div>
-            {{ end }}
-            <div class="d-flex justify-content-between font-weight-bold mt-3 pt-3 border-top">
-              <span>Totale</span>
-              <span id="totalPrice">€{{ .Params.cleaning_fee }}</span>
-            </div>
+              <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="terms-agree" required>
+                  <label class="custom-control-label" for="terms-agree">
+                    Dichiaro di aver letto e accettato i <a href="/terms">termini e condizioni</a>
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                Conferma Pagamento
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -188,209 +77,50 @@
   </div>
 </section>
 
-<style>
-  .form-range {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 4px;
-    background: #e9ecef;
-    border-radius: 5px;
-    outline: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .form-range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: var(--primary);
-    cursor: pointer;
-    border-radius: 50%;
-    border: none;
-  }
-
-  .form-range::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: var(--primary);
-    cursor: pointer;
-    border-radius: 50%;
-    border: none;
-  }
-
-  .form-range::-webkit-slider-thumb:hover {
-    box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0.1);
-  }
-
-  .form-range::-moz-range-thumb:hover {
-    box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0.1);
-  }
-</style>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Inizializza mappa
-    const map = L.map('map').setView([{{ .Params.latitude }}, {{ .Params.longitude }}], 15);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map);
+    // Recupera i dettagli della prenotazione dal localStorage
+    const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails') || '{}');
 
-  // Aggiungi marker
-  L.marker([{{ .Params.latitude }}, {{ .Params.longitude }}]).addTo(map);
+    // Popola i campi con i dettagli della prenotazione
+    document.getElementById('apartment-name').textContent = bookingDetails.apartmentName || 'Non specificato';
+    document.getElementById('booking-dates').textContent =
+      `${bookingDetails.checkIn || 'Data non specificata'} - ${bookingDetails.checkOut || ''}`;
+    document.getElementById('guest-count').textContent =
+      `${bookingDetails.adults || 0} adulti, ${bookingDetails.children || 0} bambini`;
+    document.getElementById('total-price').textContent =
+      `€${bookingDetails.totalPrice || '0.00'}`;
 
-  // Inizializza date minime
-  const today = new Date().toISOString().split('T')[0];
-  const checkIn = document.querySelector('input[name="check_in"]');
-  const checkOut = document.querySelector('input[name="check_out"]');
+    // Gestione del form di pagamento
+    const paymentForm = document.getElementById('payment-form');
+    paymentForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-  checkIn.min = today;
+      // Validazione di base
+      const cardName = document.getElementById('card-name').value;
+      const cardNumber = document.getElementById('card-number').value;
+      const cardExpiry = document.getElementById('card-expiry').value;
+      const cardCVV = document.getElementById('card-cvv').value;
+      const cardType = document.getElementById('card-type').value;
 
-  checkIn.addEventListener('change', function () {
-    checkOut.min = this.value;
-    if (checkOut.value && checkOut.value < this.value) {
-      checkOut.value = this.value;
-    }
-  });
-});
+      // Qui dovresti implementare una vera validazione
+      // e chiamata al servizio di pagamento
+      if (cardName && cardNumber && cardExpiry && cardCVV && cardType) {
+        // Simula elaborazione pagamento
+        alert('Pagamento in elaborazione...');
 
-  // Gestione slider ospiti
-  const maxGuests = {{ .Params.max_guests }};
-  let currentAdults = 1;
-  let currentChildren = 0;
+        // Invia dettagli prenotazione al backend (da implementare)
+        // fetch('/api/bookings', {
+        //   method: 'POST',
+        //   body: JSON.stringify(bookingDetails)
+        // })
 
-  // Elementi DOM
-  const adultsRange = document.getElementById('adultsRange');
-  const childrenRange = document.getElementById('childrenRange');
-  const adultsValue = document.getElementById('adultsValue');
-  const childrenValue = document.getElementById('childrenValue');
-  const totalGuests = document.getElementById('totalGuests');
-  const warning = document.getElementById('guestsWarning');
-
-  // Event listeners per gli slider
-  adultsRange.addEventListener('input', function () {
-    currentAdults = parseInt(this.value);
-    adultsValue.textContent = currentAdults;
-    updateTotalGuests();
-  });
-
-  childrenRange.addEventListener('input', function () {
-    currentChildren = parseInt(this.value);
-    childrenValue.textContent = currentChildren;
-    updateTotalGuests();
-  });
-
-  // Funzioni per i pulsanti + e -
-  function incrementAdults() {
-    if (currentAdults < maxGuests) {
-      currentAdults++;
-      adultsRange.value = currentAdults;
-      adultsValue.textContent = currentAdults;
-      updateTotalGuests();
-    }
-  }
-
-  function decrementAdults() {
-    if (currentAdults > 1) {
-      currentAdults--;
-      adultsRange.value = currentAdults;
-      adultsValue.textContent = currentAdults;
-      updateTotalGuests();
-    }
-  }
-
-  function incrementChildren() {
-    if (currentChildren < 4) {
-      currentChildren++;
-      childrenRange.value = currentChildren;
-      childrenValue.textContent = currentChildren;
-      updateTotalGuests();
-    }
-  }
-
-  function decrementChildren() {
-    if (currentChildren > 0) {
-      currentChildren--;
-      childrenRange.value = currentChildren;
-      childrenValue.textContent = currentChildren;
-      updateTotalGuests();
-    }
-  }
-
-  function updateTotalGuests() {
-    const total = currentAdults + currentChildren;
-    totalGuests.value = total;
-
-    if (total > maxGuests) {
-      warning.style.display = 'block';
-    } else {
-      warning.style.display = 'none';
-    }
-  }
-
-  { {/*  prezzi  */ } }
-  // Costanti per i prezzi
-  const PRICE_PER_NIGHT = {{ .Params.price_per_night }};
-  const CLEANING_FEE = {{ default 0 .Params.cleaning_fee }};
-
-  // Elementi DOM per le date
-  const checkInInput = document.querySelector('input[name="check_in"]');
-  const checkOutInput = document.querySelector('input[name="check_out"]');
-
-  // Elementi DOM per i prezzi
-  const numberOfNightsElement = document.getElementById('numberOfNights');
-  const totalNightsPriceElement = document.getElementById('totalNightsPrice');
-  const totalPriceElement = document.getElementById('totalPrice');
-
-  // Funzione per calcolare il numero di notti
-  function calculateNights(checkIn, checkOut) {
-    const start = new Date(checkIn);
-    const end = new Date(checkOut);
-    const diffTime = Math.abs(end - start);
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  }
-
-  // Funzione per aggiornare i prezzi
-  function updatePrices() {
-    if (checkInInput.value && checkOutInput.value) {
-      const nights = calculateNights(checkInInput.value, checkOutInput.value);
-      const totalNightsPrice = nights * PRICE_PER_NIGHT;
-      const totalPrice = totalNightsPrice + CLEANING_FEE;
-
-      numberOfNightsElement.textContent = nights;
-      totalNightsPriceElement.textContent = `€${totalNightsPrice}`;
-      totalPriceElement.textContent = `€${totalPrice}`;
-    } else {
-      numberOfNightsElement.textContent = '0';
-      totalNightsPriceElement.textContent = '€0';
-      totalPriceElement.textContent = `€${CLEANING_FEE}`;
-    }
-  }
-
-  // Event listeners per le date
-  checkInInput.addEventListener('change', updatePrices);
-  checkOutInput.addEventListener('change', updatePrices);
-
-  // Modifica l'event listener esistente del checkIn per includere l'aggiornamento dei prezzi
-  checkInInput.addEventListener('change', function () {
-    checkOutInput.min = this.value;
-    if (checkOutInput.value && checkOutInput.value < this.value) {
-      checkOutInput.value = this.value;
-    }
-    updatePrices();
-  });
-
-  // Aggiungi l'event listener per il checkout
-  checkOutInput.addEventListener('change', function () {
-    if (checkInInput.value && this.value < checkInInput.value) {
-      this.value = checkInInput.value;
-    }
-    updatePrices();
+        // Reindirizza alla pagina di conferma
+        window.location.href = '/booking/success';
+      } else {
+        alert('Per favore compila tutti i campi');
+      }
+    });
   });
 </script>
-
 {{ end }}
