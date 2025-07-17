@@ -16,7 +16,7 @@ icon: "fas fa-money-check-alt" # font-awesome 5 : https://fontawesome.com/icons/
 Se non vi piace come lavoriamo vi rimborsiamo l' intera provvigione
 
 1. Riduzione del Rischio Finanziario
-L'offerta di rimborso delle provvigioni iniziali rappresenta una significativa protezione economica per il proprietario. Questo meccanismo riduce sostanzialmente il rischio finanziario associato all'affidamento della gestione immobiliare a un professionista esterno.
+L'offerta di rimborso delle provvigioni iniziali rappresenta una significativa protezione economica per il proprietario. Questo meccanismo annulla il rischio finanziario associato all'affidamento della gestione immobiliare ad un professionista sconosciuto.
 
 2. Garanzia di Qualità del Servizio
 La clausola "soddisfatti o rimborsati" funziona come un potente incentivo per il property manager. Sapendo che dovrà rimborsare le proprie commissioni in caso di scarso servizio, sarà motivato a:
@@ -34,9 +34,9 @@ Questa tipologia di offerta trasmette immediatamente alcuni messaggi cruciali:
 
 4. Flessibilità Contrattuale
 Il rimborso delle provvigioni iniziali consente al proprietario di:
-- Provare il servizio con un rischio economico molto contenuto
+- Provare il servizio senza alcun rischio economico
 - Valutare concretamente le capacità del property manager
-- Interrompere la collaborazione con minimi costi di transizione
+- Interrompere la collaborazione senza costi di transizione
 
 5. Valutazione Oggettiva della Performance
 La clausola "soddisfatti o rimborsati" implica generalmente criteri misurabili di valutazione, come:
@@ -63,4 +63,4 @@ Aspetti Pratici da Considerare
 Conclusione
 L'offerta "soddisfatti o rimborsati" rappresenta un'innovativa modalità di erogazione del servizio di property management, che capovolge la prospettiva tradizionale. Invece di chiedere un atto di fiducia "cieco" al cliente, il professionista dimostra concretamente la propria affidabilità.
 
-Per un proprietario di immobili, questa tipologia di offerta si traduce in maggiore serenità, protezione economica e la possibilità di avviare una collaborazione professionale con bassissimo rischio iniziale.
+Per un proprietario di immobili, questa tipologia di offerta si traduce in maggiore serenità, protezione economica e la possibilità di avviare una collaborazione professionale senza alcun rischio iniziale.

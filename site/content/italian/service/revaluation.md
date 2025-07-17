@@ -13,7 +13,7 @@ icon: "fas fa-chart-line" # font-awesome 5 : https://fontawesome.com/icons/
 
 ---
 
-Di seguito alcuni vantaggi della rivalutazione di un immobile dedicato agli affitti brevi:
+Vantaggi continui della rivalutazione di un immobile dedicato agli affitti brevi
 
 1. Rivalutazione Strutturale
 - Manutenzione costante che previene il degrado

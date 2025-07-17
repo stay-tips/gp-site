@@ -5,7 +5,7 @@ hero_slider:
   enable : true
   slider_item:
     # slider item
-    - subtitle : "I nostri valori"
+    - subtitle : "i valori su cui puoi contare"
       title : "Ospitalità"
       content : "Valorizzando le unicità dell'immobile e dei suoi dintorni, assicurando agli ospiti un soggiorno sereno e memorabile."
       bg_image_webp : "images/slider/banner-1.webp"
@@ -18,7 +18,7 @@ hero_slider:
         animation : "zoomIn" # animation select from : https://daneden.github.io/animate.css/
         
     # slider item
-    - subtitle : "Il nostro metodo"
+    - subtitle : "Il metodo che ti assicura risultati"
       title : "Professionalità"
       content : "Abbiamo ingegnierizzato processi unici per garantire il massimo del confort e del rendimento dell'immobile."
       bg_image_webp : "images/slider/banner-2.webp"
@@ -31,7 +31,7 @@ hero_slider:
         animation : "zoomIn" # animation select from : https://daneden.github.io/animate.css/
         
     # slider item
-    - subtitle : "Il nostro approcio"
+    - subtitle : "Un approcio innovativo"
       title : "Sostenibilità"
       content : "Crediamo nel turismo etico e responsabile, che rispetti l'ambiente circostante e promuova prodotti e abitudini del territorio, negli affitti brevi"
       bg_image_webp : "images/slider/banner-3.webp"
@@ -44,8 +44,8 @@ hero_slider:
         animation : "zoomIn" # animation select from : https://daneden.github.io/animate.css/
         
     # slider item
-    - subtitle : "Garantiamo"
-      title : "Massimo rendimento"
+    - subtitle : "Garantito"
+      title : "Massimo Rendimento"
       content : "Solo raggiungendo il massimo rendimento dell'immobile possiamo promuovere i nostri valori e condividere con gli ospiti la nostra felicità"
       bg_image_webp : "images/slider/banner-4.webp"
       bg_image : "images/slider/banner-4.jpg"
@@ -70,25 +70,25 @@ banner_feature:
     # banner feature item loop
     - name : "Epserienze"
       icon : "fas fa-horse" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "vi facciamo vivere il territorio come se ci foste nati"
+      content : "facciamo vivere il territorio come nativi"
       
     # banner feature item loop
     - name : "Ospitalità"
       icon : "fas fa-house-user" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "accoglienti dimore ove sentirsi a casa"
+      content : "accoglienti dimore per sentirsi casa"
       
     # banner feature item loop
     - name : "Servizi"
       icon : "fas fa-shuttle-van" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "copriamo le necessità particolari dei nostri ospiti"
+      content : "copriamo ogni necessità particolare"
 
 
 ################################## about ####################################
 about:
   enable : true
-  subtitle : "Chi siamo"
-  title : "Siamo una squadra dedicata agli affitti brevi"
-  content : "Siamo esperti nel trasformare ogni immobile in un'esperienza unica e redditizia. La nostra squadra si dedica con passione e professionalità a massimizzare il valore dell'immobile. Affidati a noi per una gestione senza pensieri e risultati garantiti."
+  subtitle : "Una squadra al vostro servizio"
+  title : "Un team giovane e professionale"
+  content : "Il tuo immobile diventerà un'esperienza unica e altamente redditizia. Vedrai il valore della tua proprietà crescere costantemente grazie alla nostra gestione professionale e appassionata. Potrai finalmente goderti i tuoi investimenti immobiliari senza stress, con risultati concreti e garantiti."
   bg_image : "images/backgrounds/about-us-bg.png"
   bg_image_webp : "images/backgrounds/about-us-bg.webp"
   image_webp : "images/about/about-us.webp"
@@ -110,7 +110,7 @@ funfacts :
       
     # fanfacts item loop
     - name : "Immobili gestiti"
-      count : "36"
+      count : "16"
       icon : "fas fa-house-user" # font-awesome 5 : https://fontawesome.com/icons/
       
     # fanfacts item loop
@@ -122,42 +122,48 @@ funfacts :
 ################################# feature ############################################
 feature:
   enable : true
-  subtitle : "Cosa facciamo noi"
-  title : "Le nostre attività"
+  subtitle : "Il metodo 7 Virtues"
+  title : "Un metodo collaudato"
   image_webp : "images/feature/activities.webp"
   image : "images/feature/activities.png"
-  content : "Il nostro impegno costante permette di affittare il tuo immobile meglio e con meno rischi"
+  content : "Il tuo immobile genererà più ricavi con meno stress e zero rischi"
   feature_item:
     # Business plan
-    - name : "Business Plan"
-      icon : "fas fa-ruler-combined" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Redigiamo un business plan personalizzato con previsione di occupazione e ricavi."
+    - name : "Ricavi Garantiti"
+      icon : "fas fa-money-bill"
+      content : "Riceverai un piano dettagliato che mostra quanto potrai guadagnare dall'immobile e se non raggiungiamo gli obiettivi rimborsiamo la provvigione."
     
     # Allestimento
-    - name : "Allestimento e shooting fotografico"
-      icon : "fas fa-camera" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Professionisti della fotografia e dell' home staging faranno del tuo immobile la miglior vetrina possibile."
+    - name : "Il tuo immobile irresistibile"
+      icon : "fas fa-camera"
+      content : "La tua proprietà diventerà la più desiderata online grazie a foto e video professionali e allestimenti curati."
 
     # Burocrazia
-    - name : "Burocrazia"
-      icon : "fas fa-landmark" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Facciamo noi le pratiche burocratiche necessarie, ci manteniamo aggiornati e garantiamo che l'attività sia sempre in regola."
+    - name : "Zero pensieri burocratici"
+      icon : "fas fa-landmark"
+      content : "Non dovrai più preoccuparti di pratiche, scadenze o normative - pensiamo a tutto noi."
  
     # Pulizia
-    - name : "Pulizia e manutenzione"
-      icon : "fas fa-broom" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Garantiamo igiene e pulizia ad ogni check-out avvalendoci solo di partner certificati e controlliamo che l'immobile sia perfettamente mantenuto; l'immobile è la nostra attività e vetrina."
+    - name : "Immobile sempre perfetto"
+      icon : "fas fa-broom"
+      content : "La tua proprietà sarà sempre impeccabile e mantenuta al meglio, preservando il suo valore nel tempo."
 
     # Accoglienza
-    - name : "Accoglienza e assistenza ospiti"
-      icon : "fas fa-door-open" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Accogliamo noi gli ospiti in viaggio gestendo con cura adempimenti e pagamenti."
+    - name : "Ospiti soddisfatti, recensioni top"
+      icon : "fas fa-hand-holding-heart"
+      content : "I tuoi ospiti vivranno un'esperienza memorabile, garantendoti recensioni eccellenti e prenotazioni continue"
 
     # Gestione Prezzi
-    - name : "Gestione prezzi"
-      icon : "fas fa-money-bill-wave" # font-awesome 5 : https://fontawesome.com/icons/
-      content : "Usiamo le migliori tecniche di gestione dei ricavi per affittare l'immobile al miglior prezzo possibile; garantito."
- 
+    - name : "Massimi ricavi sempre"
+      icon : "fas fa-chart-line"
+      content : "Guadagnerai il massimo possibile da ogni notte, grazie alla gestione dei prezzi smart."
+
+    # Partner selezionati
+    - name : "Rete di partner selezionati"
+      icon : "fas fa-handshake"
+      content : "Se gli ospiti desiderano un servizio extra possiamo accontentarli, promuovendo il territorio e la cultura locale"
+
+
 ################################# service ############################################
 service:
   enable : true
@@ -199,19 +205,19 @@ testimonial:
     - client_image : "images/testimonial/client-2.jpg"
       name : "Renato"
       designation : "Proprietario"
-      content : "Enrico e i suoi collaboratori gestiscono gli affitti brevi con metodo e concretezza. Sanno organizzare gli spazi, coordinare le pulizie e incontrare le esigenze dei clienti senza troppi fronzoli. Il lavoro richiede capacità pratiche, disciplina e una buona dose di flessibilità, riuscendo a far girare l'attività in modo professionale e amichevole."
+      content : "Enrico e i suoi collaboratori gestiscono gli affitti brevi con metodo e disponibilità. grazie a loro ho messo sul mercato la mia casa in poco tempo. Grazie, continuate così."
 
     # testimonial item loop
     - client_image : "images/testimonial/client-3.jpg"
       name : "Alessandra"
       designation : "Proprietario"
-      content : "Nella gestione degli affitti brevi, Green Property ha portato competenza. Sanno come preparare gli appartamenti, districarsi con la burocrazia, coordinare pulizie e manutenzioni e soprattutto gestire le aspettative dei clienti professionalmente. Sempre reperibili, hanno risolto imprevisti e mantenuto standard di qualità costanti."
+      content : "Nella gestione degli ospiti, Green Property ha dimostrato accoglienza e professionalità. Dalle recensioni quasi sempre a 10 il valore dell'attività è salito molto."
 
 
 ################################# cta ################################################
 cta:
   enable : true
-  title : "costruiamo soluzioni intelligenti per valorizzare l'immobile nell'ospitalità extra-alberghiera"
+  title : "Il tuo immobile raggiungerà il massimo potenziale nell'ospitalità turistico-ricettiva"
   bg_image_webp : "images/backgrounds/cta-lg.webp"
   bg_image : "images/backgrounds/cta-lg.jpg"
   button:

@@ -6,7 +6,7 @@ categories:
 - Hospitality
 - Sustainability
 - Tourism
-date: '2025-02-13T23:23:34+06:00'
+date: '2025-04-08T23:23:34+06:00'
 description: Sostenibilità Utilizzare energie rinnovabili e sistemi di efficientamento
   energetico nelle strutture ricettive Adottare politiche di gestione dei rifiuti
   e del consumo idrico volte alla riduzione degli sprechi Preferire fornitori locali...
@@ -21,7 +21,7 @@ tags:
 title: 'Turismo sostenibile: viaggiare rispettando l''ambiente'
 ---
 
-**Sostenibilità**
+#### Sostenibilità ####
 - Utilizzare energie rinnovabili e sistemi di efficientamento energetico nelle strutture ricettive
 - Adottare politiche di gestione dei rifiuti e del consumo idrico volte alla riduzione degli sprechi
 - Preferire fornitori locali e a chilometro zero per diminuire le emissioni di CO2 legate ai trasporti
