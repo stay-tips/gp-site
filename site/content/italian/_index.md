@@ -14,7 +14,7 @@ hero_slider:
       button:
         enable : true
         label : "approfondisci"
-        link : "about/"
+        link : "contact/"
         animation : "zoomIn" # animation select from : https://daneden.github.io/animate.css/
         
     # slider item

@@ -13,7 +13,7 @@ address = "Milano, Italia"
 mobile = "+39 3784070980"
 email = "info@greenproperty.it"
 # contact form action
-contact_form_action = "https://formspree.io/f/xzzbvkla" # contact form works with https://formspree.io
+contact_form_action = "https://airform.io/info@greenproperty.it" # contact form works with https://formspree.io
 # Google Analitycs
 google_analitycs_id = "" # your id
 # page sidebar quick contact form
