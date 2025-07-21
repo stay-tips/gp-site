@@ -86,8 +86,8 @@ banner_feature:
 ################################## about ####################################
 about:
   enable : true
-  subtitle : "Una squadra al vostro servizio"
-  title : "Un team giovane e professionale"
+  subtitle : "Un team preparato e professionale"
+  title : "Una squadra al tuo servizio"
   content : "Il tuo immobile diventerà un'esperienza unica e altamente redditizia. Vedrai il valore della tua proprietà crescere costantemente grazie alla nostra gestione professionale e appassionata. Potrai finalmente goderti i tuoi investimenti immobiliari senza stress, con risultati concreti e garantiti."
   bg_image : "images/backgrounds/about-us-bg.png"
   bg_image_webp : "images/backgrounds/about-us-bg.webp"
@@ -205,13 +205,13 @@ testimonial:
     - client_image : "images/testimonial/client-2.jpg"
       name : "Renato"
       designation : "Proprietario"
-      content : "Enrico e i suoi collaboratori gestiscono gli affitti brevi con metodo e disponibilità. grazie a loro ho messo sul mercato la mia casa in poco tempo. Grazie, continuate così."
+      content : "Enrico e i suoi collaboratori gestiscono gli affitti brevi con metodo e disponibilità. grazie a loro ho messo sul mercato la mia casa in 2 settimane. Grazie."
 
     # testimonial item loop
     - client_image : "images/testimonial/client-3.jpg"
       name : "Alessandra"
       designation : "Proprietario"
-      content : "Nella gestione degli ospiti, Green Property ha dimostrato accoglienza e professionalità. Dalle recensioni quasi sempre a 10 il valore dell'attività è salito molto."
+      content : "Nella gestione degli ospiti, Green Property ha dimostrato accoglienza e professionalità. Dalle recensioni quasi sempre sopra il 9 il valore dell'attività è salito."
 
 
 ################################# cta ################################################
