@@ -5,9 +5,9 @@ hero_slider:
   enable : true
   slider_item:
     # slider item
-    - subtitle : "i valori su cui puoi contare"
+    - subtitle : "I valori su cui contare"
       title : "Ospitalità"
-      content : "Valorizzando le unicità dell'immobile e dei suoi dintorni, assicurando agli ospiti un soggiorno sereno e memorabile."
+      content : "Ogni proprietà racconta una storia unica, intrecciata con il tessuto vibrante della città che la circonda. Curiamo ogni dettaglio per trasformare ogni soggiorno in un'esperienza autentica e memorabile, valorizzando l'essenza di ogni immobile e del suo territorio."
       bg_image_webp : "images/slider/banner-1.webp"
       bg_image : "images/slider/banner-1.jpg"
       animation : "fadeInUp" # animation select from : https://daneden.github.io/animate.css/
@@ -20,7 +20,7 @@ hero_slider:
     # slider item
     - subtitle : "Il metodo che ti assicura risultati"
       title : "Professionalità"
-      content : "Abbiamo ingegnierizzato processi unici per garantire il massimo del confort e del rendimento dell'immobile."
+      content : "Abbiamo perfezionato ogni fase della gestione immobiliare attraverso processi studiati nei minimi dettagli. Il nostro metodo combina esperienza sul campo e innovazione tecnologica per massimizzare sia il comfort degli ospiti che la redditività della tua proprietà. Il risultato? Immobili sempre al top e proprietari sereni."
       bg_image_webp : "images/slider/banner-2.webp"
       bg_image : "images/slider/banner-2.jpg"
       animation : "fadeInDown" # animation select from : https://daneden.github.io/animate.css/
@@ -33,7 +33,7 @@ hero_slider:
     # slider item
     - subtitle : "Un approcio innovativo"
       title : "Sostenibilità"
-      content : "Crediamo nel turismo etico e responsabile, che rispetti l'ambiente circostante e promuova prodotti e abitudini del territorio, negli affitti brevi"
+      content : "Il nostro approccio agli affitti brevi si fonda su valori di sostenibilità e rispetto del territorio. Promuoviamo un turismo consapevole che valorizzi le eccellenze locali, creando un impatto positivo sulle comunità che ci ospitano."
       bg_image_webp : "images/slider/banner-3.webp"
       bg_image : "images/slider/banner-3.jpg"
       animation : "fadeInLeft" # animation select from : https://daneden.github.io/animate.css/
@@ -110,7 +110,7 @@ funfacts :
       
     # fanfacts item loop
     - name : "Immobili gestiti"
-      count : "16"
+      count : "36"
       icon : "fas fa-house-user" # font-awesome 5 : https://fontawesome.com/icons/
       
     # fanfacts item loop

@@ -116,3 +116,30 @@
 
 - id: guests
   translation: Ospiti
+
+- id: name
+  translation: Nome
+
+- id: surname
+  translation: Cognome
+
+- id: email_placeholder
+  translation: Email
+
+- id: phone_placeholder
+  translation: Telefono
+
+- id: message
+  translation: Il tuo messaggio
+
+- id: property_address
+  translation: Indirizzo immobile
+
+- id: beds_number
+  translation: Numero posti letto
+
+- id: square_meters
+  translation: Metri quadri indicativi
+
+- id: required_field
+  translation: Questo campo è obbligatorio

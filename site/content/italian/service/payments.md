@@ -1,5 +1,5 @@
 ---
-title: "pagamenti anticipati"
+title: "Pagamenti anticipati"
 # meta description
 description: "per poter accedere all'immobile gli ospiti assolvono in anticipo al pagamento dell'intero soggiorno."
 # page title background image

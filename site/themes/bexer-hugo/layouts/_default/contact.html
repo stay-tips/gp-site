@@ -52,19 +52,28 @@
         <h3 class="section-title">{{ i18n "contact_form" }}</h3>
         <form action="{{ site.Params.contact_form_action }}" method="POST" class="row">
           <div class="col-md-6">
-            <input type="text" name="name" id="name" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="Name">
+            <input type="text" name="name" id="name" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="{{ i18n "name" }} *" required>
           </div>
           <div class="col-md-6">
-            <input type="email" name="mail" id="mail" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="Email">
+            <input type="text" name="surname" id="surname" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="{{ i18n "surname" }}">
           </div>
           <div class="col-md-6">
-            <input type="text" name="phone" id="phone" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="Phone">
+            <input type="email" name="mail" id="mail" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="{{ i18n "email_placeholder" }}">
           </div>
           <div class="col-md-6">
-            <input type="text" name="subject" id="subject" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="Subject">
+            <input type="tel" name="phone" id="phone" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="{{ i18n "phone_placeholder" }} *" required>
           </div>
           <div class="col-12">
-            <textarea name="message" id="message" class="form-control border-0 rounded-0 box-shadow mb-5 py-3 px-4" placeholder="Your Message"></textarea>
+            <input type="text" name="property_address" id="property_address" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="{{ i18n "property_address" }} *" required>
+          </div>
+          <div class="col-md-6">
+            <input type="number" name="beds_number" id="beds_number" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="{{ i18n "beds_number" }}">
+          </div>
+          <div class="col-md-6">
+            <input type="number" name="square_meters" id="square_meters" class="form-control border-0 rounded-0 box-shadow mb-4" placeholder="{{ i18n "square_meters" }}">
+          </div>
+          <div class="col-12">
+            <textarea name="message" id="message" class="form-control border-0 rounded-0 box-shadow mb-5 py-3 px-4" placeholder="{{ i18n "message" }}"></textarea>
           </div>
           <div class="col-12">
             <button type="submit" value="send" class="btn btn-primary hover-ripple">{{ i18n "send" }}</button>
