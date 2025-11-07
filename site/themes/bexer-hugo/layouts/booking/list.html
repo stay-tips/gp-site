@@ -16,15 +16,42 @@
           {{ range .Pages }}
           <div class="col-md-6 mb-4">
             <div class="card border-0 rounded-0 box-shadow h-100 apartment-card" data-lat="{{ .Params.latitude }}" data-lng="{{ .Params.longitude }}" data-price="{{ .Params.price_per_night }}" data-id="{{ .File.UniqueID }}">
-              <!-- Immagine con fallback come nel tema -->
-              <div class="position-relative">
-                {{ if .Params.image_webp }}
-                <img loading="lazy" class="card-img-top rounded-0" src="{{ .Params.image_webp | absURL }}" onerror="this.onerror=null;this.src='{{ .Params.image | absURL }}'" alt="{{ .Title }}">
-                {{ else if .Params.image }}
-                <img loading="lazy" class="card-img-top rounded-0" src="{{ .Params.image | absURL }}" alt="{{ .Title }}">
-                {{ else }}
-                <img loading="lazy" class="card-img-top rounded-0" src="{{ `images/property/thumbnail.jpg` | absURL }}" alt="{{ .Title }}">
-                {{ end }}
+              <!-- Image Slider -->
+              <div class="position-relative card-image-slider-container">
+                <div class="card-image-slider" data-apartment-id="{{ .File.UniqueID }}">
+                  {{ if .Params.gallery }}
+                    {{ range $index, $image := .Params.gallery }}
+                      <div class="card-slider-item {{ if eq $index 0 }}active{{ end }}">
+                        <img loading="lazy" src="{{ $image | absURL }}" alt="{{ $.Title }} - Image {{ add $index 1 }}" class="card-img-top rounded-0">
+                      </div>
+                    {{ end }}
+                  {{ else if .Params.main_image }}
+                    <div class="card-slider-item active">
+                      <img loading="lazy" src="{{ .Params.main_image | absURL }}" alt="{{ .Title }}" class="card-img-top rounded-0">
+                    </div>
+                  {{ else }}
+                    <div class="card-slider-item active">
+                      <img loading="lazy" src="{{ `images/property/thumbnail.jpg` | absURL }}" alt="{{ .Title }}" class="card-img-top rounded-0">
+                    </div>
+                  {{ end }}
+                  
+                  <!-- Navigation Arrows -->
+                  {{ if gt (len .Params.gallery) 1 }}
+                  <button class="card-slider-arrow card-slider-arrow-prev" aria-label="Previous image" onclick="event.preventDefault(); event.stopPropagation();">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="card-slider-arrow card-slider-arrow-next" aria-label="Next image" onclick="event.preventDefault(); event.stopPropagation();">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                  
+                  <!-- Dot Indicators -->
+                  <div class="card-slider-dots">
+                    {{ range $index, $image := .Params.gallery }}
+                      <button class="card-slider-dot {{ if eq $index 0 }}active{{ end }}" data-index="{{ $index }}" aria-label="Go to image {{ add $index 1 }}" onclick="event.preventDefault(); event.stopPropagation();"></button>
+                    {{ end }}
+                  </div>
+                  {{ end }}
+                </div>
                 <div class="price-badge">
                   €{{ .Params.price_per_night }}<span class="text-sm">/notte</span>
                 </div>
@@ -77,6 +104,7 @@
     border-radius: 4px;
     font-weight: bold;
     color: var(--primary);
+    z-index: 10;
   }
 
   .apartment-card {
@@ -100,6 +128,142 @@
     height: 100%;
     width: 100%;
   }
+
+  /* Card Image Slider Styles */
+  .card-image-slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #f8f9fa;
+  }
+
+  .card-image-slider {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .card-slider-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-slider-item.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .card-slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Arrow Buttons */
+  .card-slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-slider-arrow:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .card-slider-arrow i {
+    font-size: 14px;
+    color: #333;
+  }
+
+  .card-slider-arrow-prev {
+    left: 10px;
+  }
+
+  .card-slider-arrow-next {
+    right: 10px;
+  }
+
+  /* Dot Indicators */
+  .card-slider-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .card-slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+
+  .card-slider-dot:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.2);
+  }
+
+  .card-slider-dot.active {
+    background: rgba(255, 255, 255, 1);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* Show controls on hover */
+  .card-image-slider:hover .card-slider-arrow,
+  .card-image-slider:hover .card-slider-dots {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (max-width: 768px) {
+    .card-image-slider {
+      height: 200px;
+    }
+    
+    .card-slider-arrow {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .card-slider-arrow i {
+      font-size: 12px;
+    }
+  }
 </style>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -107,6 +271,73 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    // Initialize Image Sliders
+    const sliders = document.querySelectorAll('.card-image-slider');
+    
+    sliders.forEach(slider => {
+      const items = slider.querySelectorAll('.card-slider-item');
+      const dots = slider.querySelectorAll('.card-slider-dot');
+      const prevBtn = slider.querySelector('.card-slider-arrow-prev');
+      const nextBtn = slider.querySelector('.card-slider-arrow-next');
+      
+      // Skip if only one image
+      if (items.length <= 1) return;
+      
+      let currentIndex = 0;
+      
+      function showSlide(index) {
+        items.forEach(item => item.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        items[index].classList.add('active');
+        if (dots[index]) {
+          dots[index].classList.add('active');
+        }
+        
+        currentIndex = index;
+      }
+      
+      function nextSlide() {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= items.length) {
+          newIndex = 0;
+        }
+        showSlide(newIndex);
+      }
+      
+      function prevSlide() {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) {
+          newIndex = items.length - 1;
+        }
+        showSlide(newIndex);
+      }
+      
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          prevSlide();
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          nextSlide();
+        });
+      }
+      
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          showSlide(index);
+        });
+      });
+    });
+
     // Inizializza la mappa
     const map = L.map('map').setView([45.4642, 9.1900], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

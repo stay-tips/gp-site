@@ -1,5 +1,15 @@
-
-# Marketing
+---
+title: "Marketing e gestione degli affitti brevi: strategie vincenti per massimizzare rendita e soddisfazione degli ospiti"
+date: 2025-01-25 11:00:00
+description: "Guida completa agli adempimenti burocratici per gli affitti brevi: normative, obblighi e procedure per una gestione conforme e sicura"
+bg_image_webp: "images/backgrounds/page-title.webp"
+bg_image: "images/backgrounds/page-title.jpg"
+image_webp: "images/blog/burocrazia-affitti.webp"
+image: "images/blog/burocrazia-affitti.jpg"
+author: "Enrico"
+categories: ["Legal", "Property Management"]
+tags: ["Normative", "Compliance", "Gestione Immobiliare"]
+---
 
 
 ## Massimizzare la rendita dell’immobile con gli-fitti brevi

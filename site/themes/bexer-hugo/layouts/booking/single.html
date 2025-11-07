@@ -1,75 +1,112 @@
 {{ define "main" }}
 {{ partial "page-title.html" . }}
 
-<section class="section booking-confirmation">
+<section class="section">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <div class="card border-0 shadow-lg">
-          <div class="card-body p-5">
-            <h2 class="card-title text-center mb-4">Conferma Prenotazione</h2>
+      <div class="col-lg-8">
+        <!-- Image Slider -->
+        <div class="image-slider-container">
+          <div class="image-slider">
+            {{ if .Params.gallery }}
+              {{ range $index, $image := .Params.gallery }}
+                <div class="slider-item {{ if eq $index 0 }}active{{ end }}">
+                  <img src="{{ $image | absURL }}" alt="{{ $.Title }} - Image {{ add $index 1 }}" class="img-fluid">
+                </div>
+              {{ end }}
+            {{ else if .Params.main_image }}
+              <div class="slider-item active">
+                <img src="{{ .Params.main_image | absURL }}" alt="{{ .Title }}" class="img-fluid">
+              </div>
+            {{ end }}
+            
+            <!-- Navigation Arrows -->
+            <button class="slider-arrow slider-arrow-prev" aria-label="Previous image">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-arrow slider-arrow-next" aria-label="Next image">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Dot Indicators -->
+            <div class="slider-dots">
+              {{ if .Params.gallery }}
+                {{ range $index, $image := .Params.gallery }}
+                  <button class="slider-dot {{ if eq $index 0 }}active{{ end }}" data-index="{{ $index }}" aria-label="Go to image {{ add $index 1 }}"></button>
+                {{ end }}
+              {{ end }}
+            </div>
+          </div>
+        </div>
 
-            <div class="booking-details mb-4">
-              <h4>Dettagli Prenotazione</h4>
-              <div class="row">
-                <div class="col-md-6">
-                  <p><strong>Appartamento:</strong> <span id="apartment-name"></span></p>
-                  <p><strong>Date:</strong> <span id="booking-dates"></span></p>
-                </div>
-                <div class="col-md-6">
-                  <p><strong>Ospiti:</strong> <span id="guest-count"></span></p>
-                  <p><strong>Prezzo Totale:</strong> <span id="total-price"></span></p>
-                </div>
+        <!-- Apartment Description -->
+        <div class="mt-4">
+          <h2>{{ .Title }}</h2>
+          <p class="text-muted"><i class="fas fa-map-marker-alt"></i> {{ .Params.address }}</p>
+          
+          <div class="section-title-border mt-3 mb-4"></div>
+          
+          <div class="content">
+            {{ .Content }}
+          </div>
+
+          <!-- Amenities -->
+          {{ if .Params.amenities }}
+          <div class="mt-4">
+            <h4>Servizi</h4>
+            <div class="row">
+              {{ range .Params.amenities }}
+              <div class="col-md-6 mb-3">
+                <i class="{{ .icon }} text-primary mr-2"></i>
+                <span>{{ .name }}</span>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+      <!-- Booking Card -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h3 class="mb-0">€{{ .Params.price_per_night }}</h3>
+              <span class="text-muted">/notte</span>
+            </div>
+            
+            <div class="section-title-border mb-3"></div>
+            
+            <div class="feature-list mb-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span><i class="fas fa-users text-primary mr-2"></i>Ospiti</span>
+                <strong>{{ .Params.max_guests }}</strong>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span><i class="fas fa-bed text-primary mr-2"></i>Camere</span>
+                <strong>{{ .Params.bedrooms }}</strong>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span><i class="fas fa-bath text-primary mr-2"></i>Bagni</span>
+                <strong>{{ .Params.bathrooms }}</strong>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span><i class="fas fa-vector-square text-primary mr-2"></i>Superficie</span>
+                <strong>{{ .Params.square_meters }} m²</strong>
               </div>
             </div>
 
-            <form id="payment-form" class="payment-form">
-              <h4 class="mb-3">Dettagli Pagamento</h4>
+            {{ if .Params.cleaning_fee }}
+            <p class="text-muted small mb-3">
+              <i class="fas fa-info-circle mr-1"></i>
+              Spese di pulizia: €{{ .Params.cleaning_fee }}
+            </p>
+            {{ end }}
 
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="card-name">Nome sul Carta</label>
-                  <input type="text" class="form-control" id="card-name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="card-number">Numero Carta</label>
-                  <input type="text" class="form-control" id="card-number" required>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="card-expiry">Scadenza</label>
-                  <input type="text" class="form-control" id="card-expiry" placeholder="MM/AA" required>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="card-cvv">CVV</label>
-                  <input type="text" class="form-control" id="card-cvv" required>
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="card-type">Tipo Carta</label>
-                  <select class="form-control" id="card-type" required>
-                    <option value="">Seleziona</option>
-                    <option value="visa">Visa</option>
-                    <option value="mastercard">Mastercard</option>
-                    <option value="amex">American Express</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="terms-agree" required>
-                  <label class="custom-control-label" for="terms-agree">
-                    Dichiaro di aver letto e accettato i <a href="/terms">termini e condizioni</a>
-                  </label>
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-block">
-                Conferma Pagamento
-              </button>
-            </form>
+            <a href="/contact" class="btn btn-primary btn-block hover-ripple">
+              Richiedi Prenotazione
+            </a>
           </div>
         </div>
       </div>
@@ -77,50 +114,250 @@
   </div>
 </section>
 
+<style>
+.image-slider-container {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.image-slider {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+.slider-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-item.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slider-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Arrow Buttons */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.slider-arrow:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-arrow i {
+  font-size: 20px;
+  color: #333;
+}
+
+.slider-arrow-prev {
+  left: 20px;
+}
+
+.slider-arrow-next {
+  right: 20px;
+}
+
+/* Dot Indicators */
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.slider-dot:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.2);
+}
+
+.slider-dot.active {
+  background: rgba(255, 255, 255, 1);
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* Show controls on hover */
+.image-slider:hover .slider-arrow,
+.image-slider:hover .slider-dots {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hide controls if only one image */
+.image-slider[data-single-image="true"] .slider-arrow,
+.image-slider[data-single-image="true"] .slider-dots {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .image-slider {
+    height: 300px;
+  }
+  
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .slider-arrow i {
+    font-size: 16px;
+  }
+  
+  .slider-arrow-prev {
+    left: 10px;
+  }
+  
+  .slider-arrow-next {
+    right: 10px;
+  }
+  
+  .slider-dots {
+    bottom: 10px;
+  }
+  
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .slider-dot.active {
+    width: 24px;
+  }
+}
+</style>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Recupera i dettagli della prenotazione dal localStorage
-    const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails') || '{}');
-
-    // Popola i campi con i dettagli della prenotazione
-    document.getElementById('apartment-name').textContent = bookingDetails.apartmentName || 'Non specificato';
-    document.getElementById('booking-dates').textContent =
-      `${bookingDetails.checkIn || 'Data non specificata'} - ${bookingDetails.checkOut || ''}`;
-    document.getElementById('guest-count').textContent =
-      `${bookingDetails.adults || 0} adulti, ${bookingDetails.children || 0} bambini`;
-    document.getElementById('total-price').textContent =
-      `€${bookingDetails.totalPrice || '0.00'}`;
-
-    // Gestione del form di pagamento
-    const paymentForm = document.getElementById('payment-form');
-    paymentForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Validazione di base
-      const cardName = document.getElementById('card-name').value;
-      const cardNumber = document.getElementById('card-number').value;
-      const cardExpiry = document.getElementById('card-expiry').value;
-      const cardCVV = document.getElementById('card-cvv').value;
-      const cardType = document.getElementById('card-type').value;
-
-      // Qui dovresti implementare una vera validazione
-      // e chiamata al servizio di pagamento
-      if (cardName && cardNumber && cardExpiry && cardCVV && cardType) {
-        // Simula elaborazione pagamento
-        alert('Pagamento in elaborazione...');
-
-        // Invia dettagli prenotazione al backend (da implementare)
-        // fetch('/api/bookings', {
-        //   method: 'POST',
-        //   body: JSON.stringify(bookingDetails)
-        // })
-
-        // Reindirizza alla pagina di conferma
-        window.location.href = '/booking/success';
-      } else {
-        alert('Per favore compila tutti i campi');
-      }
-    });
+document.addEventListener('DOMContentLoaded', function() {
+  const slider = document.querySelector('.image-slider');
+  if (!slider) return;
+  
+  const items = slider.querySelectorAll('.slider-item');
+  const dots = slider.querySelectorAll('.slider-dot');
+  const prevBtn = slider.querySelector('.slider-arrow-prev');
+  const nextBtn = slider.querySelector('.slider-arrow-next');
+  
+  // If only one image, mark slider and exit
+  if (items.length <= 1) {
+    slider.setAttribute('data-single-image', 'true');
+    return;
+  }
+  
+  let currentIndex = 0;
+  
+  function showSlide(index) {
+    // Remove active class from all items and dots
+    items.forEach(item => item.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    // Add active class to current item and dot
+    items[index].classList.add('active');
+    if (dots[index]) {
+      dots[index].classList.add('active');
+    }
+    
+    currentIndex = index;
+  }
+  
+  function nextSlide() {
+    let newIndex = currentIndex + 1;
+    // Loop back to first if at the end
+    if (newIndex >= items.length) {
+      newIndex = 0;
+    }
+    showSlide(newIndex);
+  }
+  
+  function prevSlide() {
+    let newIndex = currentIndex - 1;
+    // Loop to last if at the beginning
+    if (newIndex < 0) {
+      newIndex = items.length - 1;
+    }
+    showSlide(newIndex);
+  }
+  
+  // Event listeners for arrows
+  if (prevBtn) {
+    prevBtn.addEventListener('click', prevSlide);
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', nextSlide);
+  }
+  
+  // Event listeners for dots
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => showSlide(index));
   });
+  
+  // Keyboard navigation
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      prevSlide();
+      e.preventDefault();
+    } else if (e.key === 'ArrowRight') {
+      nextSlide();
+      e.preventDefault();
+    }
+  });
+  
+  // Make slider focusable for keyboard navigation
+  slider.setAttribute('tabindex', '0');
+});
 </script>
+
 {{ end }}

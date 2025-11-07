@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "Valori"
 layout: "about"
 # meta description
 description: "this is meta description"
@@ -12,26 +12,36 @@ bg_image: "images/backgrounds/page-title.jpg"
 philosophy:
   enable : true
   philosophy_item:
-    # philosophy item loop
-    - title : "Our Mission"
-      content : "Lorem ipsum dolor sit amet consectetur adip isicing elit sed do eiusmod tempor incididunt ut labore."
+    # mission item loop
+    - title : "La missione"
+      content : "Trasformare ogni immobile in una esperienza di autentica ospitalità redditizia, valorizzando il territorio e promuovendo un turismo responsabile che rispetta l'ambiente e la cultura locale."
       bullet_point:
-        - "Quality Services"
-        - "Clients Satisfaction"
+        - "Massimizzare il rendimento degli immobili"
+        - "Creare esperienze autentiche"
+        - "Promuovere un turismo sostenibile e responsabile"
+        - "Valorizzare le eccellenze del territorio"
+        - "Garantire tranquillità e professionalità"
+        
+    # approcio item loop
+    - title : "L' Approccio"
+      content : "Combiniamo metodo rigoroso e flessibilità per adattarci alle caratteristiche uniche di ogni immobile e alle esigenze specifiche di ogni proprietario, garantendo sempre la massima qualità del servizio."
+      bullet_point:
+        - "Analisi personalizzata"
+        - "Metodo collaudato"
+        - "Innovazione tecnologica"
+        - "Monitoraggio costante"
+        - "Comunicazione trasparente"
         
     # philosophy item loop
-    - title : "Our Approach"
-      content : "Lorem ipsum dolor sit amet consectetur adip isicing elit sed do eiusmod tempor incididunt ut labore."
+    - title : "La Filosofia"
+      content : "Crediamo che il vero successo nasca dall'equilibrio tra redditività, qualità dell'ospitalità e rispetto per l'ambiente e le comunità locali. Ogni decisione è guidata da integrità, passione e impegno verso risultati duraturi."
       bullet_point:
-        - "Quality Services"
-        - "Clients Satisfaction"
-        
-    # philosophy item loop
-    - title : "Our Philosophy"
-      content : "Lorem ipsum dolor sit amet consectetur adip isicing elit sed do eiusmod tempor incididunt ut labore."
-      bullet_point:
-        - "Quality Services"
-        - "Clients Satisfaction"
+        - "Integrità e trasparenza"
+        - "Eccellenza nel servizio"
+        - "Crescita sostenibile"
+        - "Divertimento e passione"
+        - "Rispetto delle persone"
+        - "Innovazione responsabile"
 
 ################################### about ###########################
 about:
@@ -52,4 +62,3 @@ team:
   show_item: 3
   # team member comes from `content/*/team` folder
 ---
-
