@@ -118,10 +118,18 @@
 
   .custom-marker {
     background: var(--primary);
-    color: rgb(12, 168, 33);
-    padding: 5px 10px;
-    border-radius: 4px;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .leaflet-container {
@@ -340,8 +348,8 @@
 
     // Inizializza la mappa
     const map = L.map('map').setView([45.4642, 9.1900], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
     }).addTo(map);
 
     // Crea marker per ogni appartamento
