@@ -59,4 +59,4 @@ link = "plugins/search/mark.js"
 [[params.plugins.js]]
 link = "plugins/search/search.js"
 [[params.plugins.js]]
-link = "plugins/google-map/gmap.js"
+link = "plugins/openstreetmap/leaflet-map.js"
