@@ -3,6 +3,39 @@
 
 <section class="section">
   <div class="container">
+    <!-- Progress Indicator -->
+    <div class="booking-progress-container mb-5">
+      <div class="booking-progress">
+        <div class="progress-step" data-step="1">
+          <div class="progress-circle">
+            <span class="step-number">1</span>
+          </div>
+          <div class="progress-label">Disponibilità</div>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="2">
+          <div class="progress-circle">
+            <span class="step-number">2</span>
+          </div>
+          <div class="progress-label">Tariffa</div>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="3">
+          <div class="progress-circle">
+            <span class="step-number">3</span>
+          </div>
+          <div class="progress-label">Anagrafica</div>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="4">
+          <div class="progress-circle">
+            <span class="step-number">4</span>
+          </div>
+          <div class="progress-label">Conferma</div>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-lg-8">
         <!-- Image Slider -->
@@ -69,10 +102,10 @@
 
       <!-- Booking Card -->
       <div class="col-lg-4">
-        <div class="card border-0 shadow-lg sticky-top" style="top: 100px;">
+        <div class="card border-0 shadow-lg sticky-top booking-card" style="top: 100px;">
           <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <h3 class="mb-0">€{{ .Params.price_per_night }}</h3>
+              <h3 class="mb-0">€<span id="display-price">{{ .Params.price_per_night }}</span></h3>
               <span class="text-muted">/notte</span>
             </div>
             
@@ -81,7 +114,7 @@
             <div class="feature-list mb-3">
               <div class="d-flex justify-content-between mb-2">
                 <span><i class="fas fa-users text-primary mr-2"></i>Ospiti</span>
-                <strong>{{ .Params.max_guests }}</strong>
+                <strong id="max-guests-display">{{ .Params.max_guests }}</strong>
               </div>
               <div class="d-flex justify-content-between mb-2">
                 <span><i class="fas fa-bed text-primary mr-2"></i>Camere</span>
@@ -97,16 +130,249 @@
               </div>
             </div>
 
-            {{ if .Params.cleaning_fee }}
-            <p class="text-muted small mb-3">
-              <i class="fas fa-info-circle mr-1"></i>
-              Spese di pulizia: €{{ .Params.cleaning_fee }}
-            </p>
-            {{ end }}
+            <!-- STEP 1: Controllo Disponibilità -->
+            <div class="booking-step step-1 active">
+              <h5 class="mb-3">Seleziona le date</h5>
+              
+              <div class="form-group mb-3">
+                <label for="checkin-date" class="small text-muted mb-1">Check-in</label>
+                <input type="date" 
+                       id="checkin-date" 
+                       class="form-control date-input"
+                       required>
+              </div>
 
-            <a href="/contact" class="btn btn-primary btn-block hover-ripple">
-              Richiedi Prenotazione
-            </a>
+              <div class="form-group mb-3">
+                <label for="checkout-date" class="small text-muted mb-1">Check-out</label>
+                <input type="date" 
+                       id="checkout-date" 
+                       class="form-control date-input"
+                       required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="guests-slider" class="small text-muted mb-1">
+                  Numero ospiti: <strong id="guests-value">1</strong>
+                </label>
+                <input type="range" 
+                       class="custom-range" 
+                       id="guests-slider" 
+                       min="1" 
+                       max="{{ .Params.max_guests }}" 
+                       value="1">
+              </div>
+
+              <button class="btn btn-primary btn-block hover-ripple" onclick="goToStep(2)">
+                Continua
+              </button>
+            </div>
+
+            <!-- STEP 2: Selezione Tariffa -->
+            <div class="booking-step step-2">
+              <h5 class="mb-3">Selezione tariffa</h5>
+              
+              <div class="tariff-option mb-3">
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="tariff-standard" name="tariff" class="custom-control-input" value="standard" checked>
+                  <label class="custom-control-label" for="tariff-standard">
+                    <strong>Tariffa Standard</strong>
+                    <small class="d-block text-muted">Cancellazione gratuita fino a 7 giorni prima</small>
+                    <strong class="text-primary">€<span id="standard-price">{{ .Params.price_per_night }}</span>/notte</strong>
+                  </label>
+                </div>
+              </div>
+
+              <div class="tariff-option mb-4">
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="tariff-non-refundable" name="tariff" class="custom-control-input" value="non-refundable">
+                  <label class="custom-control-label" for="tariff-non-refundable">
+                    <strong>Tariffa Non Rimborsabile</strong>
+                    <small class="d-block text-muted">Sconto del 10% - Non cancellabile</small>
+                    <strong class="text-primary">€<span id="non-refundable-price">{{ mul .Params.price_per_night 0.9 }}</span>/notte</strong>
+                  </label>
+                </div>
+              </div>
+
+              <h6 class="mb-3">Servizi aggiuntivi</h6>
+              <div class="form-group mb-3">
+                <textarea class="form-control" id="special-requests" rows="3" placeholder="Richieste speciali o servizi aggiuntivi..."></textarea>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="arrival-time" class="small text-muted mb-1">Orario arrivo previsto</label>
+                <select class="form-control" id="arrival-time">
+                  <option value="">Seleziona orario</option>
+                  <option value="16:00-18:00">16:00 - 18:00</option>
+                  <option value="18:00-20:00">18:00 - 20:00</option>
+                  <option value="20:00-22:00">20:00 - 22:00</option>
+                  <option value="22:00-24:00">22:00 - 24:00</option>
+                </select>
+              </div>
+
+              <div class="price-breakdown mb-3">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Tariffa × <span id="nights-count">0</span> notti</span>
+                  <span>€<span id="nights-total">0</span></span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Costo pulizia</span>
+                  <span>€<span id="cleaning-fee">{{ .Params.cleaning_fee }}</span></span>
+                </div>
+                <div class="section-title-border my-2"></div>
+                <div class="d-flex justify-content-between mb-2">
+                  <strong>Totale</strong>
+                  <strong>€<span id="total-price">0</span></strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2 text-muted small">
+                  <span>Anticipo richiesto (30%)</span>
+                  <span>€<span id="deposit-amount">0</span></span>
+                </div>
+                <div class="d-flex justify-content-between mb-2 text-muted small">
+                  <span>Cauzione richiesta</span>
+                  <span>€200</span>
+                </div>
+              </div>
+
+              <div class="d-flex">
+                <button class="btn btn-outline-secondary mr-2" onclick="goToStep(1)">
+                  Indietro
+                </button>
+                <button class="btn btn-primary flex-grow-1 hover-ripple" onclick="goToStep(3)">
+                  Continua
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3: Anagrafica Ospite -->
+            <div class="booking-step step-3">
+              <h5 class="mb-3">Dati ospite</h5>
+              
+              <div class="form-group mb-3">
+                <label for="guest-firstname" class="small text-muted mb-1">Nome *</label>
+                <input type="text" class="form-control" id="guest-firstname" required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="guest-lastname" class="small text-muted mb-1">Cognome *</label>
+                <input type="text" class="form-control" id="guest-lastname" required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="guest-email" class="small text-muted mb-1">Email *</label>
+                <input type="email" class="form-control" id="guest-email" required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="guest-phone" class="small text-muted mb-1">Telefono *</label>
+                <input type="tel" class="form-control" id="guest-phone" required>
+              </div>
+
+              <div class="d-flex">
+                <button class="btn btn-outline-secondary mr-2" onclick="goToStep(2)">
+                  Indietro
+                </button>
+                <button class="btn btn-primary flex-grow-1 hover-ripple" onclick="goToStep(4)">
+                  Continua
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4: Pagamento e Conferma -->
+            <div class="booking-step step-4">
+              <h5 class="mb-3">Riepilogo e pagamento</h5>
+              
+              <div class="booking-summary mb-4">
+                <h6 class="mb-2">Dettagli prenotazione</h6>
+                <div class="summary-item">
+                  <small class="text-muted">Appartamento</small>
+                  <div>{{ .Title }}</div>
+                </div>
+                <div class="summary-item">
+                  <small class="text-muted">Date</small>
+                  <div>
+                    <span id="summary-checkin">-</span> → <span id="summary-checkout">-</span>
+                    (<span id="summary-nights">0</span> notti)
+                  </div>
+                </div>
+                <div class="summary-item">
+                  <small class="text-muted">Ospiti</small>
+                  <div id="summary-guests">-</div>
+                </div>
+                <div class="summary-item">
+                  <small class="text-muted">Tariffa</small>
+                  <div id="summary-tariff">-</div>
+                </div>
+                <div class="summary-item">
+                  <small class="text-muted">Orario arrivo</small>
+                  <div id="summary-arrival">-</div>
+                </div>
+                
+                <div class="section-title-border my-3"></div>
+                
+                <div class="summary-item">
+                  <small class="text-muted">Ospite</small>
+                  <div id="summary-guest-name">-</div>
+                  <div><small id="summary-guest-email">-</small></div>
+                  <div><small id="summary-guest-phone">-</small></div>
+                </div>
+
+                <div class="section-title-border my-3"></div>
+
+                <div class="summary-item">
+                  <div class="d-flex justify-content-between">
+                    <span>Totale soggiorno</span>
+                    <strong>€<span id="summary-total">0</span></strong>
+                  </div>
+                  <div class="d-flex justify-content-between text-primary mt-2">
+                    <strong>Da pagare ora (anticipo 30%)</strong>
+                    <strong>€<span id="summary-deposit">0</span></strong>
+                  </div>
+                  <small class="text-muted d-block mt-1">+ €200 cauzione (restituibile)</small>
+                </div>
+              </div>
+
+              <h6 class="mb-3">Metodo di pagamento</h6>
+              
+              <div class="payment-option mb-3">
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="payment-traditional" name="payment" class="custom-control-input" value="traditional" checked>
+                  <label class="custom-control-label" for="payment-traditional">
+                    <div class="d-flex justify-content-between align-items-start">
+                      <div>
+                        <i class="fas fa-credit-card mr-2"></i><strong>Tradizionale</strong>
+                        <small class="d-block text-muted ml-4">Carta di credito, bonifico bancario, etc.</small>
+                      </div>
+                      <small class="text-muted">Totale: €<span id="traditional-total">0</span></small>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="payment-option mb-4">
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="payment-web3" name="payment" class="custom-control-input" value="web3">
+                  <label class="custom-control-label" for="payment-web3">
+                    <div class="d-flex justify-content-between align-items-start">
+                      <div>
+                        <i class="fas fa-wallet mr-2"></i><strong>Web3 Wallet</strong>
+                        <small class="d-block text-muted ml-4">MetaMask, Trust Wallet, Coinbase Wallet, etc.</small>
+                      </div>
+                      <small class="text-muted">Totale: €<span id="web3-total">0</span></small>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="d-flex">
+                <button class="btn btn-outline-secondary mr-2" onclick="goToStep(3)">
+                  Indietro
+                </button>
+                <button class="btn btn-success flex-grow-1 hover-ripple" onclick="confirmBooking()">
+                  <i class="fas fa-check-circle mr-2"></i>Conferma
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -115,6 +381,204 @@
 </section>
 
 <style>
+/* Progress Indicator */
+.booking-progress-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.booking-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.progress-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 3px solid #e9ecef;
+}
+
+.progress-circle .step-number {
+  font-weight: bold;
+  color: #6c757d;
+  font-size: 18px;
+}
+
+.progress-step.completed .progress-circle {
+  background: #28a745;
+  border-color: #28a745;
+}
+
+.progress-step.completed .progress-circle .step-number {
+  color: white;
+}
+
+.progress-step.active .progress-circle {
+  background: #007bff;
+  border-color: #007bff;
+}
+
+.progress-step.active .progress-circle .step-number {
+  color: white;
+}
+
+.progress-line {
+  width: 100px;
+  height: 3px;
+  background: #e9ecef;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.progress-line.completed {
+  background: #28a745;
+}
+
+.progress-label {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.progress-step.active .progress-label {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.progress-step.completed .progress-label {
+  color: #28a745;
+}
+
+/* Booking Steps */
+.booking-step {
+  display: none;
+}
+
+.booking-step.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tariff Options */
+.tariff-option {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.tariff-option:hover {
+  border-color: #007bff;
+}
+
+.tariff-option .custom-control-input:checked ~ .custom-control-label {
+  color: #007bff;
+}
+
+.tariff-option .custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #007bff;
+  background-color: #007bff;
+}
+
+/* Payment Options */
+.payment-option {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 15px;
+  transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+  border-color: #007bff;
+}
+
+.payment-option .custom-control-input:checked ~ .custom-control-label {
+  color: #007bff;
+}
+
+/* Price Breakdown */
+.price-breakdown {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Booking Summary */
+.booking-summary {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.summary-item {
+  margin-bottom: 15px;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Custom Range Slider */
+.custom-range {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #007bff 0%, #007bff 0%, #e9ecef 0%, #e9ecef 100%);
+  border-radius: 5px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.custom-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Image Slider (existing styles) */
 .image-slider-container {
   position: relative;
   width: 100%;
@@ -154,7 +618,6 @@
   object-fit: cover;
 }
 
-/* Arrow Buttons */
 .slider-arrow {
   position: absolute;
   top: 50%;
@@ -193,7 +656,6 @@
   right: 20px;
 }
 
-/* Dot Indicators */
 .slider-dots {
   position: absolute;
   bottom: 20px;
@@ -229,21 +691,58 @@
   border-radius: 6px;
 }
 
-/* Show controls on hover */
 .image-slider:hover .slider-arrow,
 .image-slider:hover .slider-dots {
   opacity: 1;
   visibility: visible;
 }
 
-/* Hide controls if only one image */
 .image-slider[data-single-image="true"] .slider-arrow,
 .image-slider[data-single-image="true"] .slider-dots {
   display: none;
 }
 
+.date-input {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.15);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+  .booking-progress {
+    padding: 15px 0;
+  }
+
+  .progress-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .progress-circle i {
+    font-size: 16px;
+  }
+
+  .progress-line {
+    width: 40px;
+    margin: 0 5px;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
   .image-slider {
     height: 300px;
   }
@@ -281,29 +780,60 @@
 </style>
 
 <script>
+// Global booking data
+var bookingData = {
+  propertyTitle: '{{ .Title }}',
+  pricePerNight: {{ .Params.price_per_night }},
+  maxGuests: {{ .Params.max_guests }},
+  cleaningFee: {{ .Params.cleaning_fee }},
+  checkin: '',
+  checkout: '',
+  nights: 0,
+  guests: 1,
+  tariff: 'standard',
+  tariffPrice: {{ .Params.price_per_night }},
+  specialRequests: '',
+  arrivalTime: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  payment: 'card',
+  total: 0,
+  deposit: 0
+};
+
+var currentStep = 1;
+
 document.addEventListener('DOMContentLoaded', function() {
-  const slider = document.querySelector('.image-slider');
+  initializeImageSlider();
+  initializeDateInputs();
+  initializeGuestsSlider();
+  initializeTariffSelection();
+  updateProgressIndicator();
+});
+
+// Image Slider
+function initializeImageSlider() {
+  var slider = document.querySelector('.image-slider');
   if (!slider) return;
   
-  const items = slider.querySelectorAll('.slider-item');
-  const dots = slider.querySelectorAll('.slider-dot');
-  const prevBtn = slider.querySelector('.slider-arrow-prev');
-  const nextBtn = slider.querySelector('.slider-arrow-next');
+  var items = slider.querySelectorAll('.slider-item');
+  var dots = slider.querySelectorAll('.slider-dot');
+  var prevBtn = slider.querySelector('.slider-arrow-prev');
+  var nextBtn = slider.querySelector('.slider-arrow-next');
   
-  // If only one image, mark slider and exit
   if (items.length <= 1) {
     slider.setAttribute('data-single-image', 'true');
     return;
   }
   
-  let currentIndex = 0;
+  var currentIndex = 0;
   
   function showSlide(index) {
-    // Remove active class from all items and dots
-    items.forEach(item => item.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
+    items.forEach(function(item) { item.classList.remove('active'); });
+    dots.forEach(function(dot) { dot.classList.remove('active'); });
     
-    // Add active class to current item and dot
     items[index].classList.add('active');
     if (dots[index]) {
       dots[index].classList.add('active');
@@ -313,8 +843,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function nextSlide() {
-    let newIndex = currentIndex + 1;
-    // Loop back to first if at the end
+    var newIndex = currentIndex + 1;
     if (newIndex >= items.length) {
       newIndex = 0;
     }
@@ -322,15 +851,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function prevSlide() {
-    let newIndex = currentIndex - 1;
-    // Loop to last if at the beginning
+    var newIndex = currentIndex - 1;
     if (newIndex < 0) {
       newIndex = items.length - 1;
     }
     showSlide(newIndex);
   }
   
-  // Event listeners for arrows
   if (prevBtn) {
     prevBtn.addEventListener('click', prevSlide);
   }
@@ -339,13 +866,11 @@ document.addEventListener('DOMContentLoaded', function() {
     nextBtn.addEventListener('click', nextSlide);
   }
   
-  // Event listeners for dots
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => showSlide(index));
+  dots.forEach(function(dot, index) {
+    dot.addEventListener('click', function() { showSlide(index); });
   });
   
-  // Keyboard navigation
-  slider.addEventListener('keydown', (e) => {
+  slider.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowLeft') {
       prevSlide();
       e.preventDefault();
@@ -355,9 +880,290 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Make slider focusable for keyboard navigation
   slider.setAttribute('tabindex', '0');
-});
+}
+
+// Date Inputs
+function initializeDateInputs() {
+  var today = new Date().toISOString().split('T')[0];
+  var checkinInput = document.getElementById('checkin-date');
+  var checkoutInput = document.getElementById('checkout-date');
+  
+  if (checkinInput) {
+    checkinInput.setAttribute('min', today);
+    checkinInput.addEventListener('change', function() {
+      bookingData.checkin = this.value;
+      
+      var checkinDate = new Date(this.value);
+      checkinDate.setDate(checkinDate.getDate() + 1);
+      var minCheckout = checkinDate.toISOString().split('T')[0];
+      checkoutInput.setAttribute('min', minCheckout);
+      
+      calculateNights();
+      updatePriceBreakdown();
+    });
+  }
+  
+  if (checkoutInput) {
+    checkoutInput.setAttribute('min', today);
+    checkoutInput.addEventListener('change', function() {
+      bookingData.checkout = this.value;
+      calculateNights();
+      updatePriceBreakdown();
+    });
+  }
+}
+
+// Guests Slider
+function initializeGuestsSlider() {
+  var slider = document.getElementById('guests-slider');
+  var value = document.getElementById('guests-value');
+  
+  if (slider && value) {
+    slider.addEventListener('input', function() {
+      value.textContent = this.value;
+      bookingData.guests = parseInt(this.value);
+      
+      // Update slider background
+      var percentage = ((this.value - this.min) / (this.max - this.min)) * 100;
+      this.style.background = 'linear-gradient(to right, #007bff 0%, #007bff ' + percentage + '%, #e9ecef ' + percentage + '%, #e9ecef 100%)';
+    });
+  }
+}
+
+// Tariff Selection
+function initializeTariffSelection() {
+  var standardRadio = document.getElementById('tariff-standard');
+  var nonRefundableRadio = document.getElementById('tariff-non-refundable');
+  var specialRequests = document.getElementById('special-requests');
+  var arrivalTime = document.getElementById('arrival-time');
+  
+  if (standardRadio) {
+    standardRadio.addEventListener('change', function() {
+      if (this.checked) {
+        bookingData.tariff = 'standard';
+        bookingData.tariffPrice = bookingData.pricePerNight;
+        updatePriceBreakdown();
+      }
+    });
+  }
+  
+  if (nonRefundableRadio) {
+    nonRefundableRadio.addEventListener('change', function() {
+      if (this.checked) {
+        bookingData.tariff = 'non-refundable';
+        bookingData.tariffPrice = Math.round(bookingData.pricePerNight * 0.9);
+        updatePriceBreakdown();
+      }
+    });
+  }
+  
+  if (specialRequests) {
+    specialRequests.addEventListener('change', function() {
+      bookingData.specialRequests = this.value;
+    });
+  }
+  
+  if (arrivalTime) {
+    arrivalTime.addEventListener('change', function() {
+      bookingData.arrivalTime = this.value;
+    });
+  }
+  
+  // Guest info inputs
+  var firstName = document.getElementById('guest-firstname');
+  var lastName = document.getElementById('guest-lastname');
+  var email = document.getElementById('guest-email');
+  var phone = document.getElementById('guest-phone');
+  
+  if (firstName) firstName.addEventListener('change', function() { bookingData.firstName = this.value; });
+  if (lastName) lastName.addEventListener('change', function() { bookingData.lastName = this.value; });
+  if (email) email.addEventListener('change', function() { bookingData.email = this.value; });
+  if (phone) phone.addEventListener('change', function() { bookingData.phone = this.value; });
+  
+  // Payment method
+  var paymentOptions = document.querySelectorAll('input[name="payment"]');
+  paymentOptions.forEach(function(option) {
+    option.addEventListener('change', function() {
+      bookingData.payment = this.value;
+    });
+  });
+}
+
+// Calculate nights
+function calculateNights() {
+  if (bookingData.checkin && bookingData.checkout) {
+    var checkin = new Date(bookingData.checkin);
+    var checkout = new Date(bookingData.checkout);
+    var diffTime = Math.abs(checkout - checkin);
+    var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    bookingData.nights = diffDays;
+  }
+}
+
+// Update price breakdown
+function updatePriceBreakdown() {
+  var nightsTotal = bookingData.nights * bookingData.tariffPrice;
+  var total = nightsTotal + bookingData.cleaningFee;
+  var deposit = Math.round(total * 0.3);
+  
+  bookingData.total = total;
+  bookingData.deposit = deposit;
+  
+  document.getElementById('nights-count').textContent = bookingData.nights;
+  document.getElementById('nights-total').textContent = nightsTotal.toFixed(0);
+  document.getElementById('total-price').textContent = total.toFixed(0);
+  document.getElementById('deposit-amount').textContent = deposit.toFixed(0);
+}
+
+// Update progress indicator
+function updateProgressIndicator() {
+  var steps = document.querySelectorAll('.progress-step');
+  var lines = document.querySelectorAll('.progress-line');
+  
+  steps.forEach(function(step, index) {
+    var stepNumber = index + 1;
+    step.classList.remove('active', 'completed');
+    
+    if (stepNumber < currentStep) {
+      step.classList.add('completed');
+    } else if (stepNumber === currentStep) {
+      step.classList.add('active');
+    }
+  });
+  
+  lines.forEach(function(line, index) {
+    line.classList.remove('completed');
+    if (index < currentStep - 1) {
+      line.classList.add('completed');
+    }
+  });
+}
+
+// Navigate to step
+function goToStep(step) {
+  // Validate current step before proceeding
+  if (!validateStep(currentStep)) {
+    return;
+  }
+  
+  // Hide all steps
+  var allSteps = document.querySelectorAll('.booking-step');
+  allSteps.forEach(function(s) {
+    s.classList.remove('active');
+  });
+  
+  // Show target step
+  var targetStep = document.querySelector('.booking-step.step-' + step);
+  if (targetStep) {
+    targetStep.classList.add('active');
+  }
+  
+  currentStep = step;
+  updateProgressIndicator();
+  
+  // Update summary if going to step 4
+  if (step === 4) {
+    updateSummary();
+  }
+}
+
+// Validate step
+function validateStep(step) {
+  switch(step) {
+    case 1:
+      if (!bookingData.checkin || !bookingData.checkout) {
+        alert('Per favore seleziona le date di check-in e check-out');
+        return false;
+      }
+      if (bookingData.nights <= 0) {
+        alert('La data di check-out deve essere successiva al check-in');
+        return false;
+      }
+      return true;
+      
+    case 2:
+      if (!bookingData.arrivalTime) {
+        alert('Per favore seleziona l\'orario di arrivo previsto');
+        return false;
+      }
+      return true;
+      
+    case 3:
+      if (!bookingData.firstName || !bookingData.lastName || !bookingData.email || !bookingData.phone) {
+        alert('Per favore compila tutti i campi obbligatori');
+        return false;
+      }
+      // Basic email validation
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(bookingData.email)) {
+        alert('Per favore inserisci un indirizzo email valido');
+        return false;
+      }
+      return true;
+      
+    default:
+      return true;
+  }
+}
+
+// Update summary
+function updateSummary() {
+  // Format dates
+  var checkinDate = new Date(bookingData.checkin);
+  var checkoutDate = new Date(bookingData.checkout);
+  var options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+  
+  document.getElementById('summary-checkin').textContent = checkinDate.toLocaleDateString('it-IT', options);
+  document.getElementById('summary-checkout').textContent = checkoutDate.toLocaleDateString('it-IT', options);
+  document.getElementById('summary-nights').textContent = bookingData.nights;
+  document.getElementById('summary-guests').textContent = bookingData.guests + (bookingData.guests === 1 ? ' ospite' : ' ospiti');
+  
+  var tariffText = bookingData.tariff === 'standard' ? 'Tariffa Standard' : 'Tariffa Non Rimborsabile';
+  document.getElementById('summary-tariff').textContent = tariffText + ' - €' + bookingData.tariffPrice + '/notte';
+  document.getElementById('summary-arrival').textContent = bookingData.arrivalTime || 'Non specificato';
+  
+  document.getElementById('summary-guest-name').textContent = bookingData.firstName + ' ' + bookingData.lastName;
+  document.getElementById('summary-guest-email').textContent = bookingData.email;
+  document.getElementById('summary-guest-phone').textContent = bookingData.phone;
+  
+  document.getElementById('summary-total').textContent = bookingData.total.toFixed(0);
+  document.getElementById('summary-deposit').textContent = bookingData.deposit.toFixed(0);
+  
+  // Calculate payment method totals
+  // Traditional: total + 2.1%
+  var traditionalFee = bookingData.deposit * 0.021;
+  var traditionalTotal = bookingData.deposit + traditionalFee;
+  document.getElementById('traditional-total').textContent = traditionalTotal.toFixed(2);
+  
+  // Web3: total + €0.20
+  var web3Total = bookingData.deposit + 1.20;
+  document.getElementById('web3-total').textContent = web3Total.toFixed(2);
+}
+
+// Confirm booking
+function confirmBooking() {
+  if (!bookingData.payment) {
+    alert('Per favore seleziona un metodo di pagamento');
+    return;
+  }
+  
+  // In real implementation, this would send data to server
+  // For now, we'll show a success message
+  var message = 'Prenotazione confermata!\n\n';
+  message += 'Appartamento: ' + bookingData.propertyTitle + '\n';
+  message += 'Date: ' + bookingData.checkin + ' → ' + bookingData.checkout + '\n';
+  message += 'Ospiti: ' + bookingData.guests + '\n';
+  message += 'Totale: €' + bookingData.total + '\n';
+  message += 'Anticipo da pagare: €' + bookingData.deposit + '\n\n';
+  message += 'Metodo di pagamento: ' + bookingData.payment + '\n\n';
+  message += 'Riceverai una email di conferma a: ' + bookingData.email;
+  
+  alert(message);
+  
+  // In real implementation, redirect to payment gateway or confirmation page
+  // window.location.href = '/booking-confirmation';
+}
 </script>
 
 {{ end }}
