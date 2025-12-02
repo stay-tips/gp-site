@@ -28,26 +28,26 @@ r8_K2ckKHy8IQWYggDb3qWdDldUtAs01Kd06V3Zt
 
 ```bash
 # Su macOS/Linux (Bash/Zsh)
-export REPLICATE_API_TOKEN=r8_K2ckKHy8IQWYggDb3qWdDldUtAs01Kd06V3Zt
+export REPLICATE_API_TOKEN=$Token$
 
 
 # Su macOS/Linux (Fish shell)
-set -x REPLICATE_API_TOKEN r8_K2ckKHy8IQWYggDb3qWdDldUtAs01Kd06V3Zt
+set -x REPLICATE_API_TOKEN $Token$
 
 
 # Su Windows (PowerShell)
-$env:REPLICATE_API_TOKEN="r8_K2ckKHy8IQWYggDb3qWdDldUtAs01Kd06V3Zt"
+$env:REPLICATE_API_TOKEN="$Token$"
 
 # Per renderlo permanente:
 
 # Bash: aggiungi al ~/.bashrc
-echo 'export REPLICATE_API_TOKEN=r8_K2ckKHy8IQWYggDb3qWdDldUtAs01Kd06V3Zt' >> ~/.bashrc
+echo 'export REPLICATE_API_TOKEN=$Token$' >> ~/.bashrc
 
 # Zsh: aggiungi al ~/.zshrc
-echo 'export REPLICATE_API_TOKEN=r8_K2ckKHy8IQWYggDb3qWdDldUtAs01Kd06V3Zt' >> ~/.zshrc
+echo 'export REPLICATE_API_TOKEN=$Token$' >> ~/.zshrc
 
 # Fish: aggiungi al ~/.config/fish/config.fish
-echo 'set -x REPLICATE_API_TOKEN r8_K2ckKHy8IQWYggDb3qWdDldUtAs01Kd06V3Zt' >> ~/.config/fish/config.fish
+echo 'set -x REPLICATE_API_TOKEN $Token$' >> ~/.config/fish/config.fish
 ```
 
 ## 📖 Uso dello Script
