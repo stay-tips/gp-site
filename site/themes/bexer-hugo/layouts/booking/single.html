@@ -554,6 +554,7 @@
   border-radius: 5px;
   outline: none;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .custom-range::-webkit-slider-thumb {
@@ -779,19 +780,30 @@
 }
 </style>
 
+<!-- Booking Data (Hugo template values) -->
+<script id="booking-config" type="application/json">
+{
+  "propertyTitle": {{ .Title | jsonify }},
+  "pricePerNight": {{ .Params.price_per_night | default 0 }},
+  "maxGuests": {{ .Params.max_guests | default 1 }},
+  "cleaningFee": {{ .Params.cleaning_fee | default 0 }}
+}
+</script>
+
 <script>
 // Global booking data
+var bookingConfig = JSON.parse(document.getElementById('booking-config').textContent);
 var bookingData = {
-  propertyTitle: '{{ .Title }}',
-  pricePerNight: {{ .Params.price_per_night }},
-  maxGuests: {{ .Params.max_guests }},
-  cleaningFee: {{ .Params.cleaning_fee }},
+  propertyTitle: bookingConfig.propertyTitle,
+  pricePerNight: bookingConfig.pricePerNight,
+  maxGuests: bookingConfig.maxGuests,
+  cleaningFee: bookingConfig.cleaningFee,
   checkin: '',
   checkout: '',
   nights: 0,
   guests: 1,
   tariff: 'standard',
-  tariffPrice: {{ .Params.price_per_night }},
+  tariffPrice: bookingConfig.pricePerNight,
   specialRequests: '',
   arrivalTime: '',
   firstName: '',
