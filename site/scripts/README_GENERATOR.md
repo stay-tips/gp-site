@@ -19,9 +19,7 @@ pip install replicate requests
 1. Vai su [https://replicate.com/](https://replicate.com/)
 2. Registrati gratuitamente (include crediti gratuiti)
 3. Vai su **Account Settings > API Tokens**
-4. Copia il tuo token
-
-r8_K2ckKHy8IQWYggDb3qWdDldUtAs01Kd06V3Zt
+4. Copia il tuo token lo trovi in devops
 
 
 ### 3. Configura l'API Token
