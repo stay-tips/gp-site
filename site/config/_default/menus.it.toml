@@ -8,7 +8,7 @@ weight = 2
 
 [[main]]
 name = "Vantaggi"
-url = "advantages/"
+url = "service/"
 weight = 3
 
 [[main]]
