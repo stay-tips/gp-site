@@ -2,7 +2,7 @@
 title: "Valori"
 layout: "about"
 # meta description
-description: "this is meta description"
+description: "I nostri valori: ospitalità autentica, professionalità e sostenibilità. Scopri la missione, l'approccio e la filosofia di Green Property per la gestione degli affitti brevi."
 # page title background image
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"

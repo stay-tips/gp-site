@@ -96,7 +96,7 @@ about:
   button:
     enable : true;
     label : "contattaci"
-    link : "service/"
+    link : "contact/"
 
 ################################## funfacts ###############################
 funfacts :
@@ -136,7 +136,7 @@ feature:
     # Allestimento
     - name : "Il tuo immobile irresistibile"
       icon : "fas fa-camera"
-      content : "La tua proprietà diventerà la più desiderata online grazie a foto e video professionali e allestimenti curati."
+      content : "La proprietà diventerà la più desiderata grazie ad allestimenti emozionali curati nel minimo dettaglio oltre che foto e video professionali."
 
     # Burocrazia
     - name : "Zero pensieri burocratici"
@@ -164,7 +164,7 @@ feature:
       content : "Se gli ospiti desiderano un servizio extra possiamo accontentarli, promuovendo il territorio e la cultura locale"
 
 
-################################# service ############################################
+################################# advantages ############################################
 service:
   enable : true
   section: "service"

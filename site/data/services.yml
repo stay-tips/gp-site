@@ -11,6 +11,12 @@
   required: false
   icon: "fas fa-shuttle-van"
 
+- name: "Driver personale"
+  description: "Servizio di accompagnamento con autista per l'intera durata del soggiorno"
+  price: 400
+  required: false
+  icon: "fas fa-shuttle-van"
+
 - name: "Late check-out"
   description: "Possibilità di lasciare l'appartamento entro le ore 16:00 invece delle 10:00"
   price: 35

@@ -1,7 +1,7 @@
 ---
 title: "Barbara Bernini"
 # meta description
-description: "marketing is my home"
+description: "Operations Manager con esperienza nel coordinamento fornitori e nella creazione di esperienze autentiche per gli ospiti."
 # page title background image
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
@@ -9,7 +9,7 @@ bg_image: "images/backgrounds/page-title.jpg"
 image_webp: "images/team/team-1.webp"
 image: "images/team/team-1.jpg"
 # designation
-designation: "Marketing"
+designation: "Operations"
 social:
   - icon : "fab fa-facebook" # font-awesome 5 : https://fontawesome.com/icons/
     link : "#"
@@ -26,30 +26,33 @@ social:
 # skill
 skill_title: Skills
 skill:
-- label : Comunicazione
+- label : Coordinamento Fornitori
+  percentage : 90%
+
+- label : Guest Experience
+  percentage : 88%
+
+- label : Operations Management
   percentage : 85%
-  
-- label : Architettura
-  percentage : 63%
-  
-- label : Matematica
-  percentage : 75%
 ---
 
-# Barbara BERNINI
-Marketing Strategist | Brand Communication Expert
+# Barbara Bernini
+Operations Manager | Coordinamento Fornitori & Esperienze Autentiche
 
 ## Storia Lavorativa e Successi
-- Marketing Manager presso importante gruppo (2019-2024), gestione marketing per 5 marchi nel settore tech 
-- Incremento del 65% del engagement sui social media attraverso campagne innovative
-- Sviluppo di strategie di digital marketing che hanno aumentato le conversioni del 40%
-- Gestione di budget marketing da €500.000 con ottimizzazione dei costi di acquisizione clienti
+- Operations Manager nel settore hospitality (2019-2024), coordinamento di oltre 40 fornitori locali per servizi di property management
+- Creazione di una rete curata di partner locali (ristoranti tipici, guide turistiche, artigiani) che ha aumentato del 75% la soddisfazione degli ospiti
+- Sviluppo di 25+ esperienze autentiche personalizzate che hanno generato il 40% di recensioni a 5 stelle in più
+- Riduzione dei tempi di intervento dei fornitori del 50% attraverso ottimizzazione dei processi e comunicazione efficace
+- Gestione operativa di un portfolio di 30+ proprietà con coordinamento quotidiano di pulizie, manutenzioni e servizi extra
 
 ## Profilo Personale
-Professionista creativa e analitica con 5 anni di esperienza nel marketing digitale. Specializzata in brand positioning, comunicazione integrata e strategie di marketing data-driven. Capacità di tradurre insights dei dati in narrative di marca coinvolgenti.
+Professionista appassionata di territorio e culture locali, con 5 anni di esperienza nell'hospitality management. Specializzata nel creare connessioni autentiche tra ospiti e territorio, Barbara coordina una rete selezionata di fornitori di fiducia e trasforma ogni soggiorno in un'esperienza memorabile. La sua capacità di anticipare le esigenze degli ospiti e di costruire relazioni solide con partner locali garantisce un servizio impeccabile e momenti unici.
 
 ## Attività
-* Progettazione e implementazione di campagne marketing multicanale
-* Analisi delle performance di marketing tramite KPI e metriche avanzate
-* Coordinamento di team creativi e sviluppo di contenuti strategici
-* Consulenza per posizionamento e sviluppo di brand identity
+* Coordinamento e gestione della rete di fornitori (pulizie, manutenzioni, servizi aggiuntivi)
+* Selezione e cura di partner locali per esperienze autentiche del territorio
+* Progettazione di itinerari ed esperienze personalizzate per gli ospiti (degustazioni, tour enogastronomici, visite guidate, attività artigianali)
+* Supervisione operativa delle proprietà e gestione delle emergenze
+* Creazione di guide personalizzate con consigli locali autentici e poco conosciuti
+* Sviluppo di relazioni con ristoranti tipici, produttori locali e artigiani del territorio

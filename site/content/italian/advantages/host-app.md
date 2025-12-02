@@ -12,7 +12,7 @@ image: "images/service/service-1.jpg"
 icon: "fas fa-mobile-alt" # font-awesome 5 : https://fontawesome.com/icons/
 
 ---
-App del proprietario dedicata permette di tenere sotto controllo l'andamento dell'immobile
+Una app  dedicata al proprietario permette di tenere sotto controllo l'andamento dell'immobile
 
 Di seguito un'analisi dettagliata dei vantaggi di avere un'app dedicata per un proprietario nel settore degli affitti brevi.
 
