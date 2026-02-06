@@ -4,7 +4,7 @@ date: 2024-01-22T10:30:00+06:00
 description: "L'importanza dell'accoglienza e dell'ospitalità nel settore extra-alberghiero"
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
-image_webp: "images/blog/accoglienza-ospiti.webp"
+image_webp: "images/blog/accoglienza.webp"
 image: "images/blog/marketing.jpg"
 author: "Enrico"
 categories: ["Hospitality", "Customer Service"]

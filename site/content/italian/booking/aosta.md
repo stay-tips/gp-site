@@ -10,13 +10,13 @@ bathrooms: 2
 square_meters: 200
 latitude: 45.731361840103865
 longitude: 7.31816280232055
-main_image: "images/apartments/aosta-3.webp"
-image_webp: "images/apartments/aosta-3.webp"
-image: "images/apartments/aosta-4.webp"
-gallery:
+main_image: "images/apartments/aosta-1.webp"
+image_webp: "images/apartments/aosta-1.webp"
+image: "images/apartments/aosta-2.webp"
+gallery: 
+  - "images/apartments/aosta-1.webp"
+  - "images/apartments/aosta-2.webp"
   - "images/apartments/aosta-3.webp"
-  - "images/apartments/aosta-4.webp"
-  - "images/apartments/aosta-5.webp"
   - "images/apartments/aosta-4.webp"
   - "images/apartments/aosta-5.webp"
   - "images/apartments/aosta-6.webp"

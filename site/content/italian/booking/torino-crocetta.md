@@ -22,6 +22,7 @@ gallery:
   - "images/apartments/torino-crocetta-6.webp"
   - "images/apartments/torino-crocetta-7.webp"
   - "images/apartments/torino-crocetta-8.webp"
+  - "images/apartments/torino-crocetta-9.webp"
   - "images/apartments/torino-crocetta-10.webp"
   
 amenities:
