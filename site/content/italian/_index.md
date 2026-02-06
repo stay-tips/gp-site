@@ -128,10 +128,11 @@ feature:
   image : "images/feature/activities.png"
   content : "Il tuo immobile genererà più ricavi con meno stress e zero rischi"
   feature_item:
-    # Business plan
-    - name : "Ricavi Garantiti"
-      icon : "fas fa-money-bill"
-      content : "Riceverai un piano dettagliato che mostra quanto potrai guadagnare dall'immobile e se non raggiungiamo gli obiettivi rimborsiamo la provvigione."
+
+    # Selezione Immobili
+    - name : "Selezioniamo solo immobili di qualità"
+      icon : "fas fa-medal"
+      content : "Non tutti gli immobili sono adatti agli affitti brevi. Selezioniamo solo proprietà con caratteristiche uniche e potenziale di reddito elevato."
     
     # Allestimento
     - name : "Il tuo immobile irresistibile"
@@ -141,7 +142,7 @@ feature:
     # Burocrazia
     - name : "Zero pensieri burocratici"
       icon : "fas fa-landmark"
-      content : "Non dovrai più preoccuparti di pratiche, scadenze o normative - pensiamo a tutto noi."
+      content : "Normative, adempimenti, comunicazioni, scadenze: gestire una casa vacanza è un labirinto burocratico, un errore costa caro. Facciamo tutto noi così tu non dovrai pensarci."
  
     # Pulizia
     - name : "Immobile sempre perfetto"
@@ -153,15 +154,15 @@ feature:
       icon : "fas fa-hand-holding-heart"
       content : "I tuoi ospiti vivranno un'esperienza memorabile, garantendoti recensioni eccellenti e prenotazioni continue"
 
-    # Gestione Prezzi
-    - name : "Massimi ricavi sempre"
-      icon : "fas fa-chart-line"
-      content : "Guadagnerai il massimo possibile da ogni notte, grazie alla gestione dei prezzi smart."
-
     # Partner selezionati
     - name : "Rete di partner selezionati"
       icon : "fas fa-handshake"
       content : "Se gli ospiti desiderano un servizio extra possiamo accontentarli, promuovendo il territorio e la cultura locale"
+
+    # Gestione Prezzi
+    - name : "Massimi ricavi Garantiti da contratto"
+      icon : "fas fa-chart-line"
+      content : "Guadagnerai il massimo possibile da ogni notte, grazie al revenue management e i prezzi smart e se non raggiungiamo gli obiettivi ti rimborsiamo la differenza"
 
 
 ################################# advantages ############################################
@@ -184,7 +185,7 @@ project:
   section: "project"
   show_item : 4
   button:
-    enable : true
+    enable : false
     label : "altri casi studio"
     link : "project/"
   # project item comes from "content/*/project" folder

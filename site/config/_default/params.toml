@@ -32,7 +32,7 @@ preloader = "" # use jpg, png, svg or gif format.
 # Navigation button
 [navigation_button]
 enable = true
-label = "Richiedi una valutazione"
+label = "Casa vuota?"
 link = "contact/"
 
 # Subscription

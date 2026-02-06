@@ -10,12 +10,10 @@ bathrooms: 2
 square_meters: 198
 latitude: 40.77852264390327
 longitude: 17.24107140014019
-main_image: "images/apartments/alberobello-1.webp"
-image_webp: "images/apartments/alberobello-1.webp"
-image: "images/apartments/alberobello-2.webp"
-gallery: 
-  - "images/apartments/alberobello-1.webp"
-  - "images/apartments/alberobello-2.webp"
+main_image: "images/apartments/alberobello-3.webp"
+image_webp: "images/apartments/alberobello-3.webp"
+image: "images/apartments/alberobello-4.webp"
+gallery:
   - "images/apartments/alberobello-3.webp"
   - "images/apartments/alberobello-4.webp"
   - "images/apartments/alberobello-5.webp"
