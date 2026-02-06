@@ -8,7 +8,7 @@ bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
 # project image
 image_webp: "images/project/milano-duomo.webp"
-image: "images/project/milano-duomo.png"
+image: "images/project/milano-duomo.webp"
 # client
 client: "Privato"
 # project category
