@@ -1,0 +1,24 @@
+# /etc/caddy/Caddyfile — Green Property (sito statico Hugo)
+# Copia di riferimento versionata nel repo. Sul server va in /etc/caddy/Caddyfile.
+
+greenproperty.it {
+	root * /var/www/greenproperty
+	encode zstd gzip
+	file_server
+
+	# Cache lunga per asset statici (CSS/JS hanno fingerprint, le immagini cambiano nome)
+	@static path *.css *.js *.webp *.avif *.jpg *.jpeg *.png *.gif *.svg *.ico *.woff *.woff2 *.ttf
+	header @static Cache-Control "public, max-age=2592000, immutable"
+
+	# Pagina 404 personalizzata generata da Hugo
+	handle_errors {
+		@404 expression {err.status_code} == 404
+		rewrite @404 /404.html
+		file_server
+	}
+}
+
+# Redirect del www verso l'apex
+www.greenproperty.it {
+	redir https://greenproperty.it{uri} permanent
+}

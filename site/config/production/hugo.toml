@@ -1,0 +1,3 @@
+# Override usati nei build di produzione (`hugo` o `hugo --environment production`).
+# Le altre impostazioni sono ereditate da config/_default/.
+baseURL = "https://greenproperty.it/"
