@@ -1,4 +1,5 @@
 ---
+draft: true
 subtitle : "Soggiorni moderni e confortevoli"
 title : "Appartamenti"
 # meta description

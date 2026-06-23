@@ -5,7 +5,7 @@
 languageName = "It"
 languageCode = "it-it"
 contentDir = "content/italian"
-weight = 2
+weight = 1
 
 [it.params]
 home = "Home"
@@ -19,7 +19,7 @@ copyright = "Made with ❤️ By [Stay Tips](https://stay.tips/)"
 languageName = "En"
 languageCode = "en-us"
 contentDir = "content/english"
-weight = 1
+weight = 2
 
 [en.params]
 home = "Home"
@@ -27,3 +27,9 @@ home = "Home"
 footer_content = "Make your property truly make it with qualified short rental professionals"
 # copyright
 copyright = "Designed & Developed By [Stay Tips](https://stay.tips/)"
+
+# navigation button (English label)
+[en.params.navigation_button]
+enable = true
+label = "Empty property?"
+link = "contact/"

@@ -1,0 +1,40 @@
+---
+title: "Milano Via Palestro"
+layout: "booking/single"
+address: "Via Palestro 6, Milano"
+price_per_night: 340
+cleaning_fee: 65
+max_guests: 4
+bedrooms: 2
+bathrooms: 2
+square_meters: 95
+latitude: 45.472000
+longitude: 9.200000
+main_image: "images/apartments/milano-via-palestro-ingresso.webp"
+image_webp: "images/apartments/milano-via-palestro-ingresso.webp"
+image: "images/apartments/milano-via-palestro-soggiorno.webp"
+gallery:
+  - "images/apartments/milano-via-palestro-ingresso.webp"
+  - "images/apartments/milano-via-palestro-soggiorno.webp"
+  - "images/apartments/milano-via-palestro-camera.webp"
+  - "images/apartments/milano-via-palestro-bagno.webp"
+  - "images/apartments/milano-via-palestro-cucina.webp"
+
+amenities:
+  - name: "Air conditioning"
+    icon: "fas fa-snowflake"
+  - name: "Smart TV"
+    icon: "fas fa-tv"
+  - name: "Dishwasher"
+    icon: "fas fa-sink"
+  - name: "Hair dryer"
+    icon: "fas fa-wind"
+  - name: "Coffee machine"
+    icon: "fas fa-mug-hot"
+  - name: "Heating"
+    icon: "fas fa-temperature-high"
+  - name: "Equipped kitchen"
+    icon: "fas fa-utensils"
+draft: false
+---
+Prestigious apartment on Via Palestro, overlooking the Giardini Pubblici. High ceilings, parquet floors and elegant furnishings for a refined stay in Milan.

@@ -94,7 +94,7 @@ about:
   image_webp : "images/about/about-us.webp"
   image : "images/about/about-us.png"
   button:
-    enable : true;
+    enable : true
     label : "contattaci"
     link : "contact/"
 
@@ -223,7 +223,7 @@ cta:
   bg_image : "images/backgrounds/cta-lg.jpg"
   button:
     enable : true
-    label : "chiedi una valutazione gatuita"
+    label : "scopri quanto vale il tuo immobile"
     link : "contact/"
 
 ################################# blog ################################################

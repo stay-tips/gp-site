@@ -783,10 +783,11 @@
 <!-- Booking Data (Hugo template values) -->
 <script id="booking-config" type="application/json">
 {
-  "propertyTitle": {{ .Title | jsonify }},
+  "propertyTitle": "{{ .Title }}",
   "pricePerNight": {{ .Params.price_per_night | default 0 }},
   "maxGuests": {{ .Params.max_guests | default 1 }},
-  "cleaningFee": {{ .Params.cleaning_fee | default 0 }}
+  "cleaningFee": {{ .Params.cleaning_fee | default 0 }},
+  "contactEmail": "{{ or site.Params.email "info@greenproperty.it" }}"
 }
 </script>
 
@@ -798,6 +799,7 @@ var bookingData = {
   pricePerNight: bookingConfig.pricePerNight,
   maxGuests: bookingConfig.maxGuests,
   cleaningFee: bookingConfig.cleaningFee,
+  contactEmail: bookingConfig.contactEmail,
   checkin: '',
   checkout: '',
   nights: 0,
@@ -1153,28 +1155,59 @@ function updateSummary() {
   document.getElementById('web3-total').textContent = web3Total.toFixed(2);
 }
 
-// Confirm booking
+// Format a YYYY-MM-DD date as DD/MM/YYYY (it-IT)
+function formatDateIt(value) {
+  if (!value) return '-';
+  var d = new Date(value);
+  if (isNaN(d.getTime())) return value;
+  return d.toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+}
+
+// Confirm booking → open the user's mail client with a pre-filled request
 function confirmBooking() {
-  if (!bookingData.payment) {
-    alert('Per favore seleziona un metodo di pagamento');
-    return;
-  }
-  
-  // In real implementation, this would send data to server
-  // For now, we'll show a success message
-  var message = 'Prenotazione confermata!\n\n';
-  message += 'Appartamento: ' + bookingData.propertyTitle + '\n';
-  message += 'Date: ' + bookingData.checkin + ' → ' + bookingData.checkout + '\n';
-  message += 'Ospiti: ' + bookingData.guests + '\n';
-  message += 'Totale: €' + bookingData.total + '\n';
-  message += 'Anticipo da pagare: €' + bookingData.deposit + '\n\n';
-  message += 'Metodo di pagamento: ' + bookingData.payment + '\n\n';
-  message += 'Riceverai una email di conferma a: ' + bookingData.email;
-  
-  alert(message);
-  
-  // In real implementation, redirect to payment gateway or confirmation page
-  // window.location.href = '/booking-confirmation';
+  // Read the currently selected payment method (default: tradizionale)
+  var paymentEl = document.querySelector('input[name="payment"]:checked');
+  var paymentLabel = paymentEl && paymentEl.value === 'web3' ? 'Web3 Wallet' : 'Tradizionale';
+
+  var tariffLabel = bookingData.tariff === 'standard' ? 'Tariffa Standard' : 'Tariffa Non Rimborsabile';
+
+  var subject = 'Richiesta di prenotazione - ' + bookingData.propertyTitle;
+
+  var lines = [
+    'Nuova richiesta di prenotazione',
+    '',
+    'APPARTAMENTO',
+    '- Struttura: ' + bookingData.propertyTitle,
+    '',
+    'SOGGIORNO',
+    '- Check-in: ' + formatDateIt(bookingData.checkin),
+    '- Check-out: ' + formatDateIt(bookingData.checkout),
+    '- Notti: ' + bookingData.nights,
+    '- Ospiti: ' + bookingData.guests,
+    '- Orario arrivo previsto: ' + (bookingData.arrivalTime || 'Non specificato'),
+    '- Tariffa: ' + tariffLabel + ' (€' + bookingData.tariffPrice + '/notte)',
+    '- Richieste speciali: ' + (bookingData.specialRequests || 'Nessuna'),
+    '',
+    'OSPITE',
+    '- Nome: ' + bookingData.firstName + ' ' + bookingData.lastName,
+    '- Email: ' + bookingData.email,
+    '- Telefono: ' + bookingData.phone,
+    '',
+    'IMPORTI',
+    '- Totale soggiorno: €' + bookingData.total,
+    '- Anticipo richiesto (30%): €' + bookingData.deposit,
+    '- Cauzione (restituibile): €200',
+    '- Metodo di pagamento: ' + paymentLabel
+  ];
+
+  var body = lines.join('\r\n');
+
+  var mailtoUrl = 'mailto:' + encodeURIComponent(bookingData.contactEmail) +
+    '?subject=' + encodeURIComponent(subject) +
+    '&body=' + encodeURIComponent(body);
+
+  // Open the user's default mail client with the message pre-filled
+  window.location.href = mailtoUrl;
 }
 </script>
 

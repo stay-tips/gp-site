@@ -82,7 +82,7 @@
 
     &-item {
       position: relative;
-      color: $text-color-dark;
+      color: #6b7280;
       transition: .2s ease;
       font-family: $primary-font;
       padding: .25rem 0;
@@ -104,7 +104,7 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: $text-color-dark;
+  color: #6b7280;
 
   &:hover {
     color: $primary-color;
@@ -116,6 +116,87 @@
 
   @include desktop-lg {
     padding: 10px;
+  }
+}
+
+/* language switcher (flags dropdown) */
+.language-switcher {
+  position: relative;
+  display: inline-block;
+
+  .lang-current {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 6px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    img {
+      display: block;
+      width: 26px;
+      height: 18px;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+    }
+
+    i {
+      font-size: 10px;
+      color: $text-color;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: max-content;
+    padding: 8px;
+    background: $white;
+    border-radius: 4px;
+    box-shadow: 0px 3px 9px 0px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: 0.2s ease;
+  }
+
+  &:hover .lang-dropdown,
+  &:focus-within .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover .lang-current i,
+  &:focus-within .lang-current i {
+    transform: rotate(180deg);
+  }
+
+  .lang-flag {
+    display: inline-flex;
+    line-height: 0;
+
+    img {
+      display: block;
+      width: 26px;
+      height: 18px;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+      opacity: 0.85;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    &:hover img {
+      opacity: 1;
+      transform: scale(1.08);
+    }
   }
 }
 

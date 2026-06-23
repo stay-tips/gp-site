@@ -10,25 +10,21 @@ pagination.pagerSize = 20 # see https://gohugo.io/extras/pagination/
 summaryLength = 10 # see https://gohugo.io/content-management/excerpts/
 # google analytics
 googleAnalytics = "UA-123456-78" # example: UA-123456-78, for more info, read the article https://support.google.com/analytics/answer/1008080?hl=en
-# disqus short name
-[services]
-[services.disqus]
-shortname = "Green Property"
 
-defaultContentLanguage = 'it'
-defaultContentLanguageInSubdir = true
-[languages]
-  [languages.it]
-    languageCode = 'it-IT'
-    languageDirection = 'ltr'
-    languageName = 'Italian'
-    title = 'Green Property Site'
-    weight = 1
+# multilingua: l'italiano è la lingua di default (servita alla root; l'inglese sotto /en/).
+# Le lingue sono definite in languages.toml.
+defaultContentLanguage = "it"
+defaultContentLanguageInSubdir = false
 # disable language
 disableLanguages = [
   "fr",
 ] # example: ["fr"] for disable french language. see https://gohugo.io/content-management/multilingual/
 hasCJKLanguage = false #  If hasCJKLanguage true, auto-detect Chinese/Japanese/Korean Languages in the content. see: https://gohugo.io/getting-started/configuration/#hascjklanguage
+
+# disqus short name
+[services]
+[services.disqus]
+shortname = "Green Property"
 
 ############################# Build ##############################
 [build]

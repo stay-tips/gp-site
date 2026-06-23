@@ -1,0 +1,43 @@
+############# English navigation ##############
+
+# main menu
+[[main]]
+name = "Values"
+url = "values/"
+weight = 2
+
+[[main]]
+name = "Advantages"
+url = "advantages/"
+weight = 3
+
+[[main]]
+name = "Blog"
+url = "blog/"
+weight = 4
+
+[[main]]
+name = "Team"
+url = "team/"
+weight = 6
+
+[[main]]
+name = "Contact"
+url = "contact/"
+weight = 7
+
+[[main]]
+name = "Hospitality"
+url = "booking/"
+weight = 8
+
+# footer menu
+[[footer]]
+name = "Terms of Service"
+url = "terms/"
+weight = 1
+
+[[footer]]
+name = "Privacy Policy"
+url = "privacy-policy/"
+weight = 2

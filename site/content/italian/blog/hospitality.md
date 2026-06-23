@@ -1,5 +1,5 @@
 ---
-title: "Il Valore dell'Accoglienza nel Mercato Extra-alberghiero"
+title: "L'arte dell'accoglienza: personalizzazione e comunicazione con l'ospite"
 date: 2024-01-22T10:30:00+06:00
 description: "L'importanza dell'accoglienza e dell'ospitalità nel settore extra-alberghiero"
 bg_image_webp: "images/backgrounds/page-title.webp"

@@ -15,3 +15,7 @@ jsconfig.json
 hugo_stats.json
 go.sum
 yarn.lock
+
+# Secrets / chiavi API — non committare mai
+.env
+.env.local

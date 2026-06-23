@@ -63,25 +63,30 @@
             {{ end }}
           </ul>
 
-          <!-- Language List -->
+          <!-- Language switcher (flags dropdown) -->
           {{ if .IsTranslated }}
-          <select class="m-2 border-0" id="select-language" onchange="location = this.value;">
-            {{ $siteLanguages := site.Languages}}
-            {{ $pageLang := .Page.Lang}}
+          <div class="language-switcher m-2" id="select-language">
+            {{ $pageLang := .Page.Lang }}
             {{ range .Page.AllTranslations }}
-            {{ $translation := .}}
-            {{ range $siteLanguages }}
-            {{ if eq $translation.Lang .Lang }}
-            {{ $selected := false }}
-            {{ if eq $pageLang .Lang}}
-            <option id="{{ $translation.Language }}" value="{{ $translation.Permalink }}" selected>{{ .LanguageName }}</option>
-            {{ else }}
-            <option id="{{ $translation.Language }}" value="{{ $translation.Permalink }}">{{ .LanguageName }}</option>
+            {{ if eq .Lang $pageLang }}
+            {{ $cc := cond (eq .Lang "en") "gb" .Lang }}
+            <button type="button" class="lang-current" aria-haspopup="true" aria-label="{{ .Language.Label }}">
+              <img src="https://flagcdn.com/{{ $cc }}.svg" width="26" height="18" alt="{{ .Language.Label }}">
+              <i class="fas fa-chevron-down"></i>
+            </button>
             {{ end }}
             {{ end }}
-            {{ end }}
-            {{ end }}
-          </select>
+            <div class="lang-dropdown">
+              {{ range .Page.AllTranslations }}
+              {{ if ne .Lang $pageLang }}
+              {{ $cc := cond (eq .Lang "en") "gb" .Lang }}
+              <a href="{{ .Permalink }}" class="lang-flag" title="{{ .Language.Label }}" aria-label="{{ .Language.Label }}">
+                <img src="https://flagcdn.com/{{ $cc }}.svg" width="26" height="18" loading="lazy" alt="{{ .Language.Label }}">
+              </a>
+              {{ end }}
+              {{ end }}
+            </div>
+          </div>
           {{ end }}
 
           {{ if site.Params.search }}
