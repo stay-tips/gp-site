@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Marketing and managing short-term rentals: winning strategies to maximize income and guest satisfaction"
 date: 2025-01-25 11:00:00
 description: "A complete guide to the bureaucratic requirements for short-term rentals: regulations, obligations and procedures for compliant and secure management"

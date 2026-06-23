@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Marketing e gestione degli affitti brevi: strategie vincenti per massimizzare rendita e soddisfazione degli ospiti"
 date: 2025-01-25 11:00:00
 description: "Guida completa agli adempimenti burocratici per gli affitti brevi: normative, obblighi e procedure per una gestione conforme e sicura"
