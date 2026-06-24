@@ -40,8 +40,9 @@ from pathlib import Path
 DEFAULT_MODEL = "gemini-2.5-flash-image"
 API_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 
-# Cartella di output (relativa a questo script: site/static/images/apartments)
-OUTPUT_DIR = Path(__file__).resolve().parent.parent / "static" / "images" / "apartments"
+# Cartella di output (relativa a questo script: site/assets/images/apartments).
+# In assets/ perché Hugo genera da lì le varianti responsive (pipeline immagini).
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "assets" / "images" / "apartments"
 PROMPTS_FILE = Path(__file__).resolve().parent / "property_image_prompts.md"
 
 
@@ -56,62 +57,79 @@ class Property:
 
 
 PROPERTIES: tuple[Property, ...] = (
+    # Stile comune: Airbnb neutro di fascia media, palette neutra calda, parquet chiaro,
+    # ordinato e luminoso, con UN solo accento di design per stanza. Non lussuoso, non spartano.
     Property(
         "firenze-centro",
         "Firenze Centro",
-        "a comfortable, tastefully furnished city apartment in a historic building in the center of "
-        "Florence, light parquet floors, simple decorative details, normal-height windows with city "
-        "views, modern furniture in warm neutral tones, bright and welcoming",
+        "a neutral, tastefully furnished mid-range Airbnb apartment in a historic building in the "
+        "centre of Florence, clean contemporary look, warm neutral palette, light wood floor, "
+        "uncluttered and bright, with a single tasteful design accent as the focal point of the "
+        "room (a designer lamp, a framed print or one accent chair); not luxurious, not cheap",
     ),
     Property(
         "firenze-lungarno",
         "Firenze Lungarno",
-        "a bright, tastefully furnished apartment overlooking the Arno river in Florence, windows "
-        "with a river view, simple modern-classic interior, comfortable furniture and warm natural "
-        "light",
+        "a neutral, tastefully furnished mid-range Airbnb apartment overlooking the Arno river in "
+        "Florence, clean contemporary look, warm neutral palette, light wood floor, uncluttered and "
+        "bright, with a single tasteful design accent as the focal point of the room (a designer "
+        "lamp, a framed print or one accent chair); not luxurious, not cheap",
     ),
     Property(
         "bologna-centro",
         "Bologna Centro",
-        "a cozy, comfortable apartment in the center of Bologna, parquet floors, simple classic "
-        "Italian style, warm neutral tones and tasteful unpretentious furniture",
+        "a neutral, tastefully furnished mid-range Airbnb apartment in the centre of Bologna, clean "
+        "contemporary look, warm neutral palette, light wood floor, uncluttered and bright, with a "
+        "single tasteful design accent as the focal point of the room (a designer lamp, a framed "
+        "print or one accent chair); not luxurious, not cheap",
     ),
     Property(
         "milano-sempione",
         "Milano Sempione",
-        "a comfortable contemporary Milanese apartment near Parco Sempione, simple modern furniture, "
-        "neutral palette, clean lines, bright and airy",
+        "a neutral, tastefully furnished mid-range Airbnb apartment in Milan, clean contemporary "
+        "look, warm neutral palette, light wood floor, uncluttered and bright, with a single "
+        "tasteful design accent as the focal point of the room (e.g. a designer lamp, a framed "
+        "print or one accent chair); not luxurious, not cheap",
     ),
     Property(
         "milano-stazione-centrale",
         "Milano Stazione Centrale",
-        "a practical modern city apartment near Milano Centrale station, simple contemporary "
-        "furniture, neutral tones, clean and tidy",
+        "a neutral, tastefully furnished mid-range Airbnb apartment near Milano Centrale station, "
+        "clean contemporary look, warm neutral palette, light wood floor, uncluttered and bright, "
+        "with a single tasteful design accent as the focal point of the room (a designer lamp, a "
+        "framed print or one accent chair); not luxurious, not cheap",
     ),
     Property(
         "milano-corso-lodi",
         "Milano Corso Lodi",
-        "a bright, simple modern apartment in Milan, minimalist contemporary style, light wood and "
-        "white tones, fresh and welcoming",
+        "a neutral, tastefully furnished mid-range Airbnb apartment in Milan, clean contemporary "
+        "look, warm neutral palette, light wood floor, uncluttered and bright, with a single "
+        "tasteful design accent as the focal point of the room (a designer lamp, a framed print or "
+        "one accent chair); not luxurious, not cheap",
     ),
     Property(
         "milano-viale-monza",
         "Milano Viale Monza",
-        "a comfortable, simple contemporary apartment in Milan, light wood, warm neutral tones, "
-        "cozy and family-friendly",
+        "a neutral, tastefully furnished mid-range Airbnb apartment in Milan, clean contemporary "
+        "look, warm neutral palette, light wood floor, uncluttered and bright, with a single "
+        "tasteful design accent as the focal point of the room (a designer lamp, a framed print or "
+        "one accent chair); not luxurious, not cheap",
     ),
     Property(
         "milano-via-palermo",
         "Milano Via Palermo",
-        "a tasteful, stylish apartment in the Brera district of Milan, simple modern design with a "
-        "few artistic touches, parquet floors and comfortable furniture",
+        "a neutral, tastefully furnished mid-range Airbnb apartment in the Brera district of Milan, "
+        "clean contemporary look, warm neutral palette, light wood floor, uncluttered and bright, "
+        "with a single tasteful design accent as the focal point of the room (a designer lamp, a "
+        "framed print or one accent chair); not luxurious, not cheap",
     ),
     Property(
         "milano-via-palestro",
         "Milano Via Palestro",
-        "a comfortable, tastefully furnished apartment near the public gardens in Milan, parquet "
-        "floors, simple classic-modern style, windows overlooking the greenery and unpretentious "
-        "furniture",
+        "a neutral, tastefully furnished mid-range Airbnb apartment near the public gardens in "
+        "Milan, clean contemporary look, warm neutral palette, light wood floor, uncluttered and "
+        "bright, with a single tasteful design accent as the focal point of the room (a designer "
+        "lamp, a framed print or one accent chair); not luxurious, not cheap",
     ),
 )
 
