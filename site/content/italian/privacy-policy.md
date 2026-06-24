@@ -93,8 +93,6 @@ Ci riserviamo il diritto di modificare la presente informativa. Le modifiche sar
 
 Per qualsiasi questione relativa al trattamento dei dati personali:
 - **Email**: privacy@greenproperty.it
-- **Telefono**: [Numero di telefono]
-- **Indirizzo**: [Indirizzo completo]
 
 ---
 

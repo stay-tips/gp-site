@@ -40,4 +40,4 @@ Personal data is processed in compliance with applicable law (EU Regulation 2016
 
 #### 8. Governing law and jurisdiction
 
-These Terms and Conditions are governed by Italian law. Any dispute shall be subject to the jurisdiction of the court of the place where Green Property has its registered office, without prejudice to any mandatory consumer-protection provisions.
+These Terms and Conditions are governed by Italian law. Any dispute shall be subject to the jurisdiction of the court of Milan, without prejudice to any mandatory consumer-protection provisions.
