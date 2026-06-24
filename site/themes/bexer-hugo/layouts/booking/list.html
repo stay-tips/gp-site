@@ -22,12 +22,12 @@
                   {{ if .Params.gallery }}
                     {{ range $index, $image := .Params.gallery }}
                       <div class="card-slider-item {{ if eq $index 0 }}active{{ end }}">
-                        <img loading="lazy" src="{{ $image | absURL }}" alt="{{ $.Title }} - Image {{ add $index 1 }}" class="card-img-top rounded-0">
+                        {{ partial "responsive-img.html" (dict "src" $image "alt" (printf "%s - Image %d" $.Title (add $index 1)) "class" "card-img-top rounded-0" "sizes" "(min-width: 768px) 50vw, 100vw") }}
                       </div>
                     {{ end }}
                   {{ else if .Params.main_image }}
                     <div class="card-slider-item active">
-                      <img loading="lazy" src="{{ .Params.main_image | absURL }}" alt="{{ .Title }}" class="card-img-top rounded-0">
+                      {{ partial "responsive-img.html" (dict "src" .Params.main_image "alt" .Title "class" "card-img-top rounded-0" "sizes" "(min-width: 768px) 50vw, 100vw") }}
                     </div>
                   {{ else }}
                     <div class="card-slider-item active">

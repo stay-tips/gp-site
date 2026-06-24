@@ -1,0 +1,34 @@
+{{- /*
+  Immagine responsive con srcset, generata dalla pipeline immagini di Hugo.
+  Le sorgenti devono stare in assets/ (es. assets/images/apartments/...).
+  Se la risorsa non è in assets/ (es. immagini in static/), fa fallback a <img> semplice.
+
+  Parametri (dict):
+    src    (string, richiesto)  percorso relativo ad assets, es. "images/apartments/aosta-1.webp"
+    alt    (string)             testo alternativo
+    class  (string)             classi CSS
+    sizes  (string)             attributo sizes (default "100vw")
+    widths (slice di int)       larghezze da generare (default 400 600 800 1000)
+    loading(string)            "lazy" (default) o "eager"
+*/ -}}
+{{- $src := .src -}}
+{{- $alt := .alt | default "" -}}
+{{- $class := .class | default "" -}}
+{{- $sizes := .sizes | default "100vw" -}}
+{{- $widths := .widths | default (slice 400 600 800 1000) -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $res := resources.Get $src -}}
+{{- if $res -}}
+  {{- $srcset := slice -}}
+  {{- range $widths -}}
+    {{- if ge $res.Width . -}}
+      {{- $r := $res.Resize (printf "%dx webp" .) -}}
+      {{- $srcset = $srcset | append (printf "%s %dw" $r.RelPermalink .) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $maxW := index $widths (sub (len $widths) 1) -}}
+  {{- $fallback := cond (ge $res.Width $maxW) ($res.Resize (printf "%dx webp" $maxW)) $res -}}
+  <img src="{{ $fallback.RelPermalink }}"{{ with $srcset }} srcset="{{ delimit . ", " }}" sizes="{{ $sizes }}"{{ end }} alt="{{ $alt }}" class="{{ $class }}" loading="{{ $loading }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}">
+{{- else -}}
+  <img src="{{ $src | absURL }}" alt="{{ $alt }}" class="{{ $class }}" loading="{{ $loading }}">
+{{- end -}}

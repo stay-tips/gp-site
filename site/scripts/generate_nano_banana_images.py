@@ -254,6 +254,12 @@ def call_nano_banana(prompt: str, api_key: str, model: str) -> bytes:
     raise RuntimeError(f"Nessuna immagine nella risposta: {json.dumps(body)[:400]}")
 
 
+# Le immagini sorgente vengono salvate già ottimizzate per il web.
+# Hugo (pipeline in assets/) genera poi le varianti responsive più piccole.
+MAX_WIDTH = 1000
+WEBP_QUALITY = 80
+
+
 def save_webp(png_bytes: bytes, dest: Path) -> None:
     try:
         from PIL import Image
@@ -261,8 +267,10 @@ def save_webp(png_bytes: bytes, dest: Path) -> None:
         print("❌ Pillow non installato. Esegui: pip install pillow")
         sys.exit(1)
     img = Image.open(BytesIO(png_bytes)).convert("RGB")
+    if img.width > MAX_WIDTH:
+        img = img.resize((MAX_WIDTH, round(img.height * MAX_WIDTH / img.width)), Image.LANCZOS)
     dest.parent.mkdir(parents=True, exist_ok=True)
-    img.save(dest, "WEBP", quality=88, method=6)
+    img.save(dest, "WEBP", quality=WEBP_QUALITY, method=6)
 
 
 def generate_images(only: str | None, force: bool, model: str) -> None:

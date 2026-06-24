@@ -44,12 +44,12 @@
             {{ if .Params.gallery }}
               {{ range $index, $image := .Params.gallery }}
                 <div class="slider-item {{ if eq $index 0 }}active{{ end }}">
-                  <img src="{{ $image | absURL }}" alt="{{ $.Title }} - Image {{ add $index 1 }}" class="img-fluid">
+                  {{ partial "responsive-img.html" (dict "src" $image "alt" (printf "%s - Image %d" $.Title (add $index 1)) "class" "img-fluid" "sizes" "(min-width: 992px) 66vw, 100vw" "widths" (slice 500 750 1000) "loading" (cond (eq $index 0) "eager" "lazy")) }}
                 </div>
               {{ end }}
             {{ else if .Params.main_image }}
               <div class="slider-item active">
-                <img src="{{ .Params.main_image | absURL }}" alt="{{ .Title }}" class="img-fluid">
+                {{ partial "responsive-img.html" (dict "src" .Params.main_image "alt" .Title "class" "img-fluid" "sizes" "(min-width: 992px) 66vw, 100vw" "widths" (slice 500 750 1000) "loading" "eager") }}
               </div>
             {{ end }}
             

@@ -26,6 +26,12 @@ hasCJKLanguage = false #  If hasCJKLanguage true, auto-detect Chinese/Japanese/K
 [services.disqus]
 shortname = "Green Property"
 
+############################# Imaging #############################
+# Qualità di default per le immagini processate da Hugo (pipeline in assets/)
+[imaging]
+quality = 80
+resampleFilter = "Lanczos"
+
 ############################# Build ##############################
 [build]
 noJSConfigInAssets = false
