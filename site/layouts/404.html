@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <h1 class="display-1 font-weight-bold text-primary" style="font-size:6rem;line-height:1">404</h1>
+        <h2 class="mb-3">Pagina non trovata</h2>
+        <p class="mb-2">La pagina che cerchi non esiste o è stata spostata.</p>
+        <p class="text-muted mb-4"><small>The page you are looking for could not be found.</small></p>
+        <div class="section-title-border border-center mb-4"></div>
+        <a href="{{ "" | relLangURL }}" class="btn btn-primary hover-ripple mr-2">Torna alla home</a>
+        <a href="{{ "booking/" | relLangURL }}" class="btn btn-outline-secondary">Vedi gli appartamenti</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
