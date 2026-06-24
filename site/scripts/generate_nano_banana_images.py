@@ -70,11 +70,12 @@ PROPERTIES: tuple[Property, ...] = (
     Property(
         "firenze-lungarno",
         "Firenze Lungarno",
-        "a neutral, tastefully furnished mid-range Airbnb apartment overlooking the Arno river in "
-        "Florence, clean contemporary look, warm neutral palette, light wood floor, uncluttered and "
-        "bright, with a single tasteful design accent as the focal point of the room (a designer "
-        "lamp, a framed print or one accent chair); not luxurious, not cheap",
-    ),
+        "a neutral, tastefully furnished mid-range Airbnb apartment on a high floor overlooking the "
+        "Arno river in Florence, clean contemporary look, warm neutral palette, light wood floor, "
+        "uncluttered and bright, large windows framing a realistic rooftop view of the Arno and "
+        "Florentine terracotta roofs with soft natural daylight, with a single tasteful design "
+        "accent as the focal point of the room (a designer lamp, a framed print or one accent "
+        "chair); not luxurious, not cheap, photorealistic interior photography",    ),
     Property(
         "bologna-centro",
         "Bologna Centro",
@@ -86,50 +87,62 @@ PROPERTIES: tuple[Property, ...] = (
     Property(
         "milano-sempione",
         "Milano Sempione",
-        "a neutral, tastefully furnished mid-range Airbnb apartment in Milan, clean contemporary "
-        "look, warm neutral palette, light wood floor, uncluttered and bright, with a single "
+        "a neutral, tastefully furnished mid-range Airbnb apartment in Milan, modern and clean style "
+        "look, cold neutral, light gres floor, uncluttered and brilliant, with a single "
         "tasteful design accent as the focal point of the room (e.g. a designer lamp, a framed "
         "print or one accent chair); not luxurious, not cheap",
     ),
     Property(
         "milano-stazione-centrale",
         "Milano Stazione Centrale",
-        "a neutral, tastefully furnished mid-range Airbnb apartment near Milano Centrale station, "
-        "clean contemporary look, warm neutral palette, light wood floor, uncluttered and bright, "
-        "with a single tasteful design accent as the focal point of the room (a designer lamp, a "
-        "framed print or one accent chair); not luxurious, not cheap",
-    ),
+        "a modern mid-range Airbnb apartment near Milano Centrale station, contemporary Italian design, "
+        "open and airy living space with floor-to-ceiling windows and soft natural daylight, "
+        "warm neutral palette (greige, sand, off-white) accented by matte black or brushed-brass details, "
+        "light oak engineered flooring, minimalist low-profile furniture with clean lines, "
+        "a few architectural plants for warmth, uncluttered surfaces, "
+        "a single statement design piece as the focal point of the room (a sculptural designer floor lamp, "
+        "a large framed art print, or an accent armchair in a muted bouclé), "
+        "cozy yet refined, professionally styled, realistic interior photography, wide-angle, soft shadows; "
+        "not luxurious, not cheap, no clutter",
+        ),
     Property(
         "milano-corso-lodi",
         "Milano Corso Lodi",
         "a neutral, tastefully furnished mid-range Airbnb apartment in Milan, clean contemporary "
-        "look, warm neutral palette, light wood floor, uncluttered and bright, with a single "
-        "tasteful design accent as the focal point of the room (a designer lamp, a framed print or "
-        "one accent chair); not luxurious, not cheap",
+        "look, warm neutral palette, pale microcement or large-format stone-look tile flooring with "
+        "just a hint of light wood as a warm accent, uncluttered and bright, with a single tasteful "
+        "design accent as the focal point of the room (a designer lamp, a framed print or one accent "
+        "chair); not luxurious, not cheap",
     ),
     Property(
         "milano-viale-monza",
         "Milano Viale Monza",
-        "a neutral, tastefully furnished mid-range Airbnb apartment in Milan, clean contemporary "
-        "look, warm neutral palette, light wood floor, uncluttered and bright, with a single "
-        "tasteful design accent as the focal point of the room (a designer lamp, a framed print or "
-        "one accent chair); not luxurious, not cheap",
+        "a neutral, tastefully furnished mid-range Airbnb apartment in Milan, raw industrial-leaning "
+        "contemporary look, warm neutral palette with exposed concrete, bare brick or rough plaster "
+        "walls, visible ceiling beams or ductwork, polished concrete or worn wood floor, uncluttered "
+        "and bright, with a single tasteful design accent as the focal point of the room (a designer "
+        "lamp, a framed print or one accent chair); not luxurious, not cheap, lived-in and authentic",
     ),
     Property(
         "milano-via-palermo",
         "Milano Via Palermo",
         "a neutral, tastefully furnished mid-range Airbnb apartment in the Brera district of Milan, "
-        "clean contemporary look, warm neutral palette, light wood floor, uncluttered and bright, "
-        "with a single tasteful design accent as the focal point of the room (a designer lamp, a "
-        "framed print or one accent chair); not luxurious, not cheap",
+        "clean contemporary look with a subtle bohemian touch, warm neutral palette with a few earthy "
+        "terracotta or ochre accents, light wood floor, a soft textured rug and a couple of potted "
+        "plants, uncluttered and bright, with a single tasteful design accent as the focal point of "
+        "the room (a woven pendant lamp, a framed print or one rattan accent chair); not luxurious, "
+        "not cheap",
     ),
     Property(
         "milano-via-palestro",
         "Milano Via Palestro",
-        "a neutral, tastefully furnished mid-range Airbnb apartment near the public gardens in "
-        "Milan, clean contemporary look, warm neutral palette, light wood floor, uncluttered and "
-        "bright, with a single tasteful design accent as the focal point of the room (a designer "
-        "lamp, a framed print or one accent chair); not luxurious, not cheap",
+        "an elegant, tastefully furnished mid-range Airbnb apartment near the public gardens in "
+        "Milan, refined contemporary look with a fashion-editorial mood, warm neutral palette with "
+        "chic black-and-white accents, light wood floor, uncluttered and bright, framed runway and "
+        "fashion photography prints on the walls, a sleek mannequin or a curated rack of designer "
+        "garments as a subtle styling detail, with a single tasteful design accent as the focal "
+        "point of the room (a sculptural designer lamp, a large fashion print or one velvet accent "
+        "chair); not luxurious, not cheap",
     ),
 )
 
