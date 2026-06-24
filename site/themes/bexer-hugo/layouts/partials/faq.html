@@ -1,0 +1,27 @@
+{{- /* FAQ visibile (accordion). Si attiva se la pagina ha .Params.faq.
+       Il JSON-LD FAQPage corrispondente è in seo-schema.html. */ -}}
+{{- with .Params.faq -}}
+<section class="section bg-gray-white">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <h2 class="section-title text-center mb-5">{{ $.Params.faq_title | default "Domande frequenti" }}</h2>
+        <div class="accordion faq-accordion" id="faqAccordion">
+          {{- range $i, $item := . }}
+          <div class="card border-0 mb-3 box-shadow">
+            <div class="card-header bg-white border-0" id="faqH{{ $i }}">
+              <button class="btn btn-link text-left w-100 text-dark font-weight-bold text-decoration-none collapsed" type="button" data-toggle="collapse" data-target="#faqC{{ $i }}" aria-expanded="false" aria-controls="faqC{{ $i }}">
+                {{ $item.question }}
+              </button>
+            </div>
+            <div id="faqC{{ $i }}" class="collapse" aria-labelledby="faqH{{ $i }}" data-parent="#faqAccordion">
+              <div class="card-body text-color">{{ $item.answer | markdownify }}</div>
+            </div>
+          </div>
+          {{- end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{- end -}}

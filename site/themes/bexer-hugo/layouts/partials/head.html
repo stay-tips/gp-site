@@ -15,6 +15,12 @@
 
 <meta name="description" content="{{ with .Params.Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">
 {{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+
+<!-- canonical -->
+<link rel="canonical" href="{{ .Permalink }}">
+
+<!-- structured data (JSON-LD) for SEO + AI search -->
+{{ partial "seo-schema.html" . }}
 {{ hugo.Generator }}
 
 <meta name="theme-name" content="bexer-hugo" />

@@ -1,0 +1,19 @@
+{{- /* /llms.txt — indice in testo per i motori di ricerca AI (https://llmstxt.org) */ -}}
+# {{ site.Params.author | default site.Title }}
+
+> {{ site.Params.description }}
+
+{{ printf "Gestione professionale di affitti brevi: pubblicazione annunci, prenotazioni, accoglienza ospiti, pulizie e assistenza al proprietario. Email %s, tel %s, %s." site.Params.email site.Params.mobile site.Params.address }}
+
+## Appartamenti
+{{ range (where site.RegularPages "Section" "booking") -}}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Params.bedrooms }} bedrooms, up to {{ .Params.max_guests }} guests, {{ .Params.square_meters }} m², from €{{ .Params.price_per_night }}/night — {{ .Params.address }}
+{{ end }}
+## Approfondimenti (blog)
+{{ range (where site.RegularPages "Section" "blog") -}}
+- [{{ .Title }}]({{ .Permalink }})
+{{ end }}
+## Pagine
+{{ range (slice "values" "advantages" "team" "contact" "privacy-policy" "terms") -}}
+{{ with $.Site.GetPage (printf "/%s" .) }}- [{{ .Title }}]({{ .Permalink }})
+{{ end }}{{- end }}

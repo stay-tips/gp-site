@@ -4,6 +4,8 @@ title = "Green Property - Fai rendere veramente il tuo immobile senza pensieri"
 theme = "bexer-hugo"
 # Default time zone for time stamps; use any valid tz database name: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 timeZone = "Europe/Rome"
+# genera /robots.txt da layouts/robots.txt
+enableRobotsTXT = true
 # post pagination
 pagination.pagerSize = 20 # see https://gohugo.io/extras/pagination/
 # post excerpt
@@ -50,7 +52,15 @@ target = '$1'
 
 ############################# Outputs ##############################
 [outputs]
-home = ["HTML", "RSS", "JSON", "WebAppManifest"]
+home = ["HTML", "RSS", "JSON", "WebAppManifest", "LLMS"]
+
+# llms.txt — indice in testo per i motori di ricerca AI (llmstxt.org)
+[outputFormats.LLMS]
+mediaType = "text/plain"
+baseName = "llms"
+isPlainText = true
+rel = "alternate"
+notAlternative = true
 
 ############################# Caches ###############################
 [caches]
