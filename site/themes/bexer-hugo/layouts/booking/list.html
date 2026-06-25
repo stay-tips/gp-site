@@ -347,17 +347,19 @@
       });
     });
 
-    // Inizializza la mappa
-    const map = L.map('map').setView([45.4642, 9.1900], 13);
+    // Inizializza la mappa (la vista viene impostata sotto in base ai marker)
+    const map = L.map('map');
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
     }).addTo(map);
 
     // Crea marker per ogni appartamento
     const apartments = document.querySelectorAll('.apartment-card');
+    const points = [];
     apartments.forEach(apartment => {
       const lat = apartment.dataset.lat;
       const lng = apartment.dataset.lng;
+      if (lat && lng) { points.push([parseFloat(lat), parseFloat(lng)]); }
       const price = apartment.dataset.price;
       const id = apartment.dataset.id;
 
@@ -384,6 +386,15 @@
         mapMarker.getElement().style.transform = 'scale(1)';
       });
     });
+
+    // Inquadra automaticamente tutti gli appartamenti (Milano, Firenze, Bologna, ...)
+    if (points.length > 1) {
+      map.fitBounds(points, { padding: [40, 40], maxZoom: 14 });
+    } else if (points.length === 1) {
+      map.setView(points[0], 14);
+    } else {
+      map.setView([42.5, 12.5], 5);
+    }
   });
 </script>
 
