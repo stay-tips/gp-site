@@ -5,7 +5,7 @@ description: "Guida completa per ottimizzare il rendimento degli affitti brevi: 
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
 image_webp: "images/blog/affitti-brevi-rendita.webp"
-image: "images/blog/affitti-brevi-rendita.jpg"
+image: "images/blog/affitti-brevi-rendita.webp"
 author: "Enrico"
 categories: ["Hospitality", "Real Estate"]
 tags: ["Affitti Brevi", "Investimenti Immobiliari", "Property Management"]

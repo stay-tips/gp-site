@@ -10,7 +10,7 @@ date: '2025-02-13T22:55:40+06:00'
 description: 'Information sheets: your competitive advantage. Information sheets are
   an essential tool for promoting your business and attracting new customers. In an
   increasingly competitive market, having...'
-image: images/blog/l'importanza-delle-schede-informative-per-la-tua-attività.jpg
+image: images/blog/l'importanza-delle-schede-informative-per-la-tua-attività.webp
 image_webp: images/blog/l'importanza-delle-schede-informative-per-la-tua-attività.webp
 tags:
 - information sheets

@@ -5,7 +5,7 @@ description: "Guida completa alla gestione degli affitti brevi e alla massimizza
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
 image_webp: "images/blog/social-media.webp"
-image: "images/blog/social-media.jpg"
+image: "images/blog/social-media.webp"
 author: "Enrico"
 categories: ["Real Estate", "Investment"]
 tags: ["Affitti Brevi", "Property Management", "Investimenti"]

@@ -10,7 +10,7 @@ date: '2025-02-13T22:47:21+06:00'
 description: Rural properties with charme - The modern solution for your farm stay.
   In an era when rural tourism is experiencing a revival, the need to offer unique
   experiences and...
-image: images/blog/strutture-rurali---la-soluzione-moderna-per-il-tuo-agriturismo.jpg
+image: images/blog/strutture-rurali---la-soluzione-moderna-per-il-tuo-agriturismo.webp
 image_webp: images/blog/strutture-rurali---la-soluzione-moderna-per-il-tuo-agriturismo.webp
 tags:
 - farm stay

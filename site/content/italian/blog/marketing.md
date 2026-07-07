@@ -5,7 +5,7 @@ description: "L'importanza dell'accoglienza e dell'ospitalità nel settore extra
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
 image_webp: "images/blog/accoglienza.webp"
-image: "images/blog/marketing.jpg"
+image: "images/blog/marketing.webp"
 author: "Enrico"
 categories: ["Hospitality", "Customer Service"]
 tags: ["Accoglienza", "Guest Experience", "Hospitality Management"]

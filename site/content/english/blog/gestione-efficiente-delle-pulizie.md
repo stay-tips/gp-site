@@ -10,7 +10,7 @@ date: '2025-02-13T16:53:35+06:00'
 description: Efficient cleaning management is a fundamental aspect of ensuring a clean
   and healthy environment, both in domestic settings and in accommodation facilities.
   Hugo, an innovative management system...
-image: images/blog/gestione-efficiente-delle-pulizie.jpg
+image: images/blog/gestione-efficiente-delle-pulizie.webp
 image_webp: images/blog/gestione-efficiente-delle-pulizie.webp
 tags:
 - cleaning

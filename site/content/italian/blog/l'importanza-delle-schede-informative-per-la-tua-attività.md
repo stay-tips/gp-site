@@ -10,7 +10,7 @@ date: '2025-02-13T22:55:40+06:00'
 description: 'Le schede informative: il tuo vantaggio competitivo Le schede informative
   sono uno strumento essenziale per promuovere la tua attività e attirare nuovi clienti.
   In un mercato sempre più competitivo, avere...'
-image: images/blog/l'importanza-delle-schede-informative-per-la-tua-attività.jpg
+image: images/blog/l'importanza-delle-schede-informative-per-la-tua-attività.webp
 image_webp: images/blog/l'importanza-delle-schede-informative-per-la-tua-attività.webp
 tags:
 - schede informative

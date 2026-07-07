@@ -10,7 +10,7 @@ date: '2025-04-08T23:23:34+06:00'
 description: Sustainability. Use renewable energy and energy-efficiency systems in
   accommodation facilities. Adopt waste and water consumption management policies aimed
   at reducing waste. Prefer local suppliers...
-image: images/blog/turismo-sostenibile-viaggiare-rispettando-lambiente.jpg
+image: images/blog/turismo-sostenibile-viaggiare-rispettando-lambiente.webp
 image_webp: images/blog/turismo-sostenibile-viaggiare-rispettando-lambiente.webp
 tags:
 - renewable energy

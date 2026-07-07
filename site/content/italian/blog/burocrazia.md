@@ -5,7 +5,7 @@ description: "Guida completa agli adempimenti burocratici per gli affitti brevi:
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
 image_webp: "images/blog/burocrazia-affitti.webp"
-image: "images/blog/burocrazia-affitti.jpg"
+image: "images/blog/burocrazia-affitti.webp"
 author: "Enrico"
 categories: ["Legal", "Property Management"]
 tags: ["Normative", "Compliance", "Gestione Immobiliare"]

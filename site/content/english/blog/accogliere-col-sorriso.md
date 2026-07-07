@@ -10,7 +10,7 @@ date: '2025-02-13T16:48:08+06:00'
 description: The importance of a warm welcome. Greeting your guests with a smile and
   a positive attitude is a fundamental part of delivering a memorable experience. Whether
   it's a hotel, a...
-image: images/blog/accogliere-col-sorriso.jpg
+image: images/blog/accogliere-col-sorriso.webp
 image_webp: images/blog/accogliere-col-sorriso.webp
 tags:
 - hospitality

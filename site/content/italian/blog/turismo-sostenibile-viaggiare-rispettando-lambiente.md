@@ -10,7 +10,7 @@ date: '2025-04-08T23:23:34+06:00'
 description: Sostenibilità Utilizzare energie rinnovabili e sistemi di efficientamento
   energetico nelle strutture ricettive Adottare politiche di gestione dei rifiuti
   e del consumo idrico volte alla riduzione degli sprechi Preferire fornitori locali...
-image: images/blog/turismo-sostenibile-viaggiare-rispettando-lambiente.jpg
+image: images/blog/turismo-sostenibile-viaggiare-rispettando-lambiente.webp
 image_webp: images/blog/turismo-sostenibile-viaggiare-rispettando-lambiente.webp
 tags:
 - energie rinnovabili

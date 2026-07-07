@@ -10,7 +10,7 @@ date: '2025-02-13T22:47:21+06:00'
 description: Strutture rurali con charme - La soluzione moderna per il tuo agriturismo
   In un'epoca in cui il turismo rurale sta vivendo una rinascita, la necessità di
   offrire esperienze uniche e...
-image: images/blog/strutture-rurali---la-soluzione-moderna-per-il-tuo-agriturismo.jpg
+image: images/blog/strutture-rurali---la-soluzione-moderna-per-il-tuo-agriturismo.webp
 image_webp: images/blog/strutture-rurali---la-soluzione-moderna-per-il-tuo-agriturismo.webp
 tags:
 - agriturismo

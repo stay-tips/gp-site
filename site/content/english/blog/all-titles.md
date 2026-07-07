@@ -6,7 +6,7 @@ description: "A complete guide to the bureaucratic requirements for short-term r
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
 image_webp: "images/blog/burocrazia-affitti.webp"
-image: "images/blog/burocrazia-affitti.jpg"
+image: "images/blog/burocrazia-affitti.webp"
 author: "Enrico"
 categories: ["Legal", "Property Management"]
 tags: ["Regulations", "Compliance", "Property Management"]

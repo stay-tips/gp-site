@@ -10,7 +10,7 @@ date: '2025-02-13T16:53:35+06:00'
 description: La gestione efficiente delle pulizie è un aspetto fondamentale per garantire
   un ambiente pulito e salubre, sia in contesti domestici che in strutture ricettive.
   Hugo, un innovativo sistema di gestione...
-image: images/blog/gestione-efficiente-delle-pulizie.jpg
+image: images/blog/gestione-efficiente-delle-pulizie.webp
 image_webp: images/blog/gestione-efficiente-delle-pulizie.webp
 tags:
 - pulizie

@@ -7,7 +7,7 @@ date: '2025-02-13T16:36:10+06:00'
 description: 'Il turismo enogastronomico: un''esperienza sensoriale unica Il turismo
   enogastronomico è un fenomeno in costante crescita, che offre ai viaggiatori l''opportunità
   di immergersi in un''esperienza sensoriale unica, fatta di sapori, profumi...'
-image: images/blog/il-turismo-enogastronomico.jpg
+image: images/blog/il-turismo-enogastronomico.webp
 image_webp: images/blog/il-turismo-enogastronomico.webp
 tags:
 - turismo enogastronomico

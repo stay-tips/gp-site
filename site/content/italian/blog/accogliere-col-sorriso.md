@@ -10,7 +10,7 @@ date: '2025-02-13T16:48:08+06:00'
 description: L'importanza di un'accoglienza calorosa Accogliere i propri ospiti con
   un sorriso e un atteggiamento positivo è un elemento fondamentale per offrire un'esperienza
   memorabile. Che si tratti di un hotel, di...
-image: images/blog/accogliere-col-sorriso.jpg
+image: images/blog/accogliere-col-sorriso.webp
 image_webp: images/blog/accogliere-col-sorriso.webp
 tags:
 - accoglienza

@@ -5,7 +5,7 @@ description: "Discover how to create a unique hospitality experience in the non-
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
 image_webp: "images/blog/accoglienza-ospiti.webp"
-image: "images/blog/accoglienza-ospiti.jpg"
+image: "images/blog/accoglienza-ospiti.webp"
 author: "Enrico"
 categories: ["Hospitality", "Customer Service"]
 tags: ["Hospitality", "Guest Experience", "Hospitality Management"]

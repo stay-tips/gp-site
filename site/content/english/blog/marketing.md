@@ -5,7 +5,7 @@ description: "The importance of welcome and hospitality in the non-hotel accommo
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
 image_webp: "images/blog/accoglienza.webp"
-image: "images/blog/marketing.jpg"
+image: "images/blog/marketing.webp"
 author: "Enrico"
 categories: ["Hospitality", "Customer Service"]
 tags: ["Hospitality", "Guest Experience", "Hospitality Management"]

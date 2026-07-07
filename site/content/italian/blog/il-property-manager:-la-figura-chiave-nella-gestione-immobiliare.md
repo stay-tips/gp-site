@@ -9,7 +9,7 @@ categories:
 date: '2025-02-13T23:10:21+06:00'
 description: 'Il property manager è una figura professionale essenziale nel settore immobiliare,
   responsabile della gestione efficiente e redditizia di proprietà residenziali, commerciali...'
-image: images/blog/il-property-manager-la-figura-chiave-nella-gestione-immobiliare.jpg
+image: images/blog/il-property-manager-la-figura-chiave-nella-gestione-immobiliare.webp
 image_webp: images/blog/il-property-manager-la-figura-chiave-nella-gestione-immobiliare.webp
 tags:
 - property manager

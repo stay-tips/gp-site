@@ -7,7 +7,7 @@ date: '2025-02-13T16:36:10+06:00'
 description: 'Food and wine tourism: a unique sensory experience. Food and wine tourism
   is a constantly growing phenomenon that offers travelers the opportunity to immerse
   themselves in a unique sensory experience made of flavors, aromas...'
-image: images/blog/il-turismo-enogastronomico.jpg
+image: images/blog/il-turismo-enogastronomico.webp
 image_webp: images/blog/il-turismo-enogastronomico.webp
 tags:
 - food and wine tourism
