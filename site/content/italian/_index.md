@@ -197,22 +197,28 @@ testimonial:
   title : "Cosa dicono i clienti?"
   testimonial_item:
     # testimonial item loop
-    - client_image : "images/testimonial/client-1.jpg"
+    - client_image : "images/testimonial/client-1.webp"
       name : "Elisa"
-      designation : "Proprietario"
+      designation : "Proprietaria"
       content : "Enrico si è dimostrato preparato attento e ha trovato la struttura fiscale giusta per far rendere il mio immobile al massimo, avanti così"
       
     # testimonial item loop
-    - client_image : "images/testimonial/client-2.jpg"
+    - client_image : "images/testimonial/client-2.webp"
       name : "Renato"
       designation : "Proprietario"
       content : "Enrico e i suoi collaboratori gestiscono gli affitti brevi con metodo e disponibilità. grazie a loro ho messo sul mercato la mia casa in 2 settimane. Grazie."
 
     # testimonial item loop
-    - client_image : "images/testimonial/client-3.jpg"
+    - client_image : "images/testimonial/client-3.webp"
       name : "Alessandra"
-      designation : "Proprietario"
+      designation : "Proprietaria"
       content : "Nella gestione degli ospiti, Green Property ha dimostrato accoglienza e professionalità. Dalle recensioni quasi sempre sopra il 9 il valore dell'attività è salito."
+
+    # testimonial item loop
+    - client_image : "images/testimonial/client-4.webp"
+      name : "Davide"
+      designation : "Proprietario"
+      content : "Con Green Property la gestione del mio immobile è diventata un orologio svizzero: check-in, pulizie e manutenzione filano lisci senza che io debba pensarci. Efficienza vera."
 
 
 ################################# cta ################################################

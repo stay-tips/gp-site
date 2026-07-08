@@ -546,6 +546,14 @@
     left: 50%;
     transform: translateX(-50%);
   }
+
+  // Citazione e nome cliente: più contrastati del grigino di default
+  // ($text-color-dark è impostato molto chiaro per i titoli su sfondi scuri),
+  // altrimenti illeggibili sullo sfondo chiaro della sezione testimonianze.
+  p.text-dark,
+  h4 {
+    color: #172231 !important;
+  }
 }
 
 .slick-dots {

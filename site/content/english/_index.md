@@ -197,22 +197,28 @@ testimonial:
   title : "What do clients say?"
   testimonial_item:
     # testimonial item loop
-    - client_image : "images/testimonial/client-1.jpg"
+    - client_image : "images/testimonial/client-1.webp"
       name : "Elisa"
       designation : "Property owner"
       content : "Enrico proved to be knowledgeable and attentive, and he found the right tax structure to make my property as profitable as possible. Keep it up"
       
     # testimonial item loop
-    - client_image : "images/testimonial/client-2.jpg"
+    - client_image : "images/testimonial/client-2.webp"
       name : "Renato"
       designation : "Property owner"
       content : "Enrico and his team manage short-term rentals with method and availability. Thanks to them I put my home on the market in 2 weeks. Thank you."
 
     # testimonial item loop
-    - client_image : "images/testimonial/client-3.jpg"
+    - client_image : "images/testimonial/client-3.webp"
       name : "Alessandra"
       designation : "Property owner"
       content : "In managing guests, Green Property has shown warmth and professionalism. With reviews almost always above 9, the value of the business has gone up."
+
+    # testimonial item loop
+    - client_image : "images/testimonial/client-4.webp"
+      name : "Davide"
+      designation : "Property owner"
+      content : "With Green Property, managing my property runs like clockwork: check-ins, cleaning and maintenance all flow smoothly without me having to think about it. Real efficiency."
 
 
 ################################# cta ################################################
