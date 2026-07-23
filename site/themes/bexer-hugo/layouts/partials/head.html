@@ -10,7 +10,12 @@
 {{ range .AllTranslations }}
 <link rel="alternate" hreflang="{{.Lang}}" href="{{ .Permalink }}">
 {{ end }}
-<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{/* defaultContentLanguage is "it" (config/_default/hugo.toml) */}}
+{{ $xdefault := .Permalink }}
+{{ range .AllTranslations }}
+{{ if eq .Lang "it" }}{{ $xdefault = .Permalink }}{{ end }}
+{{ end }}
+<link rel="alternate" hreflang="x-default" href="{{ $xdefault }}">
 {{ end }}
 
 <meta name="description" content="{{ with .Params.Description }}{{ . }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}">

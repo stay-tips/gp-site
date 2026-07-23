@@ -7,7 +7,8 @@ gp-site/
   .github/workflows/hugo.yml   # GitHub Pages deploy (main branch)
   site/                        # ← all Hugo work happens here
     config/_default/           # hugo.toml, languages.toml, params.toml, menus.it.toml
-    content/italian/           # Italian-only content (no english dir exists)
+    content/italian/           # Italian content (default language, no /it/ URL prefix)
+    content/english/           # English content (served under /en/)
     themes/bexer-hugo/         # theme (layouts + assets)
     scripts/                   # Python apartment/image generators, projectSetup.js
     netlify.toml               # Netlify deploy config
@@ -44,7 +45,7 @@ npm run theme-setup    # Inverse of project-setup: extracts theme files back to 
 
 ## Config highlights
 
-- Single language: Italian (`defaultContentLanguage = 'it'`, `defaultContentLanguageInSubdir = true`)
+- Two languages: Italian (default, no URL prefix) and English (`/en/` prefix) — `defaultContentLanguage = 'it'`, `defaultContentLanguageInSubdir = false`
 - Theme: `bexer-hugo` (gethugothemes commercial theme)
 - Timezone: `Europe/Rome`
 - Contact form: uses Airform (`airform.io/info@greenproperty.it`)
@@ -61,5 +62,4 @@ npm run theme-setup    # Inverse of project-setup: extracts theme files back to 
 
 - `public/`, `resources/`, `.hugo_build.lock` are gitignored — do not commit build artifacts
 - The `project-setup` script is destructive: it moves files from root-level `layouts/`, `assets/`, `static/` into `themes/bexer-hugo/` and deletes `exampleSite/`. Only run once on a fresh theme checkout.
-- This repo is Italian-only — no `content/english/` directory exists despite languages.toml having an `[en]` block
 - Hugo **extended** version required (for SCSS/SASS processing)

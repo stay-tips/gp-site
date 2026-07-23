@@ -29,6 +29,21 @@
             {{ end }}
           </ul>
         </div>
+
+        {{ "<!-- cross-link to apartments -->" | safeHTML }}
+        {{ $apartments := first 3 (where site.RegularPages "Section" "booking") }}
+        {{ if $apartments }}
+        <div class="bg-white px-4 py-4 box-shadow mb-3">
+          <h5 class="mb-3">Cerchi un appartamento in affitto breve?</h5>
+          <ul class="list-inline mb-0">
+            {{ range $apartments }}
+            <li class="list-inline-item mr-3 mb-2"><a class="hover-ripple" href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{ end }}
+          </ul>
+          <a class="d-inline-block mt-2" href="{{ `booking/` | relLangURL }}">Vedi tutti gli appartamenti &rarr;</a>
+        </div>
+        {{ end }}
+
         <!-- comments -->
         {{ if site.Config.Services.Disqus.Shortname }}
         <div class="mt-5">

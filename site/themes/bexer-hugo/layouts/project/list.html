@@ -26,7 +26,7 @@
       {{ range .Data.Pages }}
       {{ "<!-- project-item -->" | safeHTML }}
       <div class="col-lg-4 col-sm-6 filtr-item" data-category="{{ .Params.Category | urlize }}">
-        {{ .Render "project"}}
+        {{ .Render "project-card"}}
       </div>
       {{ end }}
     </div>

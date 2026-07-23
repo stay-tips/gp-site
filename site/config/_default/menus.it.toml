@@ -7,7 +7,7 @@ url = "values/"
 weight = 2
 
 [[main]]
-name = "Vantaggi"
+name = "Proprietari"
 url = "advantages/"
 weight = 3
 
@@ -17,9 +17,9 @@ url = "blog/"
 weight = 4
 
 [[main]]
-name = "Team"
-url = "team/"
-weight = 6
+name = "Casi Studio"
+url = "project/"
+weight = 5
 
 [[main]]
 name = "Contatti"

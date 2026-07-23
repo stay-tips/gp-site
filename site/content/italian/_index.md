@@ -185,7 +185,7 @@ project:
   section: "project"
   show_item : 4
   button:
-    enable : false
+    enable : true
     label : "altri casi studio"
     link : "project/"
   # project item comes from "content/*/project" folder

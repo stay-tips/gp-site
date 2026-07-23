@@ -20,11 +20,14 @@
       "url" site.BaseURL
       "logo" $logo
       "image" $logo
+      "slogan" site.Title
       "description" site.Params.description
       "email" site.Params.email
       "telephone" site.Params.mobile
-      "areaServed" "IT"
+      "areaServed" (slice "Milano" "Firenze" "Bologna")
       "address" (dict "@type" "PostalAddress" "addressLocality" "Milano" "addressCountry" "IT")
+      "founder" (dict "@type" "Person" "name" "Enrico Di Marco" "jobTitle" "Founder & CEO")
+      "knowsAbout" (slice "Property management" "Gestione affitti brevi" "Revenue management immobiliare" "Ospitalità turistica")
       "sameAs" $sameAs -}}
   <script type="application/ld+json">{{ $org | jsonify | safeJS }}</script>
   {{- $ws := dict
