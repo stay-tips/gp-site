@@ -1,0 +1,32 @@
+{{ $tel := site.Params.mobile }}
+{{ $telHref := printf "tel:%s" (replace $tel " " "") }}
+<section id="top" class="gp-hero" style="border-bottom:1px solid #E2E8DF; background:#FAFAF6;">
+  <div class="gp-wrap gp-2col" style="padding:72px 24px 64px; grid-template-columns:1.05fr 0.95fr;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; border:1px solid #CBDACC; background:#EFF4EC; color:#17694A; border-radius:999px; padding:7px 14px; font-size:12.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Gestione affitti brevi · Firenze · Milano · Bologna</div>
+      <h1 class="gp-serif" style="font-size:58px; line-height:1.06; margin:22px 0 20px; letter-spacing:-0.01em; text-wrap:balance;">Hai una proprietà da mettere a rendita a <em style="color:#17694A;">Firenze</em>, <em style="color:#17694A;">Milano</em> o <em style="color:#17694A;">Bologna</em>?</h1>
+      <p style="font-size:17.5px; line-height:1.65; color:#3C5246; margin:0 0 14px; max-width:56ch;">Se vuoi ottenere il massimo ritorno possibile dalla tua proprietà — e parlo di cifre come <strong style="color:#10241B;">40, 60, anche 100 mila euro all'anno</strong>, in rapporto alla posizione e all'immobile — sei nel posto giusto.</p>
+      <p style="font-size:17.5px; line-height:1.65; color:#3C5246; margin:0 0 28px; max-width:56ch;">E tutto questo con un'<strong style="color:#10241B;">assicurazione completa</strong> per qualsiasi danno all'immobile e <strong style="color:#10241B;">senza nessun investimento iniziale</strong> da parte tua.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+        <a href="#modulo" class="gp-btn gp-btn-dark" style="padding:16px 26px; font-size:16.5px;">Valuta gratis la tua proprietà</a>
+        <a href="{{ $telHref }}" class="gp-btn gp-btn-light" style="padding:15px 22px;">Chiama Enrico · {{ $tel }}</a>
+      </div>
+      <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:26px; font-size:14px; color:#41594C; font-weight:500;">
+        <div style="display:flex; align-items:center; gap:8px;"><span style="width:8px; height:8px; border-radius:50%; background:#17694A;"></span>8,9/10 su Booking.com · Award 2026</div>
+        <div style="display:flex; align-items:center; gap:8px;"><span style="width:8px; height:8px; border-radius:50%; background:#17694A;"></span>Vincitori Property Game 2024</div>
+        <div style="display:flex; align-items:center; gap:8px;"><span style="width:8px; height:8px; border-radius:50%; background:#17694A;"></span>Zero costi iniziali</div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div class="gp-hero-imgs" style="display:grid; grid-template-columns:1.5fr 1fr; grid-template-rows:270px 270px; gap:14px;">
+        <img src="{{ "images/landing/hero-soggiorno.webp" | relURL }}" alt="Soggiorno luminoso con balcone" loading="eager" style="grid-row:span 2; width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;">
+        <img src="{{ "images/landing/firenze-calzaiuoli.webp" | relURL }}" alt="Via Calzaiuoli, Firenze" style="width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;">
+        <img src="{{ "images/landing/camera-matrimoniale.webp" | relURL }}" alt="Camera matrimoniale" style="width:100%; height:100%; object-fit:cover; border-radius:16px; display:block;">
+      </div>
+      <div style="position:absolute; left:-18px; bottom:22px; background:#FFFFFF; border:1px solid #E2E8DF; border-radius:14px; padding:14px 18px; box-shadow:0 18px 40px rgba(12,63,43,0.14); display:flex; align-items:center; gap:12px;">
+        <div class="gp-serif" style="font-size:34px; color:#0C3F2B; line-height:1;">8,9</div>
+        <div style="font-size:12.5px; line-height:1.4; color:#41594C;"><strong style="color:#10241B;">Booking.com</strong><br>Traveller Review Awards 2026</div>
+      </div>
+    </div>
+  </div>
+</section>

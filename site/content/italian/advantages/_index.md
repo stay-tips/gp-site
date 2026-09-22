@@ -7,6 +7,8 @@ description: "Affida il tuo immobile a un property manager professionista: gesti
 bg_image_webp: "images/backgrounds/page-title.webp" 
 bg_image: "images/backgrounds/page-title.jpg"
 draft: false
+# landing proprietari (layouts/advantages/landing.html)
+layout: "landing"
 
 faq_title: "Domande frequenti dei proprietari"
 faq:

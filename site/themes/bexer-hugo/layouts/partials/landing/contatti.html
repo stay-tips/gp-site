@@ -1,0 +1,17 @@
+{{ $tel := site.Params.mobile }}
+{{ $telHref := printf "tel:%s" (replace $tel " " "") }}
+<section id="contatti" style="background:#0C3F2B;">
+  <div class="gp-wrap gp-2col" style="padding-bottom:72px; grid-template-columns:1fr 1fr; align-items:start;">
+    <div style="color:#F3F7F1;">
+      <h2 class="gp-serif gp-h2" style="font-size:46px; line-height:1.1; margin-bottom:18px;">Pronto a mettere a rendita la tua proprietà?</h2>
+      <p style="font-size:17px; line-height:1.7; color:#BCD3C2; margin:0 0 26px;">Compila il modulo: ti ricontattiamo entro 24 ore per una chiacchierata senza impegno sul tuo immobile. Oppure chiama direttamente Enrico.</p>
+      <a href="{{ $telHref }}" class="gp-btn gp-btn-dark" style="background:transparent; border:1px solid #3E6B54; color:#FFFFFF;">☎ {{ $tel }}</a>
+      <div style="margin-top:40px; font-size:14px; color:#9FC3AB; line-height:1.9;">
+        Firenze · Via Calzaiuoli<br>
+        Milano · Via Palmieri<br>
+        Bologna · Castel S. Pietro Terme
+      </div>
+    </div>
+    {{ partial "landing/form.html" (dict "id" "2" "full" false "submit" "Voglio essere ricontattato" "note" "Nessun impegno. I tuoi dati non saranno mai ceduti a terzi." "style" "border:none;") }}
+  </div>
+</section>

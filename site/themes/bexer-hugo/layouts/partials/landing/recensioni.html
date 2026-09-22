@@ -1,0 +1,50 @@
+{{ $recensioni := site.Data.recensioni_proprietari }}
+<section id="recensioni" style="background:#FFFFFF; border-bottom:1px solid #E2E8DF;">
+  <div class="gp-wrap">
+    <div class="gp-eyebrow">Recensioni</div>
+    <h2 class="gp-serif gp-h2" style="margin-bottom:40px; max-width:640px;">Ascolta cosa dicono i proprietari che si sono affidati a Green Property</h2>
+    <div class="gp-2col gp-reviews-grid" style="grid-template-columns:300px minmax(0,1fr); gap:40px; align-items:start;">
+      <div class="gp-google gp-sticky" style="position:sticky; top:96px; border:1px solid #DADCE0; border-radius:12px; padding:24px; background:#FFFFFF;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          {{ partial "landing/google-logo.html" 26 }}
+          <div style="font-size:15px; font-weight:500; color:#202124;">Recensioni Google</div>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:10px; margin-top:16px;">
+          <div style="font-size:52px; font-weight:400; color:#202124; line-height:1;">5,0</div>
+          <div>
+            <div style="color:#FBBC04; font-size:18px; letter-spacing:1px; line-height:1;">★★★★★</div>
+            <div style="font-size:13px; color:#5F6368; margin-top:5px;">{{ len $recensioni }} recensioni</div>
+          </div>
+        </div>
+        <div style="display:grid; gap:6px; margin-top:18px;">
+          {{ range $stelle := slice 5 4 3 2 1 }}
+          <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:#5F6368;">
+            <span style="width:8px;">{{ $stelle }}</span>
+            <div style="flex:1; height:8px; border-radius:4px; background:#E8EAED; overflow:hidden;"><div style="height:100%; background:#FBBC04; width:{{ if eq $stelle 5 }}100%{{ else }}0%{{ end }};"></div></div>
+          </div>
+          {{ end }}
+        </div>
+        <a href="#modulo" class="gp-btn-dark" style="display:block; margin-top:20px; text-align:center; padding:12px; border-radius:999px; font-size:14.5px; font-weight:600;">Diventa il prossimo proprietario</a>
+      </div>
+      <div>
+        <div class="gp-google" style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:14px;">
+          <div id="gp-recensioni-label" style="font-size:14px; color:#5F6368;">6 di {{ len $recensioni }} recensioni</div>
+          <label style="font-size:14px; color:#5F6368; display:flex; align-items:center; gap:8px; margin:0;">Città:
+            <select id="gp-recensioni-filtro" style="font:inherit; font-size:14px; font-weight:500; color:#202124; padding:8px 12px; border:1px solid #DADCE0; border-radius:8px; background:#FFFFFF; cursor:pointer;">
+              <option value="Tutte">Tutte le città</option>
+              <option value="Firenze">Firenze</option>
+              <option value="Milano">Milano</option>
+              <option value="Bologna">Bologna</option>
+            </select>
+          </label>
+        </div>
+        <div id="gp-recensioni-lista" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:16px;"></div>
+        <div style="display:flex; justify-content:center; margin-top:28px;">
+          <button type="button" id="gp-recensioni-altre" class="gp-btn-ghost" style="font:inherit; font-size:14.5px; font-weight:500; padding:11px 24px; border-radius:999px; border:1px solid #DADCE0; background:#FFFFFF; color:#1A73E8; cursor:pointer;">Mostra altre recensioni</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="application/json" id="gp-recensioni-data">{{ $recensioni | jsonify | safeJS }}</script>
+<template id="gp-google-logo">{{ partial "landing/google-logo.html" 20 }}</template>

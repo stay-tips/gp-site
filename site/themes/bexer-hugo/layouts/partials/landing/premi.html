@@ -1,0 +1,49 @@
+{{ $attestato := "uploads/attestato-property-game-2024-enrico-di-marco.pdf" | relURL }}
+{{/* sequenza duplicata: l'animazione scorre di -50% e riparte senza salti */}}
+{{ $items := slice "award" "winner" "propertygame" "milano" "firenze" "sole" "award" "winner" "propertygame" "milano" "firenze" "sole" }}
+<section id="premi" style="background:#FAFAF6; border-bottom:1px solid #E2E8DF; padding:96px 0;">
+  <div class="gp-wrap" style="padding:0 24px 44px; display:flex; align-items:end; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+    <div>
+      <div class="gp-eyebrow">Riconoscimenti</div>
+      <h2 class="gp-serif gp-h2" style="margin:0;">I premi vinti da Green Property</h2>
+    </div>
+    <div style="font-size:14.5px; color:#41594C; max-width:360px; line-height:1.55;">Riconoscimenti ottenuti sulle strutture che gestiamo, assegnati dalle piattaforme e dal settore.</div>
+  </div>
+  <div style="overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent); mask-image:linear-gradient(90deg, transparent, black 6%, black 94%, transparent);">
+    <div class="gp-marquee">
+      {{ range $items }}
+      {{ if eq . "award" }}
+      <img src="{{ "images/landing/booking-award-2026.webp" | relURL }}" alt="Booking.com Traveller Review Award 2026 — 8,9/10" loading="lazy" style="height:190px; width:auto; border-radius:14px; border:1px solid #E2E8DF; display:block;">
+      {{ else if eq . "winner" }}
+      <img src="{{ "images/landing/booking-award-2026-winner.webp" | relURL }}" alt="Booking.com Traveller Review Awards 2026 — winner" loading="lazy" style="height:190px; width:auto; border-radius:14px; border:1px solid #E2E8DF; display:block;">
+      {{ else if eq . "propertygame" }}
+      <a href="{{ $attestato }}" target="_blank" rel="noopener" class="gp-award-card" style="background:#FFFFFF; border:1px solid #E2E8DF;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#17694A;">Property Game · 2024</div>
+        <div class="gp-serif" style="font-size:26px; line-height:1.2; margin-top:8px; color:#10241B;">Gruppo vincitore — Enrico Di Marco</div>
+        <div style="font-size:13.5px; color:#7A8F81; margin-top:8px;">Attestato ufficiale · vedi il certificato →</div>
+      </a>
+      {{ else if eq . "milano" }}
+      <div class="gp-award-card" style="background:#0C3F2B; color:#F3F7F1;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#9FC3AB;">Booking.com · Milano</div>
+        <div class="gp-serif" style="font-size:44px; line-height:1; margin-top:8px;">8,9<span style="font-size:20px; color:#9FC3AB;">/10</span></div>
+        <div style="font-size:13.5px; color:#BCD3C2; margin-top:8px;">«10 minutes Duomo — Elegant apt» · Traveller Review Awards 2026</div>
+      </div>
+      {{ else if eq . "firenze" }}
+      <div class="gp-award-card" style="background:#0C3F2B; color:#F3F7F1;">
+        <div style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#9FC3AB;">Booking.com · Firenze</div>
+        <div class="gp-serif" style="font-size:44px; line-height:1; margin-top:8px;">10<span style="font-size:20px; color:#9FC3AB;">/10</span></div>
+        <div style="font-size:13.5px; color:#BCD3C2; margin-top:8px;">«Calzaiuoli Sunshine» · ultime recensioni ospiti, estate 2026</div>
+      </div>
+      {{ else }}
+      <div style="width:340px; background:#FFFFFF; border:1px solid #E2E8DF; border-radius:14px; padding:18px; display:flex; gap:16px; align-items:center;">
+        <img src="{{ "images/landing/sole-24-ore.webp" | relURL }}" alt="Il Sole 24 Ore" loading="lazy" style="width:92px; height:154px; object-fit:cover; object-position:top; border-radius:8px; border:1px solid #E2E8DF; display:block;">
+        <div>
+          <div style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#17694A;">Il mercato · Il Sole 24 Ore</div>
+          <div style="font-size:15px; line-height:1.5; margin-top:8px; color:#10241B;">Gli affitti brevi in Italia crescono del +13% in un anno: oltre 510.000 immobili attivi.</div>
+        </div>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600&display=swap">
+<style>
+  .gp-landing { font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif; color: #10241B; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .gp-landing *, .gp-landing *::before, .gp-landing *::after { box-sizing: border-box; }
+  .gp-landing a, .gp-landing a:hover { color: inherit; text-decoration: none; transition: background .15s, color .15s, border-color .15s; }
+  .gp-landing h1, .gp-landing h2, .gp-landing h3 { color: inherit; font-family: inherit; font-weight: 600; text-transform: none; line-height: 1.2; }
+  .gp-landing p, .gp-landing ul { color: inherit; }
+  .gp-landing img { max-width: 100%; }
+  .gp-landing input, .gp-landing select, .gp-landing textarea { font-family: inherit; }
+  .gp-landing .gp-serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+  .gp-wrap { max-width: 1180px; margin: 0 auto; padding: 96px 24px; }
+  .gp-2col { display: grid; gap: 56px; align-items: center; }
+  .gp-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #17694A; margin-bottom: 14px; }
+  .gp-h2 { font-size: 42px; line-height: 1.12; margin: 0 0 12px; text-wrap: balance; }
+  .gp-lead { font-size: 16.5px; line-height: 1.65; color: #3C5246; margin: 0 0 44px; max-width: 62ch; }
+  .gp-btn { display: inline-block; white-space: nowrap; border-radius: 12px; font-weight: 600; font-size: 16px; padding: 15px 24px; }
+  .gp-landing .gp-btn-dark { background: #0C3F2B; color: #FFFFFF; border: none; cursor: pointer; }
+  .gp-landing .gp-btn-dark:hover { background: #092F20 !important; color: #FFFFFF !important; }
+  .gp-landing .gp-btn-light { border: 1px solid #C4D3C6; background: #FFFFFF; color: #0C3F2B; }
+  .gp-landing .gp-btn-light:hover { border-color: #0C3F2B !important; color: #0C3F2B !important; }
+  .gp-btn-ghost:hover { background: #F8F9FA !important; }
+  .gp-link-muted:hover { color: #202124 !important; }
+  .gp-card { border: 1px solid #E2E8DF; border-radius: 16px; padding: 26px; background: #FAFAF6; }
+  .gp-label { display: block; font-size: 12.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #41594C; margin-bottom: 7px; }
+  .gp-input { width: 100%; box-sizing: border-box; padding: 13px 14px; border: 1px solid #D5DED4; border-radius: 10px; font: inherit; font-size: 15px; background: #FFFFFF; color: #10241B; }
+  .gp-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .gp-google { font-family: 'Google Sans', Roboto, 'Instrument Sans', sans-serif; }
+  .gp-review { border: 1px solid #DADCE0; border-radius: 12px; padding: 18px 18px 16px; background: #FFFFFF; display: flex; flex-direction: column; }
+  .gp-stat-row { border-top: 1px solid #E2E8DF; margin-top: 12px; padding-top: 12px; display: flex; justify-content: space-between; gap: 12px; font-size: 14.5px; }
+  .gp-stat-row span { color: #41594C; }
+  .gp-team-card { border: 1px solid #E2E8DF; border-radius: 18px; overflow: hidden; background: #FAFAF6; }
+  .gp-marquee { display: flex; gap: 20px; width: max-content; align-items: stretch; animation: gpScroll 40s linear infinite; }
+  .gp-marquee:hover { animation-play-state: paused; }
+  .gp-award-card { width: 300px; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; justify-content: center; }
+  @keyframes gpScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .gp-marquee { animation: none; } }
+  @media (max-width: 900px) {
+    .gp-wrap { padding: 64px 20px; }
+    .gp-2col { grid-template-columns: 1fr !important; gap: 36px; }
+    .gp-hero h1 { font-size: 40px !important; }
+    .gp-hero-imgs { grid-template-rows: 200px 200px !important; }
+    .gp-h2 { font-size: 34px; }
+    .gp-form-grid { grid-template-columns: 1fr; }
+    .gp-form-grid > div { grid-column: auto !important; }
+    .gp-sticky { position: static !important; }
+    .gp-big { font-size: 72px !important; }
+    .gp-reviews-grid { grid-template-columns: 1fr !important; }
+  }
+</style>

@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{/* Landing "Proprietari": conversione statica del documento Claude Design
+     "Green Property - Landing.html". Sezioni in partials/landing/, recensioni in
+     data/recensioni_proprietari.json, logica in assets/js/landing-recensioni.js. */}}
+{{ partial "landing/styles.html" . }}
+<div class="gp-landing">
+  {{ partial "landing/hero.html" . }}
+  {{ partial "landing/servizi.html" . }}
+  {{ partial "landing/modulo-valutazione.html" . }}
+  {{ partial "landing/recensioni.html" . }}
+  {{ partial "landing/premi.html" . }}
+  {{ partial "landing/lettera.html" . }}
+  {{ partial "landing/team.html" . }}
+  {{ partial "landing/case-study.html" . }}
+  {{ partial "landing/contatti.html" . }}
+</div>
+{{ partial "faq.html" . }}
+{{ $js := resources.Get "js/landing-recensioni.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{ end }}

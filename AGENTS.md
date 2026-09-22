@@ -33,6 +33,7 @@ npm run theme-setup    # Inverse of project-setup: extracts theme files back to 
 
 - **Apartments (booking):** `site/content/italian/booking/*.md`
   - Frontmatter fields: `title`, `layout: "booking/single"`, `address`, `price_per_night`, `cleaning_fee`, `max_guests`, `bedrooms`, `bathrooms`, `square_meters`, `latitude`, `longitude`, `main_image`, `image_webp`, `image`, `gallery` (array of paths), `amenities` (array of `{name, icon}`)
+- **Landing Proprietari (`/advantages/`, solo IT):** `content/italian/advantages/_index.md` ha `layout: "landing"` → `themes/bexer-hugo/layouts/advantages/landing.html`, sezioni in `layouts/partials/landing/`, recensioni in `data/recensioni_proprietari.json`, logica in `assets/js/landing-recensioni.js`, immagini in `static/images/landing/`. Telefono/form action vengono da `params.toml`.
 - **Other sections:** `blog/`, `project/`, `team/`, `advantages/`, `apartment/`, `contact.md`, `search.md`, `values.md`, `privacy-policy.md`, `terms.md`
 
 ## Images

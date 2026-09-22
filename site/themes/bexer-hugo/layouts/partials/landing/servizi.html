@@ -1,0 +1,55 @@
+<section style="background:#0C3F2B; color:#F3F7F1;">
+  <div class="gp-wrap" style="padding:44px 24px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:32px;">
+    <div>
+      <div class="gp-serif" style="font-size:44px; line-height:1;">100.000 €</div>
+      <div style="font-size:14px; color:#BCD3C2; margin-top:8px; line-height:1.5;">la rendita annua che può generare un immobile ben posizionato</div>
+    </div>
+    <div>
+      <div class="gp-serif" style="font-size:44px; line-height:1;">7.845 €</div>
+      <div style="font-size:14px; color:#BCD3C2; margin-top:8px; line-height:1.5;">bonificati a un proprietario in un solo mese — Firenze, maggio 2025</div>
+    </div>
+    <div>
+      <div class="gp-serif" style="font-size:44px; line-height:1;">100%</div>
+      <div style="font-size:14px; color:#BCD3C2; margin-top:8px; line-height:1.5;">di occupazione per 4 mesi di fila — Milano, feb–mag 2025</div>
+    </div>
+    <div>
+      <div class="gp-serif" style="font-size:44px; line-height:1;">0 €</div>
+      <div style="font-size:14px; color:#BCD3C2; margin-top:8px; line-height:1.5;">di investimento iniziale richiesto: lavoriamo solo a percentuale</div>
+    </div>
+  </div>
+</section>
+
+<section id="servizi" style="background:#FFFFFF; border-bottom:1px solid #E2E8DF;">
+  <div class="gp-wrap">
+    <div style="max-width:760px;">
+      <div class="gp-eyebrow">Come funziona</div>
+      <h2 class="gp-serif gp-h2" style="font-size:44px; margin-bottom:18px;">Hai capito bene: non devi alzare un dito per gestire la proprietà. E non devi investire un centesimo.</h2>
+      <p style="font-size:17px; line-height:1.65; color:#3C5246; margin:0;">Gestiamo tutto noi: dagli annunci su Booking, Airbnb e gli altri portali, alla gestione dei check-in, al coordinamento di pulizie e manutenzioni. E paghiamo tutto noi. A te resta una cosa sola da fare: <strong style="color:#10241B;">incassare i bonifici</strong>.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px; margin-top:48px;">
+      {{ range $i, $s := slice
+        (dict "t" "Annunci e tariffe" "d" "Creiamo e ottimizziamo gli annunci su Booking, Airbnb e altri portali, con tariffe dinamiche per massimizzare ogni notte.")
+        (dict "t" "Ospiti e check-in" "d" "Selezioniamo gli ospiti e gestiamo arrivi, partenze e assistenza, sette giorni su sette.")
+        (dict "t" "Pulizie e manutenzioni" "d" "Coordiniamo pulizie professionali e manutentori dopo ogni soggiorno: l'immobile resta impeccabile, ed è assicurato contro ogni danno.")
+        (dict "t" "I costi? Li paghiamo noi" "d" "Nessuna spesa a tuo carico, mai. Lavoriamo a percentuale sui ricavi: a te arrivano solo i bonifici.")
+      }}
+      <div class="gp-card">
+        <div class="gp-serif" style="font-size:30px; color:#8FAE99;">{{ printf "%02d" (add $i 1) }}</div>
+        <h3 style="font-size:18px; margin:14px 0 8px;">{{ $s.t }}</h3>
+        <p style="font-size:15px; line-height:1.6; color:#41594C; margin:0;">{{ $s.d }}</p>
+      </div>
+      {{ end }}
+    </div>
+    <div class="gp-2col" style="margin-top:72px; border:1px solid #E2E8DF; border-radius:20px; background:#EFF4EC; padding:56px 48px; grid-template-columns:1fr 1.2fr; gap:44px;">
+      <div>
+        <p class="gp-serif" style="font-style:italic; font-size:26px; line-height:1.35; color:#3C5246; margin:0 0 10px;">«E quanto devo investire all'inizio? 50, 60 mila euro?»</p>
+        <div class="gp-serif gp-big" style="font-size:110px; line-height:1; color:#0C3F2B;">No: 0 €</div>
+      </div>
+      <div>
+        <p style="font-size:17px; line-height:1.7; color:#3C5246; margin:0 0 12px;">Lavoriamo <strong style="color:#10241B;">totalmente a percentuale</strong>: guadagniamo solo se guadagni anche tu. Nessun canone, nessun anticipo, nessuna sorpresa.</p>
+        <p style="font-size:17px; line-height:1.7; color:#3C5246; margin:0 0 24px;">Ora che sai tutto, inserisci i tuoi dati nel modulo qui sotto: sarai ricontattato dal nostro team per parlare della tua proprietà.</p>
+        <a href="#modulo" class="gp-btn gp-btn-dark">Vai al modulo ↓</a>
+      </div>
+    </div>
+  </div>
+</section>

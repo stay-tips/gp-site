@@ -1,0 +1,24 @@
+{{ $team := slice
+  (dict "img" "enrico-di-marco" "nome" "Enrico Di Marco" "ruolo" "Fondatore · Property manager" "bio" "Proprietario a sua volta di 7 immobili a reddito: tratta ogni casa come se fosse una delle sue." "pos" "center")
+  (dict "img" "gerson" "nome" "Gerson" "ruolo" "Operations · Check-in" "bio" "Accoglie gli ospiti e segue arrivi e partenze: ogni soggiorno inizia e finisce senza intoppi." "pos" "center")
+  (dict "img" "marzia" "nome" "Marzia" "ruolo" "Guest experience · Qualità" "bio" "Coordina pulizie e standard di qualità: è il motivo per cui gli ospiti lasciano 10/10." "pos" "center 25%")
+}}
+<section id="team" style="background:#FFFFFF; border-bottom:1px solid #E2E8DF;">
+  <div class="gp-wrap">
+    <div class="gp-eyebrow">Il team</div>
+    <h2 class="gp-serif gp-h2">Chi si prende cura della tua proprietà</h2>
+    <p class="gp-lead">Un team piccolo e diretto: parli sempre con chi conosce il tuo immobile, non con un call center.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:24px;">
+      {{ range $team }}
+      <div class="gp-team-card">
+        <img src="{{ printf "images/landing/%s.webp" .img | relURL }}" alt="{{ .nome }}" loading="lazy" style="width:100%; aspect-ratio:4/4.6; object-fit:cover; object-position:{{ .pos }}; display:block;">
+        <div style="padding:20px 22px;">
+          <div style="font-size:18px; font-weight:600;">{{ .nome }}</div>
+          <div style="font-size:14px; color:#17694A; font-weight:600; margin-top:3px;">{{ .ruolo }}</div>
+          <p style="font-size:14.5px; line-height:1.6; color:#41594C; margin:10px 0 0;">{{ .bio }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

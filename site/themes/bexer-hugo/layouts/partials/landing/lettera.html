@@ -1,0 +1,27 @@
+{{ $tel := site.Params.mobile }}
+{{ $telHref := printf "tel:%s" (replace $tel " " "") }}
+<section id="lettera" style="background:#EFF4EC; border-bottom:1px solid #E2E8DF;">
+  <div class="gp-wrap gp-2col" style="grid-template-columns:1.25fr 0.75fr; align-items:start;">
+    <div>
+      <div class="gp-eyebrow" style="margin-bottom:18px;">Una lettera da Enrico</div>
+      <p class="gp-serif" style="font-size:30px; line-height:1.25; margin:0 0 22px; color:#10241B;">Caro proprietario, so cosa pensi. Anch'io sono proprietario di ville che affitto.</p>
+      <p style="font-size:17px; line-height:1.75; color:#3C5246; margin:0 0 16px;">So bene quanto tieni alla tua proprietà e cosa ti passa per la testa prima di darla in affitto: vuoi che sia <strong style="color:#10241B;">valorizzata</strong>, che <strong style="color:#10241B;">non venga rovinata</strong> e che ti renda, giustamente, <strong style="color:#10241B;">una bella somma a fine anno</strong>.</p>
+      <p style="font-size:17px; line-height:1.75; color:#3C5246; margin:0 0 16px;">So anche che hai paura di tutti i costi di gestione e del tempo che ci vuole per affittare una casa con gli affitti brevi. Lo so perché ci sono passato anch'io, con <strong style="color:#10241B;">7 immobili di proprietà — fra cui alcune ville</strong> — che oggi ho messo tutti a reddito.</p>
+      <p style="font-size:17px; line-height:1.75; color:#3C5246; margin:0 0 16px;">Ho creato Green Property proprio per questo: per darti la possibilità di generare un forte reddito, <strong style="color:#10241B;">anche fino a 4 volte superiore agli affitti classici</strong>, senza dover gestire niente e con la <strong style="color:#10241B;">GARANZIA</strong> dello stato impeccabile in cui rimarrà il tuo immobile, assicurato contro ogni danno.</p>
+      <p style="font-size:17px; line-height:1.75; color:#3C5246; margin:0 0 28px;">Quindi, cosa aspetti? Facciamoci una chiacchierata sul tuo immobile: chiamami, oppure compila il modulo qui sotto.</p>
+      <div style="font-family:'Caveat', cursive; font-size:46px; color:#0C3F2B; line-height:1;">Enrico Di Marco</div>
+      <div style="font-size:13.5px; color:#7A8F81; margin-top:6px;">Fondatore di Green Property · proprietario e host</div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:28px;">
+        <a href="{{ $telHref }}" class="gp-btn gp-btn-dark">Chiamami · {{ $tel }}</a>
+        <a href="#contatti" class="gp-btn gp-btn-light" style="padding:14px 22px;">Compila il modulo ↓</a>
+      </div>
+    </div>
+    <div>
+      <img src="{{ "images/landing/enrico-di-marco.webp" | relURL }}" alt="Enrico Di Marco" loading="lazy" style="width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:18px; display:block;">
+      <div style="background:#FFFFFF; border:1px solid #E2E8DF; border-radius:14px; padding:16px 20px; margin-top:14px;">
+        <div style="font-size:15px; font-weight:600; color:#10241B;">Enrico Di Marco</div>
+        <div style="font-size:13.5px; color:#7A8F81; margin-top:3px;">Titolare · vincitore Property Game 2024</div>
+      </div>
+    </div>
+  </div>
+</section>

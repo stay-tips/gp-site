@@ -1,0 +1,48 @@
+{{/* Modulo lead proprietari, inviato ad Airform come il form della pagina contatti.
+     Parametri: id (suffisso univoco), full (true = con email e note), submit (testo bottone), style (extra). */}}
+{{ $id := .id }}
+<form action="{{ site.Params.contact_form_action }}" method="POST" style="background:#FFFFFF; border:1px solid #E2E8DF; border-radius:20px; padding:36px; {{ .style | safeCSS }}">
+  <input type="hidden" name="_subject" value="Richiesta valutazione proprietà dal sito">
+  <div class="gp-form-grid">
+    <div>
+      <label for="nome{{ $id }}" class="gp-label">Nome e cognome *</label>
+      <input id="nome{{ $id }}" name="nome" class="gp-input" required placeholder="Mario Rossi">
+    </div>
+    <div>
+      <label for="tel{{ $id }}" class="gp-label">Telefono *</label>
+      <input id="tel{{ $id }}" name="telefono" type="tel" class="gp-input" required placeholder="+39 …">
+    </div>
+    {{ if .full }}
+    <div>
+      <label for="email{{ $id }}" class="gp-label">Email</label>
+      <input id="email{{ $id }}" name="email" type="email" class="gp-input" placeholder="mario@esempio.it">
+    </div>
+    {{ end }}
+    <div>
+      <label for="citta{{ $id }}" class="gp-label">Città dell'immobile</label>
+      <select id="citta{{ $id }}" name="citta" class="gp-input">
+        <option>Firenze</option>
+        <option>Milano</option>
+        <option>Bologna</option>
+        <option>Altra città</option>
+      </select>
+    </div>
+    <div {{ if .full }}style="grid-column:span 2;"{{ end }}>
+      <label for="tipo{{ $id }}" class="gp-label">Tipo di immobile</label>
+      <select id="tipo{{ $id }}" name="tipo" class="gp-input">
+        <option>Appartamento</option>
+        <option>Villa</option>
+        <option>Palazzina / più unità</option>
+        <option>Altro</option>
+      </select>
+    </div>
+    {{ if .full }}
+    <div style="grid-column:span 2;">
+      <label for="note{{ $id }}" class="gp-label">Note (facoltative)</label>
+      <textarea id="note{{ $id }}" name="note" rows="3" class="gp-input" placeholder="Raccontaci qualcosa sull'immobile…" style="resize:vertical;"></textarea>
+    </div>
+    {{ end }}
+  </div>
+  <button type="submit" class="gp-btn gp-btn-dark" style="margin-top:22px; width:100%; padding:17px; font-size:16.5px;">{{ .submit }}</button>
+  <p style="font-size:12.5px; color:#7A8F81; margin:14px 0 0; text-align:center;">{{ .note }}</p>
+</form>
