@@ -3,6 +3,48 @@
      "Green Property - Landing.html". Sezioni in partials/landing/, recensioni in
      data/recensioni_proprietari.json, logica in assets/js/landing-recensioni.js. */}}
 {{ partial "landing/styles.html" . }}
+
+<!-- WhatsApp Floating Button -->
+<style>
+  .whatsapp-floating {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+  }
+  .whatsapp-floating a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background: #25D366;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+  .whatsapp-floating a:hover {
+    background: #1fa851;
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+    transform: translateY(-2px);
+  }
+  .whatsapp-floating svg {
+    width: 20px;
+    height: 20px;
+  }
+</style>
+<div class="whatsapp-floating">
+  <a href="https://wa.me/393784070980" target="_blank" rel="noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-9.746 9.798c0 2.734.742 5.413 2.151 7.788l-2.335 6.993 7.165-2.128a9.809 9.809 0 004.766 1.213h.005c5.408 0 9.809-4.412 9.809-9.82 0-2.63-.674-5.117-1.96-7.271A9.776 9.776 0 0012.051 6.979z"/>
+    </svg>
+    WhatsApp
+  </a>
+</div>
+
 <div class="gp-landing">
   {{ partial "landing/hero.html" . }}
   {{ partial "landing/servizi.html" . }}
