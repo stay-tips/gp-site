@@ -7,4 +7,6 @@ description: "make your property truly profitable with short-term rentals, maxim
 bg_image_webp: "images/backgrounds/page-title.webp" 
 bg_image: "images/backgrounds/page-title.jpg"
 draft: false
+# landing proprietari (layouts/advantages/landing.html)
+layout: "landing"
 ---
