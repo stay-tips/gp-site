@@ -1,55 +1,33 @@
 /* Moduli lead della landing /advantages/ (partials/landing/form.html).
-   Invio in pagina verso Airform (che accetta richieste dal browser) e poi pagina di ringraziamento;
-   se l'invio fallisce il modulo resta compilato e compare l'avviso con il telefono.
-   Senza JavaScript il modulo funziona comunque con il POST normale. */
+   L'invio resta quello normale del browser verso Airform: Airform chiede a ogni invio di confermare
+   con un reCAPTCHA su una sua pagina, e un fetch in pagina salterebbe quella conferma (il lead
+   non verrebbe mai consegnato). Qui si fanno solo due cose:
+   - campo trappola compilato (bot): non si invia nulla e si finge successo;
+   - invio di una persona: evento Lead del Meta Pixel. */
 (function () {
   'use strict';
 
-  var TESTO_INVIO = 'Invio in corso…';
-
-  // Pagina di ringraziamento (content/italian/advantages/grazie.md). Fissa qui e non letta dal markup:
-  // niente valori del DOM verso location.assign.
+  // Pagina di ringraziamento (content/italian/advantages/grazie.md), costante e non letta dal markup.
   var PAGINA_GRAZIE = '/advantages/grazie/';
 
-  function vaiAlGrazie() {
-    window.location.assign(PAGINA_GRAZIE);
-  }
-
-  function inviaModulo(form, evento) {
-    var bottone = form.querySelector('button[type="submit"]');
-    var errore = form.querySelector('[data-gp-error]');
+  function allInvio(form, evento) {
     var trappola = form.querySelector('input[name="sito_web"]');
 
-    evento.preventDefault();
-    if (errore) { errore.hidden = true; }
-
-    // Campo trappola compilato: è un bot. Si finge successo, senza inviare niente.
     if (trappola && trappola.value) {
-      vaiAlGrazie();
+      evento.preventDefault();
+      window.location.assign(PAGINA_GRAZIE);
       return;
     }
 
-    var testoOriginale = bottone ? bottone.textContent : '';
-    if (bottone) { bottone.disabled = true; bottone.textContent = TESTO_INVIO; }
-
-    // Stesso formato del POST normale (application/x-www-form-urlencoded): niente preflight.
-    fetch(form.getAttribute('action'), {
-      method: 'POST',
-      body: new URLSearchParams(new FormData(form))
-    }).then(function (risposta) {
-      if (!risposta.ok) { throw new Error('HTTP ' + risposta.status); }
-      vaiAlGrazie();
-    }).catch(function () {
-      if (errore) { errore.hidden = false; }
-      if (bottone) { bottone.disabled = false; bottone.textContent = testoOriginale; }
-    });
+    // Se il Pixel è bloccato dal browser, l'invio funziona lo stesso.
+    if (typeof window.fbq === 'function') { window.fbq('track', 'Lead'); }
   }
 
   function avvia() {
     var moduli = document.querySelectorAll('form[data-gp-form]');
     for (var i = 0; i < moduli.length; i++) {
       (function (form) {
-        form.addEventListener('submit', function (evento) { inviaModulo(form, evento); });
+        form.addEventListener('submit', function (evento) { allInvio(form, evento); });
       })(moduli[i]);
     }
   }
