@@ -15,7 +15,7 @@
         <a href="{{ `advantages/` | relLangURL }}" class="gp-btn gp-btn-dark">Torna ai vantaggi del proprietario</a>
         <a href="{{ $waHref }}" class="gp-btn" style="border:1px solid #0C3F2B; color:#0C3F2B;" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
       </div>
-      <p style="font-size:14.5px; color:#7A8F81; margin:22px 0 0;">Hai fretta? Chiamaci al <a href="{{ $telHref }}" style="text-decoration:underline;">{{ $tel }}</a>.</p>
+      <p style="font-size:14.5px; color:#7A8F81; margin:22px 0 0;">Hai fretta? Chiamaci al <a href="{{ $telHref | safeURL }}" style="text-decoration:underline;">{{ $tel }}</a>.</p>
     </div>
   </section>
 </div>
