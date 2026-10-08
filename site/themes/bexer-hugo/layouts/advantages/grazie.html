@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{/* Conferma dopo l'invio del modulo della landing /advantages/. Qui parte l'evento Lead del Meta Pixel
+     (partials/landing/meta-pixel.html), cioè una conversione per richiesta ricevuta. */}}
+{{ partial "landing/styles.html" . }}
+{{ $tel := site.Params.mobile }}
+{{ $telHref := printf "tel:%s" (replace $tel " " "") }}
+{{ $waHref := printf "https://wa.me/%s" (replace (replace $tel " " "") "+" "") }}
+<div class="gp-landing">
+  <section style="background:#FAFAF6;">
+    <div class="gp-wrap" style="max-width:760px; text-align:center;">
+      <div class="gp-eyebrow">Richiesta ricevuta</div>
+      <h1 class="gp-serif gp-h2" style="margin-bottom:16px;">Grazie, ti ricontattiamo entro 24 ore</h1>
+      <p style="font-size:17px; line-height:1.65; color:#3C5246; margin:0 0 28px;">Abbiamo ricevuto i dati del tuo immobile. Ti scriviamo o ti chiamiamo con una prima stima di quanto può rendere con gli affitti brevi.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <a href="{{ `advantages/` | relLangURL }}" class="gp-btn gp-btn-dark">Torna ai vantaggi del proprietario</a>
+        <a href="{{ $waHref }}" class="gp-btn" style="border:1px solid #0C3F2B; color:#0C3F2B;" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+      </div>
+      <p style="font-size:14.5px; color:#7A8F81; margin:22px 0 0;">Hai fretta? Chiamaci al <a href="{{ $telHref }}" style="text-decoration:underline;">{{ $tel }}</a>.</p>
+    </div>
+  </section>
+</div>
+{{ partial "landing/meta-pixel.html" (dict "lead" true) }}
+{{ end }}
