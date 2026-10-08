@@ -1,9 +1,9 @@
 {{/* Modulo lead proprietari, inviato ad Airform come il form della pagina contatti.
      Con JavaScript (assets/js/landing-form.js) l'invio avviene in pagina e poi si va alla pagina di
-     ringraziamento (data-thanks); senza JavaScript resta il POST normale verso Airform.
+     ringraziamento (/advantages/grazie/, fissa nello script); senza JavaScript resta il POST normale verso Airform.
      Parametri: id (suffisso univoco), full (true = con email e note), submit (testo bottone), style (extra). */}}
 {{ $id := .id }}
-<form id="gp-form-{{ $id }}" data-gp-form data-thanks="{{ `advantages/grazie/` | relLangURL }}" action="{{ site.Params.contact_form_action }}" method="POST" style="background:#FFFFFF; border:1px solid #E2E8DF; border-radius:20px; padding:36px; {{ .style | safeCSS }}">
+<form id="gp-form-{{ $id }}" data-gp-form action="{{ site.Params.contact_form_action }}" method="POST" style="background:#FFFFFF; border:1px solid #E2E8DF; border-radius:20px; padding:36px; {{ .style | safeCSS }}">
   <input type="hidden" name="_subject" value="Richiesta valutazione proprietà dal sito">
   {{/* Campo trappola anti-spam: i bot lo compilano, le persone non lo vedono. */}}
   <div aria-hidden="true" style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;">

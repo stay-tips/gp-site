@@ -7,14 +7,12 @@
 
   var TESTO_INVIO = 'Invio in corso…';
 
-  // La destinazione viene dal markup: si accettano solo percorsi interni (/advantages/grazie/),
-  // mai javascript:, data:, altri siti o URL relativi al protocollo (//sito, /\sito).
-  function destinazioneSicura(valore) {
-    return /^\/(?![\/\\])/.test(valore || '') ? valore : '/';
-  }
+  // Pagina di ringraziamento (content/italian/advantages/grazie.md). Fissa qui e non letta dal markup:
+  // niente valori del DOM verso location.assign.
+  var PAGINA_GRAZIE = '/advantages/grazie/';
 
-  function vaiAlGrazie(form) {
-    window.location.assign(destinazioneSicura(form.getAttribute('data-thanks')));
+  function vaiAlGrazie() {
+    window.location.assign(PAGINA_GRAZIE);
   }
 
   function inviaModulo(form, evento) {
@@ -27,7 +25,7 @@
 
     // Campo trappola compilato: è un bot. Si finge successo, senza inviare niente.
     if (trappola && trappola.value) {
-      vaiAlGrazie(form);
+      vaiAlGrazie();
       return;
     }
 
@@ -40,7 +38,7 @@
       body: new URLSearchParams(new FormData(form))
     }).then(function (risposta) {
       if (!risposta.ok) { throw new Error('HTTP ' + risposta.status); }
-      vaiAlGrazie(form);
+      vaiAlGrazie();
     }).catch(function () {
       if (errore) { errore.hidden = false; }
       if (bottone) { bottone.disabled = false; bottone.textContent = testoOriginale; }
