@@ -7,8 +7,14 @@
 
   var TESTO_INVIO = 'Invio in corso…';
 
+  // La destinazione viene dal markup: si accettano solo percorsi interni (/advantages/grazie/),
+  // mai javascript:, data:, altri siti o URL relativi al protocollo (//sito, /\sito).
+  function destinazioneSicura(valore) {
+    return /^\/(?![\/\\])/.test(valore || '') ? valore : '/';
+  }
+
   function vaiAlGrazie(form) {
-    window.location.assign(form.getAttribute('data-thanks') || '/');
+    window.location.assign(destinazioneSicura(form.getAttribute('data-thanks')));
   }
 
   function inviaModulo(form, evento) {
