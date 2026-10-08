@@ -1,8 +1,15 @@
 {{/* Modulo lead proprietari, inviato ad Airform come il form della pagina contatti.
+     Con JavaScript (assets/js/landing-form.js) l'invio avviene in pagina e poi si va alla pagina di
+     ringraziamento (data-thanks); senza JavaScript resta il POST normale verso Airform.
      Parametri: id (suffisso univoco), full (true = con email e note), submit (testo bottone), style (extra). */}}
 {{ $id := .id }}
-<form action="{{ site.Params.contact_form_action }}" method="POST" style="background:#FFFFFF; border:1px solid #E2E8DF; border-radius:20px; padding:36px; {{ .style | safeCSS }}">
+<form id="gp-form-{{ $id }}" data-gp-form data-thanks="{{ `advantages/grazie/` | relLangURL }}" action="{{ site.Params.contact_form_action }}" method="POST" style="background:#FFFFFF; border:1px solid #E2E8DF; border-radius:20px; padding:36px; {{ .style | safeCSS }}">
   <input type="hidden" name="_subject" value="Richiesta valutazione proprietà dal sito">
+  {{/* Campo trappola anti-spam: i bot lo compilano, le persone non lo vedono. */}}
+  <div aria-hidden="true" style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;">
+    <label for="sito{{ $id }}">Non compilare questo campo</label>
+    <input id="sito{{ $id }}" name="sito_web" type="text" tabindex="-1" autocomplete="off">
+  </div>
   <div class="gp-form-grid">
     <div>
       <label for="nome{{ $id }}" class="gp-label">Nome e cognome *</label>
@@ -43,6 +50,11 @@
     </div>
     {{ end }}
   </div>
+  <label for="privacy{{ $id }}" style="display:flex; gap:10px; align-items:flex-start; margin-top:20px; font-size:14px; line-height:1.5; color:#3C5246; cursor:pointer;">
+    <input id="privacy{{ $id }}" name="privacy" type="checkbox" value="accettata" required style="margin-top:3px; flex:none;">
+    <span>Ho letto l'<a href="{{ `privacy-policy/` | relLangURL }}" target="_blank" rel="noopener" style="text-decoration:underline;">informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</span>
+  </label>
   <button type="submit" class="gp-btn gp-btn-dark" style="margin-top:22px; width:100%; padding:17px; font-size:16.5px;">{{ .submit }}</button>
+  <p data-gp-error role="alert" hidden style="font-size:14px; line-height:1.5; color:#9B2C2C; margin:14px 0 0; text-align:center;">Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure chiamaci al <a href="tel:{{ replace site.Params.mobile ` ` `` }}" style="text-decoration:underline;">{{ site.Params.mobile }}</a>.</p>
   <p style="font-size:12.5px; color:#7A8F81; margin:14px 0 0; text-align:center;">{{ .note }}</p>
 </form>

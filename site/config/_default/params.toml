@@ -14,6 +14,8 @@ mobile = "+39 3784070980"
 email = "info@greenproperty.it"
 # contact form action
 contact_form_action = "https://airform.io/info@greenproperty.it" # contact form works with https://formspree.io
+# Meta Pixel (landing /advantages/ e pagina di ringraziamento del modulo)
+meta_pixel_id = "1428839412678174"
 # Google Analitycs
 google_analitycs_id = "" # your id
 # page sidebar quick contact form
