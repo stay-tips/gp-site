@@ -1,6 +1,6 @@
 {{ define "main" }}
-{{/* Conferma dopo l'invio del modulo della landing /advantages/. Qui parte l'evento Lead del Meta Pixel
-     (partials/landing/meta-pixel.html), cioè una conversione per richiesta ricevuta. */}}
+{{/* Conferma del modulo della landing /advantages/. Oggi ci arrivano solo i bot (campo trappola compilato):
+     l'invio vero passa dalla pagina di conferma di Airform. Niente evento Lead qui, per non contarli. */}}
 {{ partial "landing/styles.html" . }}
 {{ $tel := site.Params.mobile }}
 {{ $telHref := printf "tel:%s" (replace $tel " " "") }}
@@ -19,5 +19,5 @@
     </div>
   </section>
 </div>
-{{ partial "landing/meta-pixel.html" (dict "lead" true) }}
+{{ partial "landing/meta-pixel.html" (dict) }}
 {{ end }}
