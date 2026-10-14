@@ -36,11 +36,7 @@
       "url" site.BaseURL
       "name" $orgName
       "inLanguage" .Lang
-      "publisher" (dict "@id" $orgId)
-      "potentialAction" (dict
-        "@type" "SearchAction"
-        "target" (dict "@type" "EntryPoint" "urlTemplate" (printf "%ssearch/?s={search_term_string}" site.BaseURL))
-        "query-input" "required name=search_term_string") -}}
+      "publisher" (dict "@id" $orgId) -}}
   <script type="application/ld+json">{{ $ws | jsonify | safeJS }}</script>
 {{- end -}}
 

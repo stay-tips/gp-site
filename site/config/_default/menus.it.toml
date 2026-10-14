@@ -1,43 +1,10 @@
-############# French navigation ##############
-
-# main menu
-[[main]]
-name = "Valori"
-url = "values/"
-weight = 2
-
-[[main]]
-name = "Proprietari"
-url = "advantages/"
-weight = 3
-
-[[main]]
-name = "Blog"
-url = "blog/"
-weight = 4
-
-[[main]]
-name = "Casi Studio"
-url = "project/"
-weight = 5
-
-[[main]]
-name = "Contatti"
-url = "contact/"
-weight = 7
-
-[[main]]
-name = "Ospitalità"
-url = "booking/"
-weight = 8
-
-# footer menu
+# Solo collegamenti legali: nessun menu di sezioni.
 [[footer]]
-name = "Terms of Service"
-url = "terms/"
+name = "Privacy"
+url = "privacy-policy/"
 weight = 1
 
 [[footer]]
-name = "Privacy Policy"
-url = "privacy-policy/"
+name = "Termini e condizioni"
+url = "terms/"
 weight = 2

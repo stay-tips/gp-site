@@ -3,7 +3,7 @@
 (function () {
   'use strict';
 
-  var PAGINA_GRAZIE = '/advantages/grazie/';
+  var PAGINA_GRAZIE = '/grazie/';
   var CAMPI = ['nome', 'telefono', 'email', 'citta', 'tipo', 'note', 'privacy'];
 
   function eTrappola(form) {

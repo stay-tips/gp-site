@@ -7,8 +7,8 @@ gp-site/
   .github/workflows/hugo.yml   # GitHub Pages deploy (main branch)
   site/                        # ← all Hugo work happens here
     config/_default/           # hugo.toml, languages.toml, params.toml, menus.it.toml
-    content/italian/           # Italian content (default language, no /it/ URL prefix)
-    content/english/           # English content (served under /en/)
+    content/italian/           # Homepage proprietari, grazie e pagine legali
+    content/english/           # Bozze legali conservate; lingua non pubblicata
     themes/bexer-hugo/         # theme (layouts + assets)
     scripts/                   # Python apartment/image generators, projectSetup.js
     netlify.toml               # Netlify deploy config
@@ -31,10 +31,11 @@ npm run theme-setup    # Inverse of project-setup: extracts theme files back to 
 
 ## Content structure
 
-- **Apartments (booking):** `site/content/italian/booking/*.md`
-  - Frontmatter fields: `title`, `layout: "booking/single"`, `address`, `price_per_night`, `cleaning_fee`, `max_guests`, `bedrooms`, `bathrooms`, `square_meters`, `latitude`, `longitude`, `main_image`, `image_webp`, `image`, `gallery` (array of paths), `amenities` (array of `{name, icon}`)
-- **Landing Proprietari (`/advantages/`, solo IT):** `content/italian/advantages/_index.md` ha `layout: "landing"` → `themes/bexer-hugo/layouts/advantages/landing.html`, sezioni in `layouts/partials/landing/`, recensioni in `data/recensioni_proprietari.json`, logica in `assets/js/landing-recensioni.js`, immagini in `static/images/landing/`. Telefono/form action vengono da `params.toml`.
-- **Other sections:** `blog/`, `project/`, `team/`, `advantages/`, `apartment/`, `contact.md`, `search.md`, `values.md`, `privacy-policy.md`, `terms.md`
+- **Homepage proprietari (`/`, solo IT):** `site/content/italian/_index.md` → `themes/bexer-hugo/layouts/index.html`, sezioni in `layouts/partials/landing/`, recensioni in `data/recensioni_proprietari.json`, logica in `assets/js/landing-recensioni.js`, immagini in `static/images/landing/`.
+- **Modulo:** `assets/js/landing-form.js` invia a `/api/leads`; backend Resend in `deploy/lead-form/`. Successo e honeypot portano a `/grazie/`, ma soltanto il successo Resend genera una conversione.
+- **Pagine di supporto:** `/grazie/`, `/privacy-policy/`, `/terms/`; eventuali bozze legali restano preservate.
+- Blog, casi studio, appartamenti, team, ricerca e vecchia landing `/advantages/` sono rimossi. **Nessun redirect** dai vecchi percorsi: devono rispondere 404. Niente menu di sezioni o newsletter.
+- Verifica build: `python3 scripts/check_single_page_site.py public` dalla directory `site/`. Controlla pagine, link, form, sitemap e assenza di vecchi percorsi e redirect.
 
 ## Images
 
@@ -46,15 +47,15 @@ npm run theme-setup    # Inverse of project-setup: extracts theme files back to 
 
 ## Config highlights
 
-- Two languages: Italian (default, no URL prefix) and English (`/en/` prefix) — `defaultContentLanguage = 'it'`, `defaultContentLanguageInSubdir = false`
+- Solo italiano pubblicato alla root; inglese disabilitato tramite `disableLanguages` (sorgenti legali conservati).
 - Theme: `bexer-hugo` (gethugothemes commercial theme)
 - Timezone: `Europe/Rome`
-- Contact form: uses Airform (`airform.io/info@greenproperty.it`)
+- Contact form: endpoint `/api/leads` sullo stesso dominio, Resend; documentazione in `deploy/lead-form/README.md`.
 - Prettier configured with `go-template` parser for `.html` files
 
 ## Deploy
 
-- **GitHub Pages:** `.github/workflows/hugo.yml` — builds on push to `main`, deploys to GitHub Pages
+- **Produzione Hetzner:** `.github/workflows/deploy.yml` — test, build Hugo e verifica dei percorsi su push `main`, poi rsync con `--delete` per rimuovere anche i vecchi file pubblicati. Caddy esistente serve i file e `/api/leads`.
 - **Netlify:** `netlify.toml` — `yarn project-setup && yarn build`
 - **Vercel:** `vercel.json` + `vercel-build.sh` — installs Go + Hugo extended, runs project-setup + build
 - **GitLab CI:** `site/.gitlab-ci.yml` — similar to Vercel flow

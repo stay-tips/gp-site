@@ -113,7 +113,7 @@ test('confirmation and Meta Pixel wait for provider acceptance; double submit se
   resolve(await accepted());
   await attempt.done;
   assert.deepEqual(pixels, [['track', 'Lead']]);
-  assert.deepEqual(redirects, ['/advantages/grazie/']);
+  assert.deepEqual(redirects, ['/grazie/']);
   assert.equal(forms[0].button.disabled, false);
 });
 
@@ -126,7 +126,7 @@ test('honeypot submits neither email nor conversion events', async () => {
   assert.deepEqual(calls, []);
   assert.deepEqual(pixels, []);
   assert.deepEqual(requests, []);
-  assert.deepEqual(redirects, ['/advantages/grazie/']);
+  assert.deepEqual(redirects, ['/grazie/']);
 });
 
 test('technical fields, button clicks and canceled submissions do not count', async () => {
@@ -194,7 +194,7 @@ test('Web Crypto fallback generates a valid UUIDv4 and preserves it on unchanged
   assert.equal(randomCalls, 1);
   assert.equal(requests[0].payload.submission_id, requests[1].payload.submission_id);
   assert.match(requests[0].payload.submission_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
-  assert.deepEqual(redirects, ['/advantages/grazie/']);
+  assert.deepEqual(redirects, ['/grazie/']);
   forms[0].values.telefono = '+39 333 7654321';
   await forms[0].fire('submit').done;
   assert.equal(randomCalls, 2);
@@ -231,7 +231,7 @@ test('missing, failing or rejected analytics cannot block an accepted lead', asy
     forms[0].fire('input', 'nome');
     await forms[0].fire('submit').done;
     assert.deepEqual(pixels, [['track', 'Lead']]);
-    assert.deepEqual(redirects, ['/advantages/grazie/']);
+    assert.deepEqual(redirects, ['/grazie/']);
   }
   await new Promise(resolve => setImmediate(resolve));
 });

@@ -1,86 +1,65 @@
-# Deploy in produzione — Green Property (Hetzner + Caddy)
+# Produzione Green Property
 
-## Contesto
-Sito **statico generato con Hugo** (extended), multilingua IT/EN.
-- Repo: `github.com/stay-tips/gp-site` — il progetto Hugo è nella sottocartella `site/`.
-- Lingua default **italiano** servito alla root; inglese sotto `/en/`.
-- Dominio di produzione: **greenproperty.it** (il `www` deve redirezionare all'apex).
-- Server: VPS **Hetzner già esistente** (Debian/Ubuntu), accesso SSH disponibile. **Caddy NON è installato.**
-- Strategia deploy: **GitHub Actions automatico** ad ogni push su `main` (build in CI + `rsync` su server via SSH). Caddy serve i file statici con HTTPS automatico (Let's Encrypt).
+Il sito pubblico è una landing italiana su **https://greenproperty.it/**.
+Le sezioni precedenti (blog, casi studio, appartamenti, team, ricerca e versione
+inglese) sono rimosse. Non aggiungere redirect, alias Hugo, meta refresh o
+redirect JavaScript dai vecchi percorsi.
 
-## Cosa è GIÀ pronto nel repo (non rifare)
-- `.github/workflows/deploy.yml` → build `hugo --minify --gc --environment production` + `rsync --delete site/public/ → $HETZNER_DEPLOY_PATH`.
-- `deploy/Caddyfile` → config Caddy di riferimento (apex + redirect www, gzip/zstd, cache asset, 404 Hugo).
-- `site/config/production/hugo.toml` → `baseURL = "https://greenproperty.it/"`.
+## Percorsi
 
-## Cosa fare
+- `/`: landing proprietari, da `site/content/italian/_index.md` e
+  `site/themes/bexer-hugo/layouts/index.html`.
+- `/grazie/`: conferma del modulo, esclusa dalla sitemap e con `noindex`.
+- `/privacy-policy/`, `/terms/`: pagine legali.
+- `/api/leads`: endpoint email Resend sullo stesso dominio; documentato in
+  [lead-form/README.md](lead-form/README.md).
+- `/advantages/`, `/advantages/grazie/` e le altre sezioni eliminate
+  restituiscono 404, senza inoltro automatico.
 
-### 1. Server: installare Caddy
-Repo ufficiale Caddy (apt) + `rsync`. Caddy gira come servizio systemd, utente `caddy`.
+I sorgenti legali inglesi e le modifiche locali dell'utente possono restare
+nel repository; `disableLanguages` impedisce la pubblicazione di `/en/`.
 
-```bash
-sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
-sudo apt update && sudo apt install -y caddy rsync
+## Build e pubblicazione
+
+Da `site/`:
+
+```sh
+node --test scripts/landing-form.test.cjs ../deploy/lead-form/server.test.mjs
+hugo --minify --gc --cleanDestinationDir --environment production
+python3 scripts/check_single_page_site.py public
 ```
 
-### 2. Server: utente e cartella di deploy
-- Creare utente `deploy` (o equivalente) per il deploy via SSH.
-- `mkdir -p /var/www/greenproperty`, owner `deploy`, permessi tali che l'utente `caddy` possa leggere (`755` su `/var/www` e sulla dir).
+Il controllo verifica l'insieme delle pagine HTML, i collegamenti interni,
+i due form, la conferma in `/grazie/`, il funnel, la sitemap e l'assenza di
+vecchi percorsi o redirect. Può includere un'eventuale bozza legale locale
+`cancellazione-dati.md`, senza richiederne la pubblicazione.
 
-```bash
-sudo useradd -m -s /bin/bash deploy
-sudo mkdir -p /var/www/greenproperty
-sudo chown -R deploy:deploy /var/www/greenproperty
-sudo chmod 755 /var/www /var/www/greenproperty
-```
+Su push a `main`, `.github/workflows/deploy.yml` esegue test e build con Hugo
+extended 0.163.1, poi il controllo dei percorsi. Soltanto dopo esegue
+`rsync --delete`: i vecchi HTML devono sparire anche dal server, non soltanto
+dalla navigazione. `public/`, `resources/` e i segreti restano fuori da Git.
 
-### 3. Server: configurare Caddy
-- Copiare il contenuto di `deploy/Caddyfile` in `/etc/caddy/Caddyfile`.
-- `sudo systemctl reload caddy`.
-- Aprire le porte **80** e **443** (firewall/ufw); SSH già aperta.
+## Server esistente
 
-```bash
-sudo ufw allow 80,443/tcp   # se usi ufw
-```
+- Host SSH `hetzner`, IP `37.27.202.56`.
+- Sito statico in `/opt/stack/www/greenproperty`, montato come
+  `/var/www/greenproperty` nel Caddy Docker esistente.
+- Configurazione Caddy completa: `/opt/stack/Caddyfile`. Il container usa
+  l'immagine custom dello stack `n8n-nocodb`: non sostituire il file completo
+  o il container con la configurazione di riferimento `deploy/Caddyfile`.
+- Servizio email: progetto Compose `greenproperty-leads`.
+- Umami: progetto Compose `greenproperty-umami`, dashboard
+  https://stats.greenproperty.it; dettagli in [umami.md](umami.md).
 
-### 4. Chiave SSH di deploy
-- Generare keypair ed25519 dedicato.
-- Pubblica → `authorized_keys` dell'utente `deploy`.
-- Privata → secret GitHub (sotto).
+Il passaggio della landing alla root avviene nei contenuti e template Hugo:
+non richiede nuove regole Caddy, modifiche DNS o redirect.
 
-```bash
-ssh-keygen -t ed25519 -f gp_deploy_key -C "gh-actions-deploy" -N ""
-ssh-copy-id -i gp_deploy_key.pub deploy@IP_DEL_SERVER
-```
+## Verifica dopo il deploy
 
-### 5. GitHub → Settings → Secrets and variables → Actions
-Creare i secret usati dal workflow:
+La root deve rispondere 200 direttamente, mostrare la landing e inviare il
+modulo a `/api/leads`. Controllare `/grazie/`, privacy e termini, e verificare
+che i vecchi percorsi restituiscano 404 senza header `Location`. I controlli
+email non devono inviare richieste di prova a persone.
 
-| Secret | Valore |
-|--------|--------|
-| `HETZNER_HOST` | IP/hostname del server |
-| `HETZNER_USER` | `deploy` |
-| `HETZNER_SSH_KEY` | chiave **privata** ed25519 (intero contenuto di `gp_deploy_key`) |
-| `HETZNER_DEPLOY_PATH` | `/var/www/greenproperty` |
-| `HETZNER_SSH_PORT` | porta SSH (opzionale, default 22) |
-
-### 6. DNS (registrar del dominio)
-- `A greenproperty.it → IP_SERVER`
-- `A www.greenproperty.it → IP_SERVER`
-- Attendere la propagazione prima del primo deploy (Caddy emette il certificato solo con DNS già puntato e porte 80/443 aperte).
-
-### 7. Primo deploy e verifica
-- Lanciare il workflow (push su `main` o "Run workflow" dalla tab Actions).
-
-**Acceptance criteria:**
-- `https://greenproperty.it` risponde in HTTPS valido e mostra il sito in **italiano**.
-- `https://greenproperty.it/en/` mostra la versione **inglese**.
-- `http://...` e `https://www.greenproperty.it` redirezionano a `https://greenproperty.it`.
-- Il workflow GitHub Actions termina verde; un secondo push aggiorna i file (verificare che `rsync --delete` non lasci file orfani).
-
-## Vincoli / note
-- Hugo **extended** richiesto (lo SCSS usa `toCSS`); versione in CI: `0.163.1` (allineata al locale). Mantenere allineate CI e ambiente di sviluppo.
-- Non committare segreti nel repo. La build NON richiede Dart Sass (libsass integrato in Hugo extended).
-- Sito 100% statico: nessun runtime/app server, nessun database. Deploy = sincronizzazione di file.
+Per tornare alla versione precedente ripristinare il commit del sito e
+ripubblicare con lo stesso workflow; non eliminare dati Umami o segreti.

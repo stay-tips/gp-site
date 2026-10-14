@@ -9,7 +9,7 @@ Attivo dal 14 ottobre 2026 su `37.27.202.56`, progetto Compose
 `greenproperty-leads` in `/opt/stack/greenproperty-leads/`. Il mittente iniziale
 è `Green Property <no-reply@updates.stay.tips>`, già funzionante con la chiave
 Resend sending-only esistente. Il destinatario è `info@greenproperty.it`.
-La rimozione di Airform riguarda i due moduli della landing `/advantages/`.
+I due moduli sono sulla homepage `/`, con conferma in `/grazie/`.
 Il servizio email viene aggiornato separatamente dal deploy del sito statico.
 Prima di aggiornare il frontend verificare che il backend sia pronto.
 

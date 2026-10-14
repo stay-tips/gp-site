@@ -24,17 +24,18 @@ dell'attivazione non contengono i dati necessari per ricostruire una heatmap.
 Verifica delle pagine pubblicate (dalla directory `site/`):
 
 ```bash
-ssh hetzner 'python3 - https://greenproperty.it/ https://greenproperty.it/en/ https://greenproperty.it/advantages/' < scripts/check_umami.py
+ssh hetzner 'python3 - https://greenproperty.it/ https://greenproperty.it/grazie/' < scripts/check_umami.py
 ```
 
 ## Funnel proprietari
 
 Report **Proprietari — richiesta di valutazione** nella sezione
 [Funnels](https://stats.greenproperty.it/websites/bb00791e-37cf-49f9-93a5-03d506b8d827/funnels).
+ID del report sulla root: `1d4a6cb5-cd4b-4da8-a2e1-0b6f01992cba`.
 Definizione riproducibile in `deploy/umami-funnel.json`, finestra 60 minuti tra
 passaggi consecutivi:
 
-1. Pagina `/advantages/`.
+1. Pagina `/` (homepage proprietari).
 2. Evento `Inizio modulo proprietari`: prima modifica di un campo visibile,
    una volta per modulo e caricamento pagina (anche selezione e consenso),
    oppure al submit se il browser ha ripristinato i dati senza eventi di modifica.
@@ -60,9 +61,14 @@ directory `site/`:
 node --test scripts/landing-form.test.cjs ../deploy/lead-form/server.test.mjs
 ```
 
-ID report salvato: `ccc2e1d3-e926-4e54-8efb-907b462c2ad2`. La verifica API su
-un sito temporaneo ha prodotto 3 visite → 2 inizi → 2 tentativi → 1 conferma;
-il sito e i dati sintetici sono stati eliminati al termine.
+Il report precedente `ccc2e1d3-e926-4e54-8efb-907b462c2ad2` è conservato come
+**Storico /advantages/ — richiesta di valutazione**. La nuova definizione parte
+da `/`, senza modificare o cancellare gli eventi storici.
+
+Per confrontare funnel e heatmap della nuova homepage, selezionare un periodo
+successivo al deploy della landing sulla root: i dati precedenti su `/` si
+riferiscono alla vecchia homepage. I dati di `/advantages/` restano sul vecchio
+percorso. Nessuna riscrittura o redirect trasferisce questi dati alla root.
 
 ## Servizio
 

@@ -44,7 +44,11 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
-        run: hugo --minify --gc --environment production
+        run: hugo --minify --gc --cleanDestinationDir --environment production
+
+      - name: Verify published routes and landing
+        working-directory: ./site
+        run: python3 scripts/check_single_page_site.py public
 
       - name: Configure SSH
         run: |

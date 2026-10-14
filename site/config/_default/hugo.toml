@@ -13,15 +13,17 @@ summaryLength = 10 # see https://gohugo.io/content-management/excerpts/
 # google analytics
 googleAnalytics = "UA-123456-78" # example: UA-123456-78, for more info, read the article https://support.google.com/analytics/answer/1008080?hl=en
 
-# multilingua: l'italiano è la lingua di default (servita alla root; l'inglese sotto /en/).
-# Le lingue sono definite in languages.toml.
+# La landing italiana è l'unica versione pubblicata, alla root.
+# Le bozze legali inglesi restano nei sorgenti, fuori dalla pubblicazione.
 defaultContentLanguage = "it"
 defaultContentLanguageInSubdir = false
 # disable language
 disableLanguages = [
+  "en",
   "fr",
 ] # example: ["fr"] for disable french language. see https://gohugo.io/content-management/multilingual/
 hasCJKLanguage = false #  If hasCJKLanguage true, auto-detect Chinese/Japanese/Korean Languages in the content. see: https://gohugo.io/getting-started/configuration/#hascjklanguage
+disableKinds = ["taxonomy", "term", "RSS"]
 
 # disqus short name
 [services]
@@ -52,7 +54,7 @@ target = '$1'
 
 ############################# Outputs ##############################
 [outputs]
-home = ["HTML", "RSS", "JSON", "WebAppManifest", "LLMS"]
+home = ["HTML", "WebAppManifest", "LLMS"]
 
 # llms.txt — indice in testo per i motori di ricerca AI (llmstxt.org)
 [outputFormats.LLMS]
