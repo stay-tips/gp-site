@@ -1,0 +1,16 @@
+{{/* Attivo solo nella build di produzione e sui domini configurati. */}}
+{{ if hugo.IsProduction }}
+  {{ with site.Params.umami }}
+    {{ if and .enabled .script_url .website_id }}
+      <script
+        defer
+        src="{{ .script_url }}"
+        data-website-id="{{ .website_id }}"
+        data-domains="{{ .domains }}"
+        data-do-not-track="true"
+        data-exclude-search="true"
+        data-exclude-hash="true"
+      ></script>
+    {{ end }}
+  {{ end }}
+{{ end }}

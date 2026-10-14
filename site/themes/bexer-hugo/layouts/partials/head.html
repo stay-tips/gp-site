@@ -43,4 +43,5 @@
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
 {{ template "_internal/google_analytics.html" . }}
+{{ partial "analytics.html" . }}
 {{ site.Params.custom_script | safeHTML }}
