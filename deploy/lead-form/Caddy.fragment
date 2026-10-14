@@ -1,0 +1,19 @@
+# Merge inside the existing greenproperty.it site block, before file_server.
+# Do not replace /opt/stack/Caddyfile with this fragment.
+handle /api/leads {
+	rate_limit {
+		disable_metrics
+		zone gp_lead_form {
+			key {remote_host}
+			events 5
+			window 15m
+			ipv6_prefix 64
+		}
+	}
+	request_body {
+		max_size 12KB
+	}
+	reverse_proxy gp-leads:3000 {
+		header_up X-Real-IP {remote_host}
+	}
+}

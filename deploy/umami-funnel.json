@@ -1,0 +1,13 @@
+{
+  "name": "Proprietari — richiesta di valutazione",
+  "description": "Landing /advantages/ → prima modifica del modulo → tentativo di invio → richiesta accettata da Resend. Due moduli inclusi; nessun dato personale in analytics. L'accettazione non certifica la consegna nella casella email.",
+  "parameters": {
+    "window": 60,
+    "steps": [
+      { "type": "path", "value": "/advantages/" },
+      { "type": "event", "value": "Inizio modulo proprietari" },
+      { "type": "event", "value": "Invio modulo proprietari" },
+      { "type": "event", "value": "Richiesta proprietari accettata" }
+    ]
+  }
+}

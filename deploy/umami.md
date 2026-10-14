@@ -27,6 +27,43 @@ Verifica delle pagine pubblicate (dalla directory `site/`):
 ssh hetzner 'python3 - https://greenproperty.it/ https://greenproperty.it/en/ https://greenproperty.it/advantages/' < scripts/check_umami.py
 ```
 
+## Funnel proprietari
+
+Report **Proprietari — richiesta di valutazione** nella sezione
+[Funnels](https://stats.greenproperty.it/websites/bb00791e-37cf-49f9-93a5-03d506b8d827/funnels).
+Definizione riproducibile in `deploy/umami-funnel.json`, finestra 60 minuti tra
+passaggi consecutivi:
+
+1. Pagina `/advantages/`.
+2. Evento `Inizio modulo proprietari`: prima modifica di un campo visibile,
+   una volta per modulo e caricamento pagina (anche selezione e consenso),
+   oppure al submit se il browser ha ripristinato i dati senza eventi di modifica.
+3. Evento `Invio modulo proprietari`: invio valido al backend.
+4. Evento `Richiesta proprietari accettata`: il backend conferma l'accettazione
+   da parte di Resend. Non certifica la consegna nella casella email.
+
+Entrambi i moduli sono inclusi; la sola proprietà inviata a Umami è `modulo`
+(`gp-form-1` centrale, `gp-form-2` in fondo). Nessun nome, numero, indirizzo
+email, città o testo libero in analytics. Honeypot, errori e semplici clic sul
+pulsante non generano conferme. Il primo passaggio non richiede il clic su una
+CTA: chi raggiunge il modulo scorrendo la pagina resta incluso.
+
+Gli eventi cominciano dal deploy del 14 ottobre 2026, senza ricostruzione storica.
+Utenti con analytics bloccati o Do Not Track possono inviare il modulo, ma non
+compariranno nel funnel. La pagina grazie da sola non dimostra una conversione:
+è raggiungibile anche direttamente e dal percorso honeypot.
+
+Il nuovo servizio email è descritto in `deploy/lead-form/README.md`. Test dalla
+directory `site/`:
+
+```bash
+node --test scripts/landing-form.test.cjs ../deploy/lead-form/server.test.mjs
+```
+
+ID report salvato: `ccc2e1d3-e926-4e54-8efb-907b462c2ad2`. La verifica API su
+un sito temporaneo ha prodotto 3 visite → 2 inizi → 2 tentativi → 1 conferma;
+il sito e i dati sintetici sono stati eliminati al termine.
+
 ## Servizio
 
 Umami 3.4.0 in Docker, immagine fissata anche tramite digest, stack

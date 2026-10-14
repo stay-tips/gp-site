@@ -35,6 +35,10 @@ jobs:
         working-directory: ./site
         run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
 
+      - name: Test lead form and endpoint
+        working-directory: ./site
+        run: node --test scripts/landing-form.test.cjs ../deploy/lead-form/server.test.mjs
+
       - name: Build site (production)
         working-directory: ./site
         env:

@@ -1,10 +1,7 @@
-{{/* Modulo lead proprietari, inviato ad Airform come il form della pagina contatti.
-     L'invio è il POST normale verso Airform, che a ogni invio fa confermare con un reCAPTCHA su una sua
-     pagina (assets/js/landing-form.js non lo sostituisce con un fetch: il lead andrebbe perso).
+{{/* Modulo lead proprietari: landing-form.js invia JSON al servizio email sullo stesso dominio.
      Parametri: id (suffisso univoco), full (true = con email e note), submit (testo bottone), style (extra). */}}
 {{ $id := .id }}
-<form id="gp-form-{{ $id }}" data-gp-form action="{{ site.Params.contact_form_action }}" method="POST" style="background:#FFFFFF; border:1px solid #E2E8DF; border-radius:20px; padding:36px; {{ .style | safeCSS }}">
-  <input type="hidden" name="_subject" value="Richiesta valutazione proprietà dal sito">
+<form id="gp-form-{{ $id }}" data-gp-form action="/api/leads" method="POST" style="background:#FFFFFF; border:1px solid #E2E8DF; border-radius:20px; padding:36px; {{ .style | safeCSS }}">
   {{/* Campo trappola anti-spam: i bot lo compilano, le persone non lo vedono. */}}
   <div aria-hidden="true" style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;">
     <label for="sito{{ $id }}">Non compilare questo campo</label>
@@ -13,16 +10,16 @@
   <div class="gp-form-grid">
     <div>
       <label for="nome{{ $id }}" class="gp-label">Nome e cognome *</label>
-      <input id="nome{{ $id }}" name="nome" class="gp-input" required placeholder="Mario Rossi">
+      <input id="nome{{ $id }}" name="nome" class="gp-input" required minlength="2" maxlength="120" autocomplete="name" placeholder="Mario Rossi">
     </div>
     <div>
       <label for="tel{{ $id }}" class="gp-label">Telefono *</label>
-      <input id="tel{{ $id }}" name="telefono" type="tel" class="gp-input" required placeholder="+39 …">
+      <input id="tel{{ $id }}" name="telefono" type="tel" class="gp-input" required minlength="6" maxlength="32" autocomplete="tel" placeholder="+39 …">
     </div>
     {{ if .full }}
     <div>
       <label for="email{{ $id }}" class="gp-label">Email</label>
-      <input id="email{{ $id }}" name="email" type="email" class="gp-input" placeholder="mario@esempio.it">
+      <input id="email{{ $id }}" name="email" type="email" class="gp-input" maxlength="254" autocomplete="email" placeholder="mario@esempio.it">
     </div>
     {{ end }}
     <div>
@@ -46,7 +43,7 @@
     {{ if .full }}
     <div style="grid-column:span 2;">
       <label for="note{{ $id }}" class="gp-label">Note (facoltative)</label>
-      <textarea id="note{{ $id }}" name="note" rows="3" class="gp-input" placeholder="Raccontaci qualcosa sull'immobile…" style="resize:vertical;"></textarea>
+      <textarea id="note{{ $id }}" name="note" rows="3" maxlength="2000" class="gp-input" placeholder="Raccontaci qualcosa sull'immobile…" style="resize:vertical;"></textarea>
     </div>
     {{ end }}
   </div>
@@ -55,5 +52,7 @@
     <span>Ho letto l'<a href="{{ `privacy-policy/` | relLangURL }}" target="_blank" rel="noopener" style="text-decoration:underline;">informativa privacy</a> e acconsento al trattamento dei miei dati per essere ricontattato. *</span>
   </label>
   <button type="submit" class="gp-btn gp-btn-dark" style="margin-top:22px; width:100%; padding:17px; font-size:16.5px;">{{ .submit }}</button>
+  <p data-gp-form-status role="alert" hidden style="color:#9B2929; font-size:14px; line-height:1.5; margin:16px 0 0;"></p>
+  <noscript><style>#gp-form-{{ $id }} button[type="submit"] { display: none; }</style><p>Per inviare il modulo attiva JavaScript, oppure chiamaci al <a href="tel:{{ replace site.Params.mobile ` ` `` }}">{{ site.Params.mobile }}</a>.</p></noscript>
   <p style="font-size:12.5px; color:#7A8F81; margin:14px 0 0; text-align:center;">{{ .note }}</p>
 </form>
