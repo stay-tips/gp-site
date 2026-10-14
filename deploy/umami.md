@@ -8,6 +8,25 @@ Attivato il 14 ottobre 2026 su `37.27.202.56`.
 - Tracker: `site/themes/bexer-hugo/layouts/partials/analytics.html`, incluso da `head.html`.
 - Solo produzione e domini `greenproperty.it` / `www.greenproperty.it`; rispetta Do Not Track ed esclude query string e frammenti. Le campagne UTM non vengono raccolte con questa configurazione.
 
+## Heatmap
+
+La raccolta richiede sia `script.js` sia `recorder.js`, nello stesso ordine e
+con lo stesso website ID. Il tracker fornisce la sessione al recorder: quando
+il tracker è disattivato (sviluppo, dominio diverso o Do Not Track), il recorder
+non dispone della sessione necessaria per inviare clic e scorrimenti.
+
+In Umami → Websites → Green Property → Replays & Heatmaps, le heatmap sono
+abilitate con campionamento 100%; le registrazioni delle sessioni restano spente.
+L'API `/api/websites/{websiteId}/recorder` deve restituire `enabled: true`,
+`heatmapEnabled: true` e `heatmapSampleRate: 1`. Le visite raccolte prima
+dell'attivazione non contengono i dati necessari per ricostruire una heatmap.
+
+Verifica delle pagine pubblicate (dalla directory `site/`):
+
+```bash
+ssh hetzner 'python3 - https://greenproperty.it/ https://greenproperty.it/en/ https://greenproperty.it/advantages/' < scripts/check_umami.py
+```
+
 ## Servizio
 
 Umami 3.4.0 in Docker, immagine fissata anche tramite digest, stack
@@ -27,7 +46,9 @@ curl --fail https://stats.greenproperty.it/api/heartbeat
 
 La password iniziale è stata sostituita prima di esporre il servizio.
 Credenziali in `/opt/stack/umami/credentials.json` e segreti in `.env`, entrambi
-con permessi 600; copia di recupero sul Mac in `~/.config/greenproperty/`.
+con permessi 600. Sul Mac, le credenziali della dashboard sono in
+`deploycredentials.md` alla radice di questo repository (escluso da Git);
+la copia dei segreti del server resta in `~/.config/greenproperty/umami-server.env`.
 La chiave 2FA è predisposta; l'abilitazione del secondo fattore si fa dal profilo.
 
 ## Backup e ripristino

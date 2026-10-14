@@ -11,6 +11,14 @@
         data-exclude-search="true"
         data-exclude-hash="true"
       ></script>
+      {{/* Il recorder usa la sessione del tracker: mantenere questo ordine e defer. */}}
+      {{ if .recorder_url }}
+        <script
+          defer
+          src="{{ .recorder_url }}"
+          data-website-id="{{ .website_id }}"
+        ></script>
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

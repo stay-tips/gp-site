@@ -5,5 +5,6 @@ baseURL = "https://greenproperty.it/"
 [params.umami]
 enabled = true
 script_url = "https://stats.greenproperty.it/script.js"
+recorder_url = "https://stats.greenproperty.it/recorder.js"
 website_id = "bb00791e-37cf-49f9-93a5-03d506b8d827"
 domains = "greenproperty.it,www.greenproperty.it"
